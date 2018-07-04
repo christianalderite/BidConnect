@@ -22,7 +22,7 @@
 
 
         <LinearLayout
-            android:id="@+id/email_login_form"
+            android:id="@+id/email_login_rm"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
