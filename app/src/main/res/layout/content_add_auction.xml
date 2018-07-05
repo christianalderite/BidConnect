@@ -4,31 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".AddAuctionActivity"
     tools:showIn="@layout/activity_add_auction">
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        >
+        android:layout_marginBottom="10dp">
         <Button
             android:id="@+id/btn_upload_img"
             android:layout_height="96dp"
             android:layout_width="96dp"
             android:textAllCaps="false"
-            android:textColor="#798 6CB"
+            android:textColor="#7986CB"
             android:layout_margin="14dp"
+            android:drawableTop="@drawable/ic_add_circle_72dp"
             android:drawableBottom="@drawable/ic_camera_24dp"
-            android:background="@drawable/dashed_corner"
-            android:text="+ Add photos here"/>
+            android:background="@drawable/dashed_corner"/>
         <Button
             android:layout_height="96dp"
             android:layout_width="96dp"
             android:textAllCaps="false"
             android:textColor="#7986CB"
             android:layout_margin="14dp"
+            android:drawableTop="@drawable/ic_add_circle_72dp"
             android:drawableBottom="@drawable/ic_camera_24dp"
-            android:background="@drawable/dashed_corner"
-            android:text="+ Add photos here"/>
+            android:background="@drawable/dashed_corner"/>
     </LinearLayout>
+
+    <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/customborder"
+            android:padding="10dp"
+            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="#FFF">
+                    <TextView
+                        android:drawableStart="@drawable/ic_category_24dp"
+                        android:drawablePadding="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Category"/>
+                </LinearLayout>
+                <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                    android:gravity="right"
+                android:background="#FFF">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                   android:drawableEnd="@drawable/ic_next__24dp"/>
+                </LinearLayout>
+            </LinearLayout>
 </LinearLayout>
