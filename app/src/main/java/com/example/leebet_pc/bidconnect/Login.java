@@ -109,7 +109,7 @@ public class Login extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Utilities.makeToast(this, "Google ");
+                Utilities.makeToast(this, "Google Sign In Failed");
                 //Log.w(TAG, "Google sign in failed", e);
                 // ...
             }

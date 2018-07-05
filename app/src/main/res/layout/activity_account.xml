@@ -15,18 +15,20 @@
         android:padding="4dp">
 
         <android.support.v7.widget.CardView
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             android:layout_margin="4dp"
-            android:background="@drawable/broeli"
-            app:cardCornerRadius="48dp"
+            app:cardBackgroundColor="@drawable/broelih"
+            app:cardCornerRadius="36dp"
             app:cardElevation="4dp">
 
         </android.support.v7.widget.CardView>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1
+"
             android:layout_margin="4dp"
             android:orientation="vertical">
 
@@ -52,91 +54,152 @@
                 android:layout_height="wrap_content"
                 android:text="Galasya, Metro Manila"
                 android:textColor="@android:color/white"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:text="Joined March 4, 2018"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:orientation="vertical">
+        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/auctions"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="714"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/lblAuction"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="auctions"
-                        android:textColor="@android:color/white"
-                        android:textSize="10sp" />
-                </LinearLayout>
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@android:drawable/stat_notify_chat" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/followers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="1022"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/lblFollowers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="followers"
-                        android:textColor="@android:color/white"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/followers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="56"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/lblFollowing"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="following"
-                        android:textColor="@android:color/white"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@android:drawable/ic_menu_edit" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingTop="4dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:progressTint="@android:color/white"
+                android:rating="4"
+                android:stepSize="1" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2,123 ratings"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/auctions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="714"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblAuction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="auctions"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/followers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1022"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblFollowers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="followers"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/following"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="56"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lblFollowing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="following"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>
