@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "508795886115-o2hg3b86cnvgqe4318u9tl2p7rsob0rm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.leebet_pc.bidconnect",
+            "certificate_hash": "d455d7ae6850c2e6462376875641895e0ad5325d"
+          }
+        },
+        {
           "client_id": "508795886115-ipu084b3a23rhvka2kujfr4qb3e52lqu.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -40,7 +48,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "508795886115-ipu084b3a23rhvka2kujfr4qb3e52lqu.apps.googleusercontent.com",
+              "client_id": "508795886115-nloqme59ih54vk2idudpacai3edbabd5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

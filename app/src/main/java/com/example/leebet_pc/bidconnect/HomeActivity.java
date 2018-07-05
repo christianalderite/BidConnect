@@ -1,12 +1,15 @@
 package com.example.leebet_pc.bidconnect;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +19,21 @@ public class HomeActivity extends AppCompatActivity {
     private List<Bid> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
     private bidsAdapter bAdapter;
+    private ImageButton btnAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        btnAccount = findViewById(R.id.imgBtn_home_me);
+        btnAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toAccount = new Intent(HomeActivity.this, Account.class);
+                startActivity(toAccount);
+            }
+        });
 
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = this.getWindow();
