@@ -114,13 +114,13 @@ public final class Utilities {
                             // Try again online if cache failed
                             Picasso.with(context)
                                     .load(uri).fit().centerCrop()
-                                    .placeholder(R.drawable.ic_menu_gallery)
-                                    .error(R.drawable.ic_menu_gallery)
+                                    .placeholder(R.drawable.ic_message_24dp)
+                                    .error(R.drawable.ic_message_24dp)
                                     .into(imageView);
                         }
                     });
         }catch (Exception e){
-            imageView.setImageResource(R.drawable.ic_menu_gallery);
+            imageView.setImageResource(R.drawable.ic_message_24dp);
         }
     }
 }
