@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -28,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="f5fff3" />
-                            <entry key="outputName" value="ic_message_24dp" />
-                            <entry key="sourceFile" value="C:\Users\johna" />
+                            <entry key="outputName" value="ic_electronics" />
+                            <entry key="sourceFile" value="C:\Users\johna\Desktop\CCS\3rd year 3rd term\NBT\icons\electronics.svg" />
                           </map>
                         </option>
                       </PersistentState>
