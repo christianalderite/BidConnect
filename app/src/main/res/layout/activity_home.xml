@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -10,324 +10,348 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="175dp"
-        android:background="@drawable/carousel1">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:background="@drawable/carousel1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight=".9"
+                    android:layout_marginRight="100dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textAllCaps="false"
+                    android:textColor="#f2f95555"
+                    android:gravity="left|center_vertical"
+                    android:background="@drawable/rounded_corner"
+                    android:drawableStart="@drawable/ic_search_24dp"
+                    android:text="BidConnect" />
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight=".1"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/ic_message_24dp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight=".9"
-                android:layout_marginRight="100dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:textAllCaps="false"
-                android:textColor="#f2f95555"
-                android:gravity="left|center_vertical"
-                android:background="@drawable/rounded_corner"
-                android:drawableStart="@drawable/ic_search_24dp"
-                android:text="BidConnect" />
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/option_section"
+            android:background="#FFF"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/options"
+                android:padding="10dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imgBtn_home_me"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_user"></ImageButton>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Me"
+                        android:textAlignment="center" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imgBtn_home_groups"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_groups"></ImageButton>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Groups"
+                        android:textAlignment="center" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imgBtn_home_notifs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_notifbell"></ImageButton>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications"
+                        android:textAlignment="center" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imgBtn_home_auctions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_bigconnect_svg"></ImageButton>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Auctions"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/first_section"
+            android:background="#FFF"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:id="@+id/see_all"
+                android:gravity="right"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_see_all_categories"
+                    android:layout_height="25dp"
+                    android:layout_width="wrap_content"
+                    android:padding="0dp"
+                    android:textColor="#7986cb"
+                    android:background="#fff"
+                    android:drawableEnd="@drawable/ic_next__24dp"
+                    android:text="see all">
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+                    <android.support.v7.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginRight="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="2dp"
+                        card_view:cardPreventCornerOverlap="false">
+                        <ImageView
+                            android:id="@+id/furniture"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_armchair" />
+                    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:id="@+id/furniture_label"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_weight="1"
+                        android:text="Furniture"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginRight="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="2dp"
+                        card_view:cardPreventCornerOverlap="false">
+
+                        <ImageView
+                            android:id="@+id/mensfashion"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_polo" />
+                    </android.support.v7.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/mensfashlabel"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:text="Men's Wear"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginRight="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="2dp"
+                        card_view:cardPreventCornerOverlap="false">
+
+                        <ImageView
+                            android:id="@+id/gamesgadgets"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+
+                            android:src="@drawable/ic_electronics" />
+                    </android.support.v7.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/eleclabel"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:layout_weight="1"
+                        android:text="Gadgets"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginRight="10dp"
+                        app:cardBackgroundColor="@color/colorPrimary"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="2dp"
+                        card_view:cardPreventCornerOverlap="false">
+
+                        <ImageView
+                            android:id="@+id/wamenfashion"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_dress" />
+                    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:text="Women's Wair"
+                        android:textAlignment="center"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_weight=".1"
-                android:layout_gravity="center"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat="@drawable/ic_message_24dp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/option_section"
-        android:background="#FFF"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
+                android:gravity="center"
+                android:orientation="horizontal">
 
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/options"
-            android:padding="10dp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imgBtn_home_Me"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_search_24dp"></ImageButton>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="My Account" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
 
-                <ImageButton
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:src="@drawable/ic_search_24dp">
-                </ImageButton>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Groups"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:src="@drawable/ic_search_24dp">
-                </ImageButton>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Notifications"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:src="@drawable/ic_search_24dp">
-                </ImageButton>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Auctions"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/first_section"
-        android:background="#FFF"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/see_all"
-            android:gravity="right"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btn_see_all_categories"
-                android:layout_height="25dp"
-                android:layout_width="wrap_content"
-                android:padding="0dp"
-                android:textColor="#7986cb"
-                android:background="#fff"
-                android:drawableEnd="@drawable/ic_next__24dp"
-                android:text="see all">
-            </Button>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/categories"
+            android:id="@+id/second_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginRight="10dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="2dp"
-                    card_view:background="@color/colorPrimary"
-                    card_view:cardPreventCornerOverlap="false">
-
-                    <ImageView
-                        android:id="@+id/furniture"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_margin="3dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_armchair" />
-
-                </android.support.v7.widget.CardView>
-                <TextView
-                    android:id="@+id/furniture_label"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_weight="1"
-                    android:text="Furniture"
-                    android:textAlignment="center"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginRight="10dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="2dp"
-                    card_view:background="@color/colorPrimary"
-                    card_view:cardPreventCornerOverlap="false">
-
-                    <ImageView
-                        android:id="@+id/mensfashion"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_margin="3dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_polo" />
-                </android.support.v7.widget.CardView>
-
-                <TextView
-                    android:id="@+id/mensfashlabel"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
-                    android:text="Men's Wear"
-                    android:textAlignment="center"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginRight="10dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="2dp"
-                    card_view:background="@color/colorPrimary"
-                    card_view:cardPreventCornerOverlap="false">
-
-                    <ImageView
-                        android:id="@+id/gamesgadgets"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_margin="3dp"
-                        android:scaleType="fitXY"
-
-                        android:src="@drawable/ic_electronics" />
-                </android.support.v7.widget.CardView>
-
-                <TextView
-                    android:id="@+id/eleclabel"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="1dp"
-                    android:layout_weight="1"
-                    android:text="Gadgets"
-                    android:textAlignment="center"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginRight="10dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="2dp"
-                    card_view:background="@color/colorPrimary"
-                    card_view:cardPreventCornerOverlap="false">
-
-                    <ImageView
-                        android:id="@+id/wamenfashion"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_margin="3dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_dress" />
-                </android.support.v7.widget.CardView>
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
-                    android:text="Women's Wair"
-                    android:textAlignment="center"
-                    android:textSize="11sp" />
-
-            </LinearLayout>
-
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/bids_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/bids_row" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+
+</ScrollView>
