@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:background="@drawable/carousel1">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +43,90 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:id="@+id/option_section"
+        android:background="#FFF"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/options"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_search_24dp">
+                </ImageButton>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Discover"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_search_24dp">
+                </ImageButton>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Groups"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_search_24dp">
+                </ImageButton>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Notifications"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_search_24dp">
+                </ImageButton>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Auctions"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         android:id="@+id/first_section"
         android:background="#FFF"
         android:orientation="vertical">
@@ -51,10 +134,16 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/see_all"
+            android:gravity="right"
             android:orientation="horizontal">
             <Button
-                android:layout_height="wrap_content"
+                android:id="@+id/btn_see_all_categories"
+                android:layout_height="25dp"
                 android:layout_width="wrap_content"
+                android:padding="0dp"
+                android:textColor="#7986cb"
+                android:background="#fff"
+                android:drawableEnd="@drawable/ic_next__24dp"
                 android:text="see all">
             </Button>
         </LinearLayout>
