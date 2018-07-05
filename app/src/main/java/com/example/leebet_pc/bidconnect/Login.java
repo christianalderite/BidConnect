@@ -56,7 +56,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() !=null){
-                    //startActivity( new Intent(Login.this, homeActivity.class));
+                    startActivity( new Intent(Login.this, HomeActivity.class));
+                    finish();
                 }
             }
         };
@@ -108,7 +109,7 @@ public class Login extends AppCompatActivity {
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
-                Utilities.makeToast(this, "Google ");
+                Utilities.makeToast(this, "Google Sign In Failed");
                 //Log.w(TAG, "Google sign in failed", e);
                 // ...
             }
