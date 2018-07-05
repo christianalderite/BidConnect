@@ -99,28 +99,28 @@ public final class Utilities {
     }
 
     public static void loadImage(final Context context, final String uri, final ImageView imageView){
-//        try{
-//            Picasso.with(context)
-//                    .load(uri).fit().centerCrop()
-//                    .networkPolicy(NetworkPolicy.OFFLINE)
-//                    .into(imageView, new Callback() {
-//                        @Override
-//                        public void onSuccess() {
-//
-//                        }
-//
-//                        @Override
-//                        public void onError() {
-//                            // Try again online if cache failed
-//                            Picasso.with(context)
-//                                    .load(uri).fit().centerCrop()
-//                                    .placeholder(R.drawable.ic_menu_gallery)
-//                                    .error(R.drawable.ic_menu_gallery)
-//                                    .into(imageView);
-//                        }
-//                    });
-//        }catch (Exception e){
-//            imageView.setImageResource(R.drawable.ic_menu_gallery);
-//        }
+        try{
+            Picasso.with(context)
+                    .load(uri).fit().centerCrop()
+                    .networkPolicy(NetworkPolicy.OFFLINE)
+                    .into(imageView, new Callback() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onError() {
+                            // Try again online if cache failed
+                            Picasso.with(context)
+                                    .load(uri).fit().centerCrop()
+                                    .placeholder(R.drawable.ic_message_24dp)
+                                    .error(R.drawable.ic_message_24dp)
+                                    .into(imageView);
+                        }
+                    });
+        }catch (Exception e){
+            imageView.setImageResource(R.drawable.ic_message_24dp);
+        }
     }
 }
