@@ -6,8 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +24,15 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".Account" />
-        <activity android:name=".AddAuctionActivity"></activity>
+        <activity
+            android:name=".AddAuctionActivity"
+            android:label="@string/title_activity_add_auction"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.leebet_pc.bidconnect.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>
