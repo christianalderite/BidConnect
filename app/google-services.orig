@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "508795886115",
+    "firebase_url": "https://bidconnect-f26e2.firebaseio.com",
+    "project_id": "bidconnect-f26e2",
+    "storage_bucket": "bidconnect-f26e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508795886115:android:1f4ca4b587b5bef5",
+        "android_client_info": {
+          "package_name": "com.example.leebet_pc.bidconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508795886115-7ukss6no2p6pp71hhgjis5eihnqf0rf6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.leebet_pc.bidconnect",
+            "certificate_hash": "133b0825dc1ca5ead97e94c6f78b11d856a4071f"
+          }
+        },
+        {
+          "client_id": "508795886115-ipu084b3a23rhvka2kujfr4qb3e52lqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKFbLizsGyaPLfQd29jykd9A2k0jxFi4s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508795886115-ipu084b3a23rhvka2kujfr4qb3e52lqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
