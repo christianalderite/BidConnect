@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "508795886115-lr8aa3j3t0vsh30p8nqrsg17kql5kqcb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.leebet_pc.bidconnect",
+            "certificate_hash": "9a4fd2865d1e759f99ec6dac727902cf9cd4fc55"
+          }
+        },
+        {
           "client_id": "508795886115-ipu084b3a23rhvka2kujfr4qb3e52lqu.apps.googleusercontent.com",
           "client_type": 3
         }
