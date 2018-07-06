@@ -1,6 +1,7 @@
 package com.example.leebet_pc.bidconnect;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -24,8 +25,12 @@ public class SellingFragment extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "TESTING BUTTON CLICK 1", Toast.LENGTH_SHORT).show();
+                Intent toAccount = new Intent(getActivity(), AddAuctionActivity.class);
+                startActivity(toAccount);
             }
         });
+
+
         return view;
     }
 }

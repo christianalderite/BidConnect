@@ -21,6 +21,12 @@ public class HomeActivity extends AppCompatActivity {
     private bidsAdapter bAdapter;
     private ImageButton btnAccount;
 
+    private ImageButton btnProfile;
+
+    private ImageButton btnGroups;
+
+    private ImageButton btnAuctions;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent toAccount = new Intent(HomeActivity.this, Account.class);
+                startActivity(toAccount);
+            }
+        });
+
+        btnAuctions = findViewById(R.id.imgBtn_home_auctions);
+        btnAuctions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toAccount = new Intent(HomeActivity.this, AuctionActivity.class);
                 startActivity(toAccount);
             }
         });
