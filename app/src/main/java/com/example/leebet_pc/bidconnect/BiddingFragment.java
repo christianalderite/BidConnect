@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class BiddingFragment extends Fragment {
+public class BiddingFragment extends android.support.v4.app.Fragment {
     private static final String TAG = "Bidding Fragement";
 
     private Button btnTEST;

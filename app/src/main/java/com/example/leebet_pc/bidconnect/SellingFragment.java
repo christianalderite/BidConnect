@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class SellingFragment extends Fragment {
+public class SellingFragment extends android.support.v4.app.Fragment {
     private static final String TAG = "Selling Fragement";
 
     private Button btnTEST;

@@ -22,6 +22,9 @@ import android.widget.TextView;
 public class AuctionActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
+    private static final String TAG = "MainActivity";
+
+    private SectionsPageAdapter mSectionsPageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +35,19 @@ public class AuctionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+
+        setupViewPager(mViewPager);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-
-
+        tabLayout.setupWithViewPager(mViewPager);
     }
-
+    private void setupViewPager(ViewPager viewPager) {
+        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
+        adapter.addFragment(new SellingFragment(), "TAB1");
+        adapter.addFragment(new BiddingFragment(), "TAB2");
+        viewPager.setAdapter(adapter);
+    }
 
 
 }
