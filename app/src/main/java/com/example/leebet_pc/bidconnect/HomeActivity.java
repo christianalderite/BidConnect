@@ -19,12 +19,11 @@ public class HomeActivity extends AppCompatActivity {
     private List<Bid> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
     private bidsAdapter bAdapter;
+
+
     private ImageButton btnAccount;
-
     private ImageButton btnProfile;
-
     private ImageButton btnGroups;
-
     private ImageButton btnAuctions;
 
     @Override
@@ -59,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.bids_recycler);
 
-        bAdapter = new bidsAdapter(movieList);
+        bAdapter = new bidsAdapter(1,movieList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);

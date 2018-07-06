@@ -15,10 +15,10 @@
         android:padding="4dp">
 
         <android.support.v7.widget.CardView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:layout_margin="4dp"
-            app:cardCornerRadius="36dp"
+            app:cardCornerRadius="48dp"
             app:cardElevation="4dp">
 
         </android.support.v7.widget.CardView>
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="Eliseo Soriano"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -45,7 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="tangangtanga"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/city"
@@ -53,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:text="Galasya, Metro Manila"
                 android:textColor="@android:color/white"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -61,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="Joined March 4, 2018"
                 android:textColor="@android:color/white"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -110,8 +111,8 @@
                 android:layout_height="wrap_content"
                 android:numStars="5"
                 android:progressTint="@android:color/white"
-                android:rating="4"
-                android:stepSize="1" />
+                android:rating="3.5"
+                android:stepSize=".25" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -120,7 +121,7 @@
                 android:text="2,123 ratings"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -136,7 +137,7 @@
                 android:text="714"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -145,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:text="auctions"
                 android:textColor="@android:color/white"
-                android:textSize="10sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -162,7 +163,7 @@
                 android:text="1022"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -171,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:text="followers"
                 android:textColor="@android:color/white"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -186,7 +187,7 @@
                 android:text="56"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -195,10 +196,15 @@
                 android:layout_height="wrap_content"
                 android:text="following"
                 android:textColor="@android:color/white"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/bids_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
