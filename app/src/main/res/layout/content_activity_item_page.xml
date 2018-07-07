@@ -5,13 +5,166 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity_item_page"
+    tools:context=".ItemPageActivity"
+    android:orientation="vertical"
     tools:showIn="@layout/activity_item_page">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="#fff"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <FrameLayout android:id="@+id/frame"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp">
+
+                    <ImageView android:id="@+id/pic"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/hart" />
+
+                    <ImageView android:id="@+id/circle_crop"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/circle_crop" />
+
+                </FrameLayout>
+                <TextView
+                    android:id="@+id/seller_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:layout_weight="1"
+                    android:text="JP Ocariz" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/wawa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:layout_weight=".79"
+                        android:textSize="10sp"
+                        android:text="Current Bid" />
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_weight=".35"
+                        android:gravity="left|center"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:id="@+id/bid_highest_bid"
+                        android:textColor="#4b460b"
+                        android:paddingLeft="10dp"
+                        android:text="₱ 129.00"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|right"
+                        android:layout_weight=".79"
+                        android:textSize="10sp"
+                        android:text="Buyout Price" />
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:layout_weight=".35"
+                        android:gravity="left|center"
+                        android:textSize="18sp"
+                        android:id="@+id/bid_buyout"
+                        android:textColor="#fb8c00"
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:text="₱ 349.00"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:orientation="horizontal">
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:progressTint="@color/rate"
+                    android:rating="3.5"
+                    android:stepSize=".25" />
+                <TextView
+                    android:id="@+id/info_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#fff"
+                    android:textSize="12sp"
+                    android:background="@drawable/chips"
+                    android:text="Men's Fashion" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/info_desc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="#fff"
+                android:gravity="center|left"
+                android:layout_weight="1"
+                android:text="FOR SALE: My Favorite shirt bought by my babe. RFS: Need cash. PLS PM. Good
+Quality
+xd
+                " />
+            <TextView
+                android:id="@+id/bid_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:padding="2dp"
+                android:background="@android:drawable/screen_background_dark_transparent"
+                android:text="00:23:15"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="14sp"
+                />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:drawable/screen_background_dark_transparent"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

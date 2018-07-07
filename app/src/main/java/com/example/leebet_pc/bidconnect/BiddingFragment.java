@@ -27,15 +27,10 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.bidding_fragment,container,false);
-        btnTEST = (Button) view.findViewById(R.id.button_bidding);
+        //btnTEST = (Button) view.findViewById(R.id.button_bidding);
 
-        btnTEST.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "TESTING BUTON CLICK 1", Toast.LENGTH_SHORT).show();
-            }
-        });
 
+        recyclerView = (RecyclerView) view.findViewById(R.id.bidding_recycler);
         bAdapter = new biddingAuctionAdapter(1,movieList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -57,11 +52,6 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
         movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","360.00","455.0","", "Outbid", "500.00");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱60.00","650.0","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱229.00","500.0","");
-        movieList.add(movie);
 
         bAdapter.notifyDataSetChanged();
     }

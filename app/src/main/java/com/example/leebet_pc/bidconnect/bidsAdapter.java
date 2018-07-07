@@ -1,6 +1,8 @@
 package com.example.leebet_pc.bidconnect;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +16,12 @@ public class bidsAdapter extends RecyclerView.Adapter<bidsAdapter.MyViewHolder> 
     private List<Bid> moviesList;
     private static final Integer ACTIVITY_ACCOUNT = 2;
     private static final Integer ACTIVITY_HOME = 1;
-
+    private Context mCont;
     private Integer mode;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView viewcount, bidtimer, username, timestamp, currbid, buyoutprice, title;
+        public CardView uson;
 
         public MyViewHolder(View view) {
             super(view);
@@ -31,6 +34,7 @@ public class bidsAdapter extends RecyclerView.Adapter<bidsAdapter.MyViewHolder> 
 
             if(mode==ACTIVITY_HOME){
                 username = (TextView) view.findViewById(R.id.bid_username);
+                uson = view.findViewById(R.id.bid_bobo_andrew);
             }
         }
     }
@@ -51,7 +55,7 @@ public class bidsAdapter extends RecyclerView.Adapter<bidsAdapter.MyViewHolder> 
             itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.bids_row, parent, false);
         }
-
+        mCont = parent.getContext();
         return new MyViewHolder(itemView);
     }
 
@@ -72,6 +76,18 @@ public class bidsAdapter extends RecyclerView.Adapter<bidsAdapter.MyViewHolder> 
         holder.currbid.setText(movie.getCurrbid());
         //holder.buyoutprice.setText(movie.getBuyoutprice());
         holder.title.setText(movie.getTitle());
+
+        if(mode==ACTIVITY_HOME){
+            holder.uson.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent myIntent = new Intent(mCont, ItemPageActivity.class);
+                    //myIntent.putExtra("key", value); //Optional parameters
+                    mCont.startActivity(myIntent);
+                }
+            });
+        }
+
     }
 
     @Override
