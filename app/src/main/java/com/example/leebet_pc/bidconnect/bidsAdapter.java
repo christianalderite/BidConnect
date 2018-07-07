@@ -24,9 +24,9 @@ public class bidsAdapter extends RecyclerView.Adapter<bidsAdapter.MyViewHolder> 
             super(view);
             viewcount = (TextView) view.findViewById(R.id.bid_views_count);
             bidtimer = (TextView) view.findViewById(R.id.bid_timer);
-            timestamp = (TextView) view.findViewById(R.id.bid_timestamp);
+            //timestamp = (TextView) view.findViewById(R.id.bid_timestamp);
             currbid = (TextView) view.findViewById(R.id.bid_currentbid);
-            buyoutprice = (TextView) view.findViewById(R.id.bid_buyoutprice);
+            //buyoutprice = (TextView) view.findViewById(R.id.bid_buyoutprice);
             title = view.findViewById(R.id.bid_title);
 
             if(mode==ACTIVITY_HOME){
@@ -68,9 +68,9 @@ public class bidsAdapter extends RecyclerView.Adapter<bidsAdapter.MyViewHolder> 
         holder.viewcount.setText(movie.getViews());
         holder.bidtimer.setText(movie.getTimer());
 
-        holder.timestamp.setText(movie.getTimestamp());
+        //holder.timestamp.setText(movie.getTimestamp());
         holder.currbid.setText(movie.getCurrbid());
-        holder.buyoutprice.setText(movie.getBuyoutprice());
+        //holder.buyoutprice.setText(movie.getBuyoutprice());
         holder.title.setText(movie.getTitle());
     }
 

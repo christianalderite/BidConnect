@@ -20,6 +20,12 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private bidsAdapter bAdapter;
 
+    private RecyclerView recyclerView2;
+    private bidsAdapter bAdapter2;
+
+    private RecyclerView recyclerView3;
+    private bidsAdapter bAdapter3;
+
 
     private ImageButton btnAccount;
     private ImageButton btnProfile;
@@ -60,37 +66,53 @@ public class HomeActivity extends AppCompatActivity {
 
         bAdapter = new bidsAdapter(1,movieList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bAdapter);
+
+        recyclerView2 = (RecyclerView) findViewById(R.id.bids_recycler_3rd);
+
+        bAdapter2 = new bidsAdapter(1,movieList);
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView2.setLayoutManager(layoutManager2);
+        recyclerView2.setItemAnimator(new DefaultItemAnimator());
+        recyclerView2.setAdapter(bAdapter2);
+
+        recyclerView3 = (RecyclerView) findViewById(R.id.bids_recycler_4th);
+
+        bAdapter3 = new bidsAdapter(1,movieList);
+        LinearLayoutManager layoutManager3 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView3.setLayoutManager(layoutManager3);
+        recyclerView3.setItemAnimator(new DefaultItemAnimator());
+        recyclerView3.setAdapter(bAdapter3);
+
         prepareMovieData();
     }
 
     private void prepareMovieData() {
         //public Bid(String username, String title, String views, String timer, String timestamp, String currbid, String buyoutprice)
-        Bid movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        Bid movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP");
         movieList.add(movie);
 
         bAdapter.notifyDataSetChanged();
