@@ -34,7 +34,7 @@ public class SellingFragment extends android.support.v4.app.Fragment {
         btnTEST.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "TESTING BUTTON CLICKs 1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "TESTING BUTTON CLIC 1", Toast.LENGTH_SHORT).show();
                 Intent toAccount = new Intent(getActivity(), AddAuctionActivity.class);
                 startActivity(toAccount);
             }
