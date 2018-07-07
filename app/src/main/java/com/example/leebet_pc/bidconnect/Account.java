@@ -42,28 +42,28 @@ public class Account extends AppCompatActivity {
 
     private void prepareBiddingItems() {
         //public Bid(String username, String title, String views, String timer, String timestamp, String currbid, String buyoutprice)
-        Bid movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        Bid movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP","");
         biddingItems.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP","");
         biddingItems.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP","");
         biddingItems.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP","");
         biddingItems.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP","");
         biddingItems.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP","");
         biddingItems.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP","");
         biddingItems.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","Current bid: 350.0 PHP","Current bid: 350.0 PHP","");
         biddingItems.add(movie);
 
         bAdapter.notifyDataSetChanged();

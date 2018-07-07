@@ -1,12 +1,14 @@
 package com.example.leebet_pc.bidconnect;
 
 public class Bid {
-    private String username, title, views, timer, timestamp, currbid, buyoutprice;
+    private String username, title, views, timer, timestamp, currbid, buyoutprice,img_url;
 
     public Bid(){
     }
 
-    public Bid(String username, String title, String views, String timer, String timestamp, String currbid, String buyoutprice) {
+
+
+    public Bid(String username, String title, String views, String timer, String timestamp, String currbid, String buyoutprice, String img_url) {
         this.username = username;
         this.title = title;
         this.views = views;
@@ -14,6 +16,7 @@ public class Bid {
         this.timestamp = timestamp;
         this.currbid = currbid;
         this.buyoutprice = buyoutprice;
+        this.img_url = img_url;
     }
 
     public String getUsername() {
@@ -70,5 +73,13 @@ public class Bid {
 
     public void setBuyoutprice(String buyoutprice) {
         this.buyoutprice = buyoutprice;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
     }
 }
