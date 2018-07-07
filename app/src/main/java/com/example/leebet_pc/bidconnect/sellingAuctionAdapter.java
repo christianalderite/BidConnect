@@ -46,7 +46,7 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
 
         Bid movie = moviesList.get(position);
 
-        //public TextView viewcount, bidtimer, username, timestamp, currbid, buyoutprice;
+        //public TextView viidtimer, username, timestamp, currbid, buyoutprice;
         holder.img.setText(movie.getImg_url());
         holder.time.setText(movie.getTimer());
         //holder.timestamp.setText(movie.getTimestamp());
