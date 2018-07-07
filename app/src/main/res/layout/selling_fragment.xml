@@ -14,7 +14,12 @@
             android:id="@+id/buttonsell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:drawableTop="@drawable/ic_gavel_black_24dp"
+            android:background="@color/status_color"
             android:layout_alignParentBottom="true"
-            android:text="Add Auctionz" />
+            android:text="Add Auction" />
     </RelativeLayout>
 </LinearLayout>

@@ -37,14 +37,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bidding" />
-
             <android.support.design.widget.TabItem
                 android:id="@+id/tab_selling"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Selling" />
-
-
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 
