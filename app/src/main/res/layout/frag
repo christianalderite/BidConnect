@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="bobo selling" />
 
     <LinearLayout
         android:id="@+id/second_section"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="91"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/bids_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/selling_row" />
+            tools:listitem="@layout/bids_row" />
     </LinearLayout>
-
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9">
+        android:layout_height="match_parent">
         <Button
             android:id="@+id/buttonsell"
             android:layout_width="match_parent"
@@ -31,10 +33,10 @@
             android:textAllCaps="false"
             android:textColor="#fff"
             android:gravity="center"
-            android:paddingTop="9dp"
+            android:paddingTop="10dp"
             android:drawableTop="@drawable/ic_gavel_black_24dp"
             android:background="@color/status_color"
             android:layout_alignParentBottom="true"
             android:text="Add Auction" />
     </RelativeLayout>
-</LinearLayout>
+</ScrollView>
