@@ -46,8 +46,8 @@ public class AuctionActivity extends AppCompatActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new SellingFragment(), "Bidding");
-        adapter.addFragment(new BiddingFragment(), "Selling");
+        adapter.addFragment(new BiddingFragment(), "Bidding");
+        adapter.addFragment(new SellingFragment(), "Selling");
         viewPager.setAdapter(adapter);
     }
 

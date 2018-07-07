@@ -42,6 +42,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.leebet_pc.bidconnect.HomeActivity" />
         </activity>
+        <activity
+            android:name=".activity_item_page"
+            android:label="@string/title_activity_item_page"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

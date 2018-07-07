@@ -1,5 +1,6 @@
 package com.example.leebet_pc.bidconnect;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +18,16 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
     private Integer mode;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView img, time, currbid, buyoutprice, title;
-
+        public TextView  time, currbid, buyoutprice, title;
+        public CardView img;
         public MyViewHolder(View view) {
             super(view);
-            img = (TextView) view.findViewById(R.id.sell_img);
+            img = (CardView) view.findViewById(R.id.sell_img);
             time = (TextView) view.findViewById(R.id.sell_time_left);
             currbid = (TextView) view.findViewById(R.id.sell_curr_bid);
-            title = (TextView) view.findViewById(R.id.bid_title);
-            buyoutprice = (TextView) view.findViewById(R.id.bid_buyoutprice);
+            title = (TextView) view.findViewById(R.id.sell_item_name);
+            buyoutprice = (TextView) view.findViewById(R.id.sell_buy_bid);
+
         }
     }
     public sellingAuctionAdapter(Integer mode, List<Bid> moviesList) {
@@ -47,7 +49,7 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
         Bid movie = moviesList.get(position);
 
         //public TextView viidtimer, username, timestamp, currbid, buyoutprice;
-        holder.img.setText(movie.getImg_url());
+       // holder.img.setbac(movie.getImg_url()); WILLL SET LATER MGA BOBO
         holder.time.setText(movie.getTimer());
         //holder.timestamp.setText(movie.getTimestamp());
         holder.currbid.setText(movie.getCurrbid());
