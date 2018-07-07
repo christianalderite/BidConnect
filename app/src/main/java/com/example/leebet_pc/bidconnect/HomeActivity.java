@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton btnProfile;
     private ImageButton btnGroups;
     private ImageButton btnAuctions;
+    private Button btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +52,17 @@ public class HomeActivity extends AppCompatActivity {
         btnAuctions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toAccount = new Intent(HomeActivity.this, AuctionActivity.class);
-                startActivity(toAccount);
+                Intent toAuctions = new Intent(HomeActivity.this, AuctionActivity.class);
+                startActivity(toAuctions);
+            }
+        });
+
+        btnSearch = findViewById(R.id.searchButton);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toSearch = new Intent(HomeActivity.this, SearchActivity.class);
+                startActivity(toSearch);
             }
         });
 

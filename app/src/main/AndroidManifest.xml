@@ -42,6 +42,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.leebet_pc.bidconnect.HomeActivity" />
         </activity>
+        <activity android:name=".SearchActivity" >
+        </activity>
     </application>
 
 </manifest>
