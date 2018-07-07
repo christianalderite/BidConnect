@@ -23,7 +23,7 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
         btnTEST.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "TESTING BUTTON CLICK 1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "TESTING BUTON CLICK 1", Toast.LENGTH_SHORT).show();
             }
         });
         return view;
