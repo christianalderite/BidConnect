@@ -39,33 +39,33 @@ public class SellingFragment extends android.support.v4.app.Fragment {
                 startActivity(toAccount);
             }
         });
-        recyclerView = (RecyclerView) getView().findViewById(R.id.bids_recycler);
+        recyclerView = (RecyclerView) view.findViewById(R.id.selling_recycler);
 
         bAdapter = new sellingAuctionAdapter(1,movieList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bAdapter);
-
+        prepareData();
         return view;
     }
     public void prepareData(){
 
         Bid movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱50.00","Current bid: 199.0 PHP","");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱50.00","199.0","");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱130.00","Current bid: 750.0 PHP","");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱130.00","750.0","");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱360.00","Current bid: 455.0 PHP","");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱360.00","455.0","");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱60.00","Current bid: 650.0 PHP","");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱60.00","650.0","");
         movieList.add(movie);
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱229.00","Current bid: 500.0 PHP","");
+        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱229.00","500.0","");
         movieList.add(movie);
 
         bAdapter.notifyDataSetChanged();
