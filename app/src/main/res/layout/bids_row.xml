@@ -16,7 +16,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="180dp"
-        android:layout_height="195dp"
+        android:layout_height="170dp"
         app:cardElevation="6dp">
 
 
@@ -117,36 +117,33 @@
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/bid_timestamp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight="1"
-                        android:text="8 hours ago"
-                        android:textAlignment="textEnd"
-                        android:textSize="12sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/bid_currentbid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
-                    android:text="Current bid: 100.0 PHP"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/bid_buyoutprice"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
-                    android:text="Buyout price: 200.0 PHP"
-                    android:textSize="14sp" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/bid_currentbidlabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight=".55"
+                        android:text="Current bid:" />
+
+                    <TextView
+                        android:id="@+id/bid_currentbid"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight=".45"
+                        android:text="100.0 PHP"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>
