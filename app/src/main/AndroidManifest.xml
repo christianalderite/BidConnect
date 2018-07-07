@@ -46,6 +46,7 @@
             android:name=".ItemPageActivity"
             android:label="@string/title_activity_item_page"
             android:theme="@style/AppTheme"></activity>
+        <activity android:name=".SearchActivity"/>
     </application>
 
 </manifest>
