@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
+        android:id="@+id/second_section"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="bobo bidding" />
+        android:layout_height="0dp"
+        android:layout_weight="91"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/texts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight=".6"
+                android:text="Item"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight=".3"
+                android:text="Current Bid"/><TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight=".4"
+            android:text="Highest Bid"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight=".4"
+                android:text="Buyout"/>
 
-    <Button
-        android:id="@+id/button_bidding"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/selling_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/bidding_row" />
+    </LinearLayout>
+
+
+
 </LinearLayout>
