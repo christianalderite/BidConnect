@@ -42,13 +42,15 @@
             android:layout_height="wrap_content"
             app:counterEnabled="true"
             app:counterMaxLength="60">
+
             <EditText
+                android:id="@+id/addauction_itemname"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:background="@android:color/transparent"
-                android:textSize="18sp"
                 android:hint="Item Name"
-                android:maxLength="60" />
+                android:maxLength="60"
+                android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
             </LinearLayout>
     <LinearLayout
@@ -63,12 +65,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="#FFF">
+
             <EditText
-                android:layout_height="64dp"
+                android:id="@+id/addauction_itemdesc"
                 android:layout_width="match_parent"
+                android:layout_height="64dp"
                 android:background="@android:color/transparent"
-                android:textSize="16sp"
-                android:hint="Description"/>
+                android:hint="Description"
+                android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -95,13 +99,14 @@
             android:layout_weight="1"
             android:gravity="right"
             android:background="#FFF">
+
             <TextView
-                android:id="@+id/add_auction_cat"
-                android:layout_height="match_parent"
+                android:id="@+id/addauction_cat"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text=""/>
+                android:text="" />
             <TextView
                 android:id="@+id/choose_cat"
                 android:layout_height="wrap_content"
@@ -134,14 +139,16 @@
             android:layout_weight="1"
             android:gravity="right"
             android:background="#FFF">
+
             <EditText
-                android:layout_height="wrap_content"
+                android:id="@+id/addauction_minprice"
                 android:layout_width="match_parent"
-                android:gravity="right"
-                android:inputType="number"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:textSize="12sp"
-                android:hint="Set starting price."/>
+                android:gravity="right"
+                android:hint="Set starting price."
+                android:inputType="number"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -169,14 +176,16 @@
             android:layout_weight="1"
             android:gravity="right"
             android:background="#FFF">
+
             <EditText
-                android:layout_height="wrap_content"
+                android:id="@+id/addauction_buyoutprice"
                 android:layout_width="match_parent"
-                android:gravity="right"
-                android:inputType="number"
+                android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:textSize="12sp"
-                android:hint="Set steal price."/>
+                android:gravity="right"
+                android:hint="Set steal price."
+                android:inputType="number"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -203,19 +212,22 @@
             android:layout_weight="1"
             android:gravity="right"
             android:background="#FFF">
+
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/addauction_duration"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:spinnerMode="dropdown"/>
+                android:spinnerMode="dropdown" />
 
         </LinearLayout>
     </LinearLayout>
-    <Button android:layout_width="wrap_content"
+
+    <Button
+        android:id="@+id/addauction_submitbtn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
         android:layout_marginTop="12dp"
         android:background="@drawable/confirm_corner"
-        android:layout_gravity="bottom|center_horizontal"
-        android:text="CONFIRM"
-        />
+        android:text="CONFIRM" />
 </LinearLayout>

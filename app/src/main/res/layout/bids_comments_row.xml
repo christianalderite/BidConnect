@@ -47,7 +47,7 @@
                     android:id="@+id/userinfo_textcontent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.88"
+                    android:layout_weight="0.80"
                     android:orientation="vertical">
 
                     <TextView
@@ -74,6 +74,14 @@
                     android:layout_weight="0.10"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     app:srcCompat="@drawable/ic_edit_icon" />
+
+                <ImageButton
+                    android:id="@+id/itempage_bid_btndeletecomment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.10"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/ic_delete_icon" />
 
             </LinearLayout>
 

@@ -102,7 +102,6 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
             }
         }
-
         CategoriesAdapter.notifyDataSetChanged();
     }
 }
