@@ -28,6 +28,10 @@ public class CategoriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
 
+        String search_type = getIntent().getStringExtra("search_type");
+
+
+        Log.i("waw",search_type);
         final EditText et = (EditText) findViewById(R.id.et_search);
 
         back = (Button) this.findViewById(R.id.button_category_back);
