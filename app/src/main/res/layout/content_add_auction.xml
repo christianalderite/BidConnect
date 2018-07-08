@@ -11,33 +11,29 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginBottom="10dp">
-        <Button
+
+        android:gravity="center"
+        android:layout_marginBottom="8dp">
+        <ImageView
             android:id="@+id/btn_upload_img"
-            android:layout_height="96dp"
-            android:layout_width="96dp"
+            android:layout_height="150dp"
+            android:layout_width="150dp"
             android:textAllCaps="false"
             android:textColor="#7986CB"
             android:layout_margin="14dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
             android:drawableTop="@drawable/ic_add_circle_72dp"
             android:drawableBottom="@drawable/ic_camera_24dp"
             android:background="@drawable/dashed_corner"/>
-        <Button
-            android:layout_height="96dp"
-            android:layout_width="96dp"
-            android:textAllCaps="false"
-            android:textColor="#7986CB"
-            android:layout_margin="14dp"
-            android:drawableTop="@drawable/ic_add_circle_72dp"
-            android:drawableBottom="@drawable/ic_camera_24dp"
-            android:background="@drawable/dashed_corner"/>
+
     </LinearLayout>
 
     <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:background="@drawable/customborder"
-            android:padding="10dp"
+            android:padding="8dp"
             android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
@@ -104,7 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Fashion"/>
+                android:text=""/>
             <TextView
                 android:id="@+id/choose_cat"
                 android:layout_height="wrap_content"
