@@ -48,6 +48,8 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton btnGroups;
     private ImageButton btnAuctions;
     private Button btnSearch;
+
+    private Button btnSeeAllCategories;
     private ProgressDialog progressDialog;
 
     FirebaseAuth mAuth;
@@ -125,6 +127,16 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toSearch = new Intent(HomeActivity.this, SearchActivity.class);
                 startActivity(toSearch);
+            }
+        });
+
+        btnSeeAllCategories = findViewById(R.id.btn_see_all_categories);
+        btnSeeAllCategories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toSeeCategory = new Intent(HomeActivity.this, SearchActivity.class);
+                toSeeCategory.putExtra("search_type","search_all_cat");
+                startActivity(toSeeCategory);
             }
         });
 
