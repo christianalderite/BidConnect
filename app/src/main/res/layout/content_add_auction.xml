@@ -19,6 +19,7 @@
             android:layout_height="150dp"
             android:layout_width="150dp"
             android:textAllCaps="false"
+            android:clickable="true"
             android:textColor="#7986CB"
             android:layout_margin="14dp"
             android:scaleType="fitXY"
