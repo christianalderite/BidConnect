@@ -50,6 +50,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/buttonsell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/confirm_corner"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_gaveladd_24dp"
+            android:elevation="6dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="Add Auction"
+            android:textColor="#ff8a65" />
+    </RelativeLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>
