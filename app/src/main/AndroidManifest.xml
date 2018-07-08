@@ -51,8 +51,7 @@
         <activity
             android:name=".activity_notifications"
             android:label="@string/title_activity_notifications"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".activity_edit_profile"></activity>
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -111,4 +111,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_notifications">activity_notifications</string>
+    <string name="title_activity_search_category_results">SearchCategoryResults</string>
 </resources>

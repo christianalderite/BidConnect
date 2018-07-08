@@ -134,7 +134,7 @@ public class HomeActivity extends AppCompatActivity {
         btnSeeAllCategories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toSeeCategory = new Intent(HomeActivity.this, SearchActivity.class);
+                Intent toSeeCategory = new Intent(HomeActivity.this, CategoriesActivity.class);
                 toSeeCategory.putExtra("search_type","search_all_cat");
                 startActivity(toSeeCategory);
             }

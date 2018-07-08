@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,10 +55,36 @@ public class categoriesAdapter extends RecyclerView.Adapter<categoriesAdapter.My
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent putIntent = new Intent();
-                putIntent.putExtra("Category", category);
-                myAct.setResult(RESULT_OK, putIntent);
-                myAct.finish();
+
+
+                String search_type = myAct.getIntent().getStringExtra("search_type");
+
+                switch (search_type){
+
+                    case "search_all_cat":
+                        Intent searchIntent = new Intent(myAct, SearchCategoryResults.class);
+                        searchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        searchIntent.putExtra("Category", category);
+                        myAct.startActivity(searchIntent);
+                        myAct.finish();
+                        break;
+
+                    case "wew":
+                        break;
+
+                    default:
+                        Intent putIntent = new Intent();
+                        putIntent.putExtra("Category", category);
+                        myAct.setResult(RESULT_OK, putIntent);
+                        myAct.finish();
+                        break;
+                }
+
+                if (search_type == "search_all_cat"){
+                    Log.i("waw",search_type);
+
+                }
+
             }
         });
     }
