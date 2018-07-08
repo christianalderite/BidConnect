@@ -183,7 +183,7 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_width="match_parent"
         android:background="@drawable/customborder"
         android:padding="10dp"
@@ -198,7 +198,7 @@
                 android:drawablePadding="10dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Bidding Duration"/>
+                android:text="Bidding Duration (Hours)"/>
         </LinearLayout>
         <LinearLayout
             android:layout_height="wrap_content"
@@ -206,10 +206,11 @@
             android:layout_weight="1"
             android:gravity="right"
             android:background="#FFF">
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:drawableEnd="@drawable/ic_next__24dp"/>
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:spinnerMode="dropdown"/>
 
         </LinearLayout>
     </LinearLayout>
