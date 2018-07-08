@@ -1,5 +1,6 @@
 package com.example.leebet_pc.bidconnect;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,7 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AuctionActivity extends AppCompatActivity {
 
@@ -46,33 +48,32 @@ public class AuctionActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
         btnsell.setVisibility(View.INVISIBLE);
+        btnsell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toAccount = new Intent(AuctionActivity.this, AddAuctionActivity.class);
+                startActivity(toAccount);
+            }
+        });
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
-
             @Override
             public void onPageSelected(int position) {
 
-                Log.i(TAG, "currr pg pos: "+String.valueOf(position));
-                Log.i(TAG, "pageselect detected");
                 switch (position){
                     case 0:
-                        Log.i(TAG, "btn invi");
                         btnsell.setVisibility(View.INVISIBLE);
                         break;
                     case 1:
-                        Log.i(TAG, "btn visi");
                         btnsell.setVisibility(View.VISIBLE);
                         break;
                 }
             }
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
     }
