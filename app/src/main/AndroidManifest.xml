@@ -22,10 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" >
-        </activity>
-
-
+        <activity android:name=".HomeActivity"></activity>
         <activity android:name=".Account" />
         <activity
             android:name=".AddAuctionActivity"
@@ -48,8 +45,9 @@
         <activity
             android:name=".ItemPageActivity"
             android:label="@string/title_activity_item_page"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name=".SearchActivity"/>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".CategoriesActivity"></activity>
     </application>
 
 </manifest>
