@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.view.Window;
@@ -26,6 +27,8 @@ public class SearchActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SearchView searchView;
     private ImageView popularSearches;
+    private Button buttonBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +42,17 @@ public class SearchActivity extends AppCompatActivity {
             window.setStatusBarColor(this.getResources().getColor(R.color.status_color));
         }
 
+        buttonBack = findViewById(R.id.button);
         recyclerView = findViewById(R.id.recyclerView);
         searchView =  findViewById(R.id.searchView);
         popularSearches = findViewById(R.id.imageView2);
 
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
