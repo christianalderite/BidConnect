@@ -2,11 +2,13 @@ package com.example.leebet_pc.bidconnect;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,8 +37,9 @@ import java.util.Map;
 public class HomeActivity extends AppCompatActivity {
 
     private List<Bid> movieList = new ArrayList<>();
+    private List<Auction> latestAucs = new ArrayList<>();
     private RecyclerView recyclerView;
-    private bidsAdapter bAdapter;
+    private auctionsAdapter bAdapter;
 
     private RecyclerView recyclerView2;
     private bidsAdapter bAdapter2;
@@ -56,12 +59,15 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseAuth.AuthStateListener mAuthListener;
     FirebaseUser fbCurrUser;
     DatabaseReference dbUsers;
+    DatabaseReference dbAuctions;
     FirebaseDatabase mainDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        mainDB = FirebaseDatabase.getInstance();
+        dbAuctions = mainDB.getReference("auctions");
 
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = this.getWindow();
@@ -140,13 +146,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //LATEST BIDS LIST//
         recyclerView = (RecyclerView) findViewById(R.id.bids_recycler);
 
-        bAdapter = new bidsAdapter(1,movieList);
+        bAdapter = new auctionsAdapter(1,latestAucs);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bAdapter);
+
+        //LATEST BIDS LIST//
 
         recyclerView2 = (RecyclerView) findViewById(R.id.bids_recycler_3rd);
 
@@ -165,6 +174,7 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView3.setAdapter(bAdapter3);
 
         prepareMovieData();
+        prepareLatestList();
     }
 
     private void prepareMovieData() {
@@ -193,7 +203,29 @@ public class HomeActivity extends AppCompatActivity {
         movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
         movieList.add(movie);
 
-        bAdapter.notifyDataSetChanged();
+        bAdapter2.notifyDataSetChanged();
+        bAdapter3.notifyDataSetChanged();
+
+    }
+
+    private void prepareLatestList(){
+        dbAuctions.orderByChild("timestamp").limitToLast(10).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot object: dataSnapshot.getChildren()){
+                    Auction theauc = object.getValue(Auction.class);
+                    latestAucs.add(theauc);
+                    Log.d("MAMA MO: ","test: " + theauc.getDesc());
+                }
+                bAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     public void NewUserSession(){

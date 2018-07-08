@@ -61,7 +61,7 @@ public class Bid {
     //WITH BACKEND
 
 
-    public Bid(String auctionID, String username, String title, String views, String timer, String timestamp, String currbid, String buyoutprice, String img_url, String category, String desc, String minprice, String status, String status1, String highestbid) {
+    public Bid(String auctionID, String username, String title, String views, String timer, String timestamp, String currbid, String buyoutprice, String img_url, String category, String desc, String minprice, String status, String highestbid) {
         this.auctionID = auctionID;
         this.username = username;
         this.title = title;
@@ -75,7 +75,6 @@ public class Bid {
         this.desc = desc;
         this.minprice = minprice;
         this.status = status;
-        this.status = status1;
         this.highestbid = highestbid;
     }
 

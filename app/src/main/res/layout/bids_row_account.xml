@@ -36,11 +36,11 @@
                     android:textColor="@color/cardview_light_background"
                     android:textSize="18sp"
                     android:translationZ="2dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintBottom_toBottomOf="@+id/auc_image"
                     app:layout_constraintEnd_toEndOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/auc_image"
                     android:layout_width="match_parent"
                     android:layout_height="256sp"
                     android:scaleType="centerCrop"

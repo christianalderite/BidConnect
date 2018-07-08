@@ -13,18 +13,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AddAuctionActivity extends AppCompatActivity {
     public TextView chooseCat;
@@ -39,16 +46,31 @@ public class AddAuctionActivity extends AppCompatActivity {
 
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
     private DatabaseReference dbAuctions;
+    private FirebaseAuth mAuth;
+    FirebaseUser fbCurrUser;
+    UploadTask uploadTask;
+
+    private EditText itemname, description, minimumprice, stealprice;
+    private Spinner dropdown;
 
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mAuth = FirebaseAuth.getInstance();
+        fbCurrUser = mAuth.getCurrentUser();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_auction);
+
+        itemname = findViewById(R.id.addauction_itemname);
+        description = findViewById(R.id.addauction_itemdesc);
+        minimumprice = findViewById(R.id.addauction_minprice);
+        stealprice = findViewById(R.id.addauction_buyoutprice);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Spinner dropdown = findViewById(R.id.addauction_duration);
+        dropdown = findViewById(R.id.addauction_duration);
         String[] items = new String[]{"12:00", "24:00", "48:00"};
 
         dbAuctions = mainDB.getReference("auctions");
@@ -59,11 +81,10 @@ public class AddAuctionActivity extends AppCompatActivity {
 
         //Andrew
         imageUri = null;
-        mStorage = FirebaseStorage.getInstance().getReference().child("auctionImages");
 
         progressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
         progressDialog.setMessage("Step 1 of 2\nUploading Image..."); // Setting Message
-        progressDialog.setTitle("Add Professor"); // Setting Title
+        progressDialog.setTitle("Add Auction"); // Setting Title
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
         progressDialog.setCancelable(false);
 
@@ -98,42 +119,59 @@ public class AddAuctionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String uniksalonga = dbAuctions.push().getKey();
+                mStorage = FirebaseStorage.getInstance().getReference().child("auctionImages/" + uniksalonga);
 
                 if(imageUri != null){
                     progressDialog.show(); // Display Progress Dialog
                     StorageReference prof_pic = mStorage.child(uniksalonga + ".jpg");
 
-                    prof_pic.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    uploadTask = mStorage.putFile(imageUri);
+
+                    /////MAMA MO////
+                    Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                         @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if(task.isSuccessful()){
-                                imageurl = task.getResult().getUploadSessionUri().toString();
-                                /*
-                                dbAuctions.child(uniksalonga).setValue( .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                            if (!task.isSuccessful()) {
+                                throw task.getException();
+                            }
+
+                            // Continue with the task to get the download URL
+                            return mStorage.getDownloadUrl();
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            if (task.isSuccessful()) {
+                                imageurl = task.getResult().toString();
+                                progressDialog.setMessage("Step 2 of 2\nRegistering details..."); // Setting Message
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
+                                String timestamp = dateFormat.format(new Date());
+
+                                dbAuctions.child(uniksalonga).setValue( new Auction(uniksalonga, fbCurrUser.getUid(),itemname.getText().toString(),0,dropdown.getSelectedItem().toString(),timestamp,Double.parseDouble(stealprice.getText().toString()),imageurl,
+                                        "Gadgets",description.getText().toString(),Double.parseDouble(minimumprice.getText().toString()),1) ).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             progressDialog.dismiss();
-                                            Toast.makeText(getActivity(),"Professor added!",Toast.LENGTH_SHORT).show();
-                                            name.setText("");
-                                            email.setText("");
-                                            deptSpinner.setSelection(0);
-                                            posSpinner.setSelection(0);
-                                            addpic.setImageResource(R.drawable.ic_add_circle);
+                                            Toast.makeText(getApplicationContext(),"Auction registered!",Toast.LENGTH_SHORT).show();
+                                            itemname.setText("");
+                                            description.setText("");
+                                            itemCat.setText("");
+                                            minimumprice.setText("");
+                                            stealprice.setText("");
+                                            dropdown.setSelection(0);
+                                            imgchooser.setImageResource(R.drawable.ic_add_a_photo_black_24dp);
                                         }
                                         else{
-                                            Toast.makeText(getActivity(),"There was an error.",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),"There was an error. Please try again.",Toast.LENGTH_SHORT).show();
                                             progressDialog.dismiss();
                                         }
-
                                     }
-                                });*/
-
-                            }
-                            else{Toast.makeText(getApplicationContext(),"Error uploading pic",Toast.LENGTH_SHORT).show();progressDialog.dismiss();}
+                                });
+                            } else {
+                                Toast.makeText(getApplicationContext(),"Error uploading picture. Please try again.",Toast.LENGTH_SHORT).show();progressDialog.dismiss(); }
                         }
                     });
-
                 }//imageuri if end
             }
         });

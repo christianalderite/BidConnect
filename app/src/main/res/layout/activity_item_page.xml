@@ -27,7 +27,7 @@
             app:toolbarId="@+id/toolbar">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/itempage_mainitempic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"

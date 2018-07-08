@@ -55,8 +55,9 @@
                         android:layout_weight="1"
                         android:textColor="@color/indigo"
                         android:text="JP Ocariz" />
+
                     <RatingBar
-                        android:id="@+id/ratingBar"
+                        android:id="@+id/itempage_ratingBar"
                         style="?android:ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -152,15 +153,16 @@
                     android:text="00:23:15"
                     android:textColor="@color/cardview_light_background"
                     android:textSize="14sp" />
+
                 <TextView
-                    android:id="@+id/info_category"
+                    android:id="@+id/itempage_cate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textColor="#fff"
-                    android:textSize="12sp"
                     android:background="@drawable/chips"
-                    android:text="Men's Fashion" />
+                    android:text="Men's Fashion"
+                    android:textColor="#fff"
+                    android:textSize="12sp" />
             </RelativeLayout>
 
             <TextView

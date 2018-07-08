@@ -29,6 +29,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 
 /*
     testImplementation 'junit:junit:4.12'
