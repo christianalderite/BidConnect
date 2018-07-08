@@ -203,8 +203,8 @@ public class HomeActivity extends AppCompatActivity {
         childUpdates.put("/address/", "");
         childUpdates.put("/rating/", 0.0);
         childUpdates.put("/joindate/", timestamp);
-        childUpdates.put("/photourl/", fbCurrUser.getPhotoUrl());
-        childUpdates.put("/uid/", fbCurrUser.getUid());
+        childUpdates.put("/photourl/", fbCurrUser.getPhotoUrl().toString());
+        childUpdates.put("/uid/", fbCurrUser.getUid().toString());
         dbUsers.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
