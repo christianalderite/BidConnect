@@ -86,17 +86,18 @@
                         android:layout_weight=".79"
                         android:textSize="10sp"
                         android:text="Current Bid" />
+
                     <TextView
-                        android:layout_height="match_parent"
+                        android:id="@+id/itempage_bid_currbid"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight=".35"
                         android:gravity="left|center"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:id="@+id/bid_highest_bid"
-                        android:textColor="#4b460b"
                         android:paddingLeft="10dp"
-                        android:text="₱ 129.00"/>
+                        android:text="₱ 129.00"
+                        android:textColor="#4b460b"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -110,17 +111,18 @@
                         android:layout_weight=".79"
                         android:textSize="10sp"
                         android:text="Buyout Price" />
+
                     <TextView
-                        android:layout_height="match_parent"
+                        android:id="@+id/itempage_bid_buyoutprice"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight=".35"
                         android:gravity="left|center"
-                        android:textSize="18sp"
-                        android:id="@+id/bid_buyout"
-                        android:textColor="#fb8c00"
-                        android:textStyle="bold"
                         android:paddingLeft="10dp"
-                        android:text="₱ 349.00"/>
+                        android:text="₱ 349.00"
+                        android:textColor="#fb8c00"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -137,18 +139,19 @@
                 android:layout_weight="1"
                 android:padding="8dp"
                 android:orientation="horizontal">
+
                 <TextView
-                    android:id="@+id/bid_timer"
+                    android:id="@+id/itempage_bid_timer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_gravity="right"
-                    android:padding="2dp"
-                    android:drawableStart="@drawable/ic_timer_white_24dp"
                     android:background="@android:drawable/screen_background_dark_transparent"
+                    android:drawableStart="@drawable/ic_timer_white_24dp"
+                    android:gravity="center"
+                    android:padding="2dp"
                     android:text="00:23:15"
                     android:textColor="@color/cardview_light_background"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
                 <TextView
                     android:id="@+id/info_category"
                     android:layout_width="wrap_content"
@@ -172,19 +175,7 @@
 Quality
 xd
                 " />
-            <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/confirm_corner"
-                android:layout_gravity="center_horizontal"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:textColor="#ff8a65"
-                android:drawablePadding="5dp"
-                android:drawableRight="@drawable/ic_add_bid_24dp"
-                android:text="Make a Bid"
-                />
-           </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -196,11 +187,18 @@ xd
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="COMMENTS AND QUESTIONS"/>
+                    android:text="COMMENTS AND QUESTIONS"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
 

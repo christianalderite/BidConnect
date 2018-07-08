@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" >
-    <stroke android:width="2dp"
-        android:color="#7986CB"/>
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/cardview_dark_background">
+
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" >
+            <stroke android:width="2dp"
+                android:color="#7986CB"/>
 
             <solid android:color="#fff" />
-<corners
-        android:bottomLeftRadius="7dp"
-        android:bottomRightRadius="7dp"
-        android:topLeftRadius="7dp"
-        android:topRightRadius="7dp" />
-</shape>
+            <corners
+                android:bottomLeftRadius="7dp"
+                android:bottomRightRadius="7dp"
+                android:topLeftRadius="7dp"
+                android:topRightRadius="7dp" />
+        </shape>
+
+    </item>
+
+</ripple>
