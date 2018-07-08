@@ -15,6 +15,7 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                //hello
             }
         });
 
