@@ -97,10 +97,10 @@ public final class Utilities {
         builder.setCancelable(true);
         builder.show();
     }
-
+/*
     public static void loadImage(final Context context, final String uri, final ImageView imageView){
         try{
-            Picasso.with(context)
+            Picasso.(context)
                     .load(uri).fit().centerCrop()
                     .networkPolicy(NetworkPolicy.OFFLINE)
                     .into(imageView, new Callback() {
@@ -122,5 +122,6 @@ public final class Utilities {
         }catch (Exception e){
             imageView.setImageResource(R.drawable.ic_message_24dp);
         }
-    }
+    }//
+    // */
 }

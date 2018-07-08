@@ -1,5 +1,6 @@
 package com.example.leebet_pc.bidconnect;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -7,20 +8,91 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RatingBar;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Account extends AppCompatActivity {
     
     private bidsAdapter bAdapter;
     private List<Bid> biddingItems = new ArrayList<>();
     private RecyclerView recyclerView;
+    private FirebaseAuth mAuth;
+    FirebaseUser fbCurrUser;
+
+    private TextView fullName;
+    private TextView username;
+    private TextView address;
+    private TextView joindate;
+    private CircleImageView userpic;
+    private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
+    private DatabaseReference userDB;
+    private User theuser;
+    private RatingBar ratingbar;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+
+        theuser = new User();
+
+        fullName = findViewById(R.id.fullName);
+        username = findViewById(R.id.userName);
+        address = findViewById(R.id.account_address);
+        joindate = findViewById(R.id.account_joinDate);
+        userpic = findViewById(R.id.account_userphoto);
+        ratingbar = findViewById(R.id.account_userRating);
+
+        mAuth = FirebaseAuth.getInstance();
+        fbCurrUser = mAuth.getCurrentUser();
+
+        userDB = mainDB.getReference("users").child(fbCurrUser.getUid());
+        userDB.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                theuser.setFullname(dataSnapshot.child("fullname").getValue().toString());
+                theuser.setAddress(dataSnapshot.child("address").getValue().toString());
+                theuser.setUsername(dataSnapshot.child("username").getValue().toString());
+                theuser.setJoindate(dataSnapshot.child("joindate").getValue().toString());
+                theuser.setRating(Float.parseFloat(dataSnapshot.child("rating").getValue().toString()));
+
+                fullName.setText(theuser.getFullname());
+                username.setText(theuser.getUsername());
+                if(theuser.getAddress().equals("")){
+                    address.setText("No address set");
+                }
+                else{
+                    address.setText(theuser.getAddress());
+                }
+
+                joindate.setText(theuser.getJoindate());
+                Picasso.get().load(fbCurrUser.getPhotoUrl()).into(userpic);
+                ratingbar.setRating(theuser.getRating());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
 
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = this.getWindow();
@@ -33,11 +105,15 @@ public class Account extends AppCompatActivity {
 
         bAdapter = new bidsAdapter(2,biddingItems);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bAdapter);
         prepareBiddingItems();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     private void prepareBiddingItems() {
