@@ -6,6 +6,9 @@ public class User {
     private float rating;
     private String address;
     private String joindate;
+    private String uid;
+    private String photourl;
+
 
     public User(String fullname, String username, float rating, String address, String joindate) {
         this.fullname = fullname;

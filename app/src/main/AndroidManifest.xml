@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
         <activity android:name=".Account" />
         <activity
             android:name=".AddAuctionActivity"
@@ -47,7 +47,11 @@
             android:label="@string/title_activity_item_page"
             android:theme="@style/AppTheme" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".CategoriesActivity"></activity>
+        <activity android:name=".CategoriesActivity" />
+        <activity
+            android:name=".activity_notifications"
+            android:label="@string/title_activity_notifications"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

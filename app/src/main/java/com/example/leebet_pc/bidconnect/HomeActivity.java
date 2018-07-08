@@ -203,6 +203,8 @@ public class HomeActivity extends AppCompatActivity {
         childUpdates.put("/address/", "");
         childUpdates.put("/rating/", 0.0);
         childUpdates.put("/joindate/", timestamp);
+        childUpdates.put("/photourl/", fbCurrUser.getPhotoUrl());
+        childUpdates.put("/uid/", fbCurrUser.getUid());
         dbUsers.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -215,6 +217,7 @@ public class HomeActivity extends AppCompatActivity {
         dbUsers = mainDB.getReference("users").child(fbCurrUser.getUid());
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/token_id/", FirebaseInstanceId.getInstance().getToken());
+        childUpdates.put("/photourl/", fbCurrUser.getPhotoUrl());
         dbUsers.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
