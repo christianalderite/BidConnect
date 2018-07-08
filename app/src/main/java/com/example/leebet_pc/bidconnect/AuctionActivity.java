@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +25,7 @@ public class AuctionActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private Button btnsell;
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "AuctionActivity";
 
     private SectionsPageAdapter mSectionsPageAdapter;
 
@@ -46,6 +47,7 @@ public class AuctionActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+        btnsell.setVisibility(View.INVISIBLE);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -54,11 +56,16 @@ public class AuctionActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+
+                Log.i(TAG, "currr pg pos: "+String.valueOf(position));
+                Log.i(TAG, "pageselect detected");
                 switch (position){
-                    case 1:
+                    case 0:
+                        Log.i(TAG, "btn invi");
                         btnsell.setVisibility(View.INVISIBLE);
                         break;
-                    case 2:
+                    case 1:
+                        Log.i(TAG, "btn visi");
                         btnsell.setVisibility(View.VISIBLE);
                         break;
                 }
