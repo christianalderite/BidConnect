@@ -17,11 +17,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 public class AuctionActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
+    private Button btnsell;
     private static final String TAG = "MainActivity";
 
     private SectionsPageAdapter mSectionsPageAdapter;
@@ -36,20 +38,45 @@ public class AuctionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
-
+        btnsell = (Button) findViewById(R.id.buttonsell);
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(mViewPager);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position){
+                    case 1:
+                        btnsell.setVisibility(View.INVISIBLE);
+                        break;
+                    case 2:
+                        btnsell.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new BiddingFragment(), "Bidding");
         adapter.addFragment(new SellingFragment(), "Selling");
         viewPager.setAdapter(adapter);
+
     }
+
 
 
 }

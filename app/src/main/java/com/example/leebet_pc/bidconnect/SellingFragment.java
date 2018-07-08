@@ -29,16 +29,7 @@ public class SellingFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.selling_fragment,container,false);
-        btnTEST = (Button) view.findViewById(R.id.buttonsell);
 
-        btnTEST.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "TESTING BUTTON CLIC 1", Toast.LENGTH_SHORT).show();
-                Intent toAccount = new Intent(getActivity(), AddAuctionActivity.class);
-                startActivity(toAccount);
-            }
-        });
         recyclerView = (RecyclerView) view.findViewById(R.id.selling_recycler);
 
         bAdapter = new sellingAuctionAdapter(1,movieList);
