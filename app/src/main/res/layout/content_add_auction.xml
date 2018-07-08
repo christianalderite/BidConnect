@@ -99,8 +99,10 @@
             android:gravity="right"
             android:background="#FFF">
             <TextView
+                android:id="@+id/choose_cat"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:clickable="true"
                 android:drawableEnd="@drawable/ic_next__24dp"/>
         </LinearLayout>
     </LinearLayout>
