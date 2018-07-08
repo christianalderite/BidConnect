@@ -217,7 +217,7 @@ public class HomeActivity extends AppCompatActivity {
         dbUsers = mainDB.getReference("users").child(fbCurrUser.getUid());
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/token_id/", FirebaseInstanceId.getInstance().getToken());
-        childUpdates.put("/photourl/", fbCurrUser.getPhotoUrl());
+        childUpdates.put("/photourl/", fbCurrUser.getPhotoUrl().toString());
         dbUsers.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
