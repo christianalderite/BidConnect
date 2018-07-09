@@ -11,11 +11,18 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,15 +40,22 @@ public class ItemPageActivity extends AppCompatActivity {
     private ImageView userpic,itempic;
     private RatingBar userrating;
 
+    private EditText commentContent;
+    private ImageButton commentSend;
+
     private String receiveID;
     private Auction receiveAuction;
+
+    private FirebaseAuth mAuth;
 
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
     private DatabaseReference dbAuctions = mainDB.getReference("auctions");
     private DatabaseReference dbUsers = mainDB.getReference("users");
+    private DatabaseReference dbComments = mainDB.getReference("auctionComments");
 
     private Toolbar toolbar;
 
+    FirebaseUser fbCurrUser;
     private CountDownTimer countDownTimer;
     private long timeLeftinMS = 600000;//10mintes
     private boolean timerRunning;
@@ -50,6 +64,10 @@ public class ItemPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_page);
+
+        mAuth = FirebaseAuth.getInstance();
+        fbCurrUser = mAuth.getCurrentUser();
+
 
         sellername = findViewById(R.id.seller_name);
         currbid = findViewById(R.id.itempage_bid_currbid);
@@ -61,9 +79,13 @@ public class ItemPageActivity extends AppCompatActivity {
         category = findViewById(R.id.itempage_cate);
         itempic = findViewById(R.id.itempage_mainitempic);
 
+        commentContent = findViewById(R.id.itempage_commentcontent);
+        commentSend = findViewById(R.id.itempage_commentsend);
+
         Intent i = getIntent();
         receiveID = i.getStringExtra("auctionKey");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
 
         DatabaseReference dbItem = dbAuctions.child(receiveID);
 
@@ -80,6 +102,27 @@ public class ItemPageActivity extends AppCompatActivity {
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
                 String timestamp = dateFormat.format(new Date());
+
+                commentSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(commentContent.getText().toString() != ""){
+
+                            final String nigel_tan = dbComments.push().getKey();
+
+                            dbComments.child(nigel_tan).setValue( new AuctionComment(receiveAuction.getAuctionID(),nigel_tan,fbCurrUser.getUid(),commentContent.getText().toString()))
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        Toast.makeText(getApplicationContext(),"Comment Posted!",Toast.LENGTH_SHORT).show();
+                                        commentContent.setText("");
+                                    }
+                                });
+
+                        }
+                    }
+                });
 
                 try {
                     Date date1 = dateFormat.parse(receiveAuction.getTimer());
