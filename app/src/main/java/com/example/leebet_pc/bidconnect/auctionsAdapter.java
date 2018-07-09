@@ -163,7 +163,6 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
                     myIntent.putExtra("auctionKey", auction.getAuctionID()); //Optional parameters
                     mCont.startActivity(myIntent);
                     dbAuctions.child(auction.getAuctionID() + "/views").setValue(auction.getViews() + 1);
-                    mCont.startActivity(myIntent);
                 }
             });
         }
