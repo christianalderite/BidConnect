@@ -102,24 +102,31 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
             e.printStackTrace();
         }
 
-        countDownTimer = new CountDownTimer(timeLeftinMS,1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                timeLeftinMS = millisUntilFinished;
+        if(timeLeftinMS <= 0){
+            holder.bidtimer.setText("DONE");
+        }
+        else{
+            countDownTimer = new CountDownTimer(timeLeftinMS,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    timeLeftinMS = millisUntilFinished;
 
-                //Update UI
-                int seconds = (int) (timeLeftinMS / 1000) % 60;
-                int minutes = (int) ((timeLeftinMS / (1000 * 60)) % 60);
-                int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)) % 24);
+                    //Update UI
+                    int seconds = (int) (timeLeftinMS / 1000) % 60;
+                    int minutes = (int) ((timeLeftinMS / (1000 * 60)) % 60);
+                    int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)) % 24);
 
-		        holder.bidtimer.setText( String.format("%02d:%02d:%02d", hours, minutes, seconds) );
-            }
+                    holder.bidtimer.setText( String.format("%02d:%02d:%02d", hours, minutes, seconds) );
+                }
 
-            @Override
-            public void onFinish() {
-                countDownTimer.cancel();
-            }
-        }.start();
+                @Override
+                public void onFinish() {
+                    countDownTimer.cancel();
+                }
+            }.start();
+        }
+
+
 
         holder.currbid.setText("Current bid temp");
         holder.title.setText(auction.getTitle());
@@ -156,7 +163,6 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
                     myIntent.putExtra("auctionKey", auction.getAuctionID()); //Optional parameters
                     mCont.startActivity(myIntent);
                     dbAuctions.child(auction.getAuctionID() + "/views").setValue(auction.getViews() + 1);
-                    mCont.startActivity(myIntent);
                 }
             });
         }
