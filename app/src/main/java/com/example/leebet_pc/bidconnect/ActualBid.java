@@ -6,7 +6,9 @@ public class ActualBid {
     private String bidID;
     private String auctionID;
     private double bidAmount;
+    public ActualBid(){
 
+    }
     public ActualBid(String bidID, String auctionID, String bidderID, double bidAmount){
         this.bidID = bidID;
         this.bidAmount = bidAmount;

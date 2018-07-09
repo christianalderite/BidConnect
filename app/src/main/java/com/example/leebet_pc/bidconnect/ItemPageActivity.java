@@ -161,12 +161,10 @@ public class ItemPageActivity extends AppCompatActivity {
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-
                                             Toast.makeText(getApplicationContext(),"Comment Posted!", Toast.LENGTH_SHORT).show();
                                             commentContent.setText("");
                                         }
                                     });
-
                         }
                     }
                 });
@@ -235,10 +233,13 @@ public class ItemPageActivity extends AppCompatActivity {
             }
         });
 
-        updateHighestBid();
-        dbComments.orderByChild("timestamp").limitToLast(10).addListenerForSingleValueEvent(new ValueEventListener() {
+       updateHighestBid();
+
+        Log.d("MAMA MO: ","test: " );
+        dbComments.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot object: dataSnapshot.getChildren()){
                     AuctionComment zucc = object.getValue(AuctionComment.class);
                     commentList.add(zucc);

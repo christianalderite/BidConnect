@@ -2,7 +2,6 @@ package com.example.leebet_pc.bidconnect;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 public class AuctionComment {
 
     private String auctionID;
@@ -42,7 +41,9 @@ public class AuctionComment {
     private String auctionCommentID;
     private String username;
     private String timestamp;
+    public AuctionComment(){
 
+    }
     public AuctionComment(String auctionID, String auctionCommentID, String username, String comment) {
 
 
