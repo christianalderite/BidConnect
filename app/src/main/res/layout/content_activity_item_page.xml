@@ -79,14 +79,15 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="horizontal">
+
                     <TextView
                         android:id="@+id/wawa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center|right"
                         android:layout_weight=".79"
-                        android:textSize="10sp"
-                        android:text="Current Bid" />
+                        android:gravity="center|right"
+                        android:text="Highest Bid"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/itempage_bid_currbid"

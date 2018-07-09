@@ -81,12 +81,14 @@ public class HomeActivity extends AppCompatActivity {
 
         //INITIALIZE THE USER IN DB
         dbUsers = mainDB.getReference("users");
-        progressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
-        progressDialog.setMessage("Fetching data..."); // Setting Message
-        progressDialog.setTitle("BidConnect"); // Setting Title
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+
+        Utilities.showLoadingDialog(this);
+//        progressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
+//        progressDialog.setMessage("Fetching data..."); // Setting Message
+//        progressDialog.setTitle("BidConnect"); // Setting Title
+//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+//        progressDialog.setCancelable(false);
+//        progressDialog.show();
         dbUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -104,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                progressDialog.cancel();
+                Utilities.dismissDialog();
                 Toast.makeText(getApplicationContext(),"Cannot download data from the internet.",Toast.LENGTH_SHORT).show();
             }
         });//INITIALIZE THE USER IN DB
@@ -229,7 +231,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void NewUserSession(){
-        progressDialog.setMessage("Registering new user..."); // Setting Message
+        Utilities.setDialogMessage("Registering new user...");
+        // progressDialog.setMessage("Registering new user..."); // Setting Message
         String email = fbCurrUser.getEmail();
         int index = email.indexOf('@');
         email = email.substring(0,index);
@@ -252,7 +255,7 @@ public class HomeActivity extends AppCompatActivity {
         dbUsers.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                progressDialog.cancel();
+                Utilities.dismissDialog();
             }
         });
     }
@@ -265,7 +268,7 @@ public class HomeActivity extends AppCompatActivity {
         dbUsers.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                progressDialog.cancel();
+                Utilities.dismissDialog();
             }
         });
     }

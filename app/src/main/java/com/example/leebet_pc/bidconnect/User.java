@@ -10,9 +10,10 @@ public class User {
     private String photourl;
 
 
-    public User(String fullname, String username, float rating, String address, String joindate) {
+    public User(String fullname, String username, String photourl, float rating, String address, String joindate) {
         this.fullname = fullname;
         this.username = username;
+        this.photourl = photourl;
         this.rating = rating;
         this.address = address;
         this.joindate = joindate;
@@ -58,5 +59,13 @@ public class User {
 
     public void setJoindate(String joindate) {
         this.joindate = joindate;
+    }
+
+    public String getPhotourl() {
+        return photourl;
+    }
+
+    public String getUid() {
+        return uid;
     }
 }

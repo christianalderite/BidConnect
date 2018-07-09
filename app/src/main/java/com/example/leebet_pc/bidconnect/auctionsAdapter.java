@@ -63,15 +63,15 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView;
-
+        mCont = parent.getContext();
         if(mode==ACTIVITY_ACCOUNT){
-            itemView = LayoutInflater.from(parent.getContext())
+            itemView = LayoutInflater.from(mCont)
                     .inflate(R.layout.bids_row_account, parent, false);
         }else{
-            itemView = LayoutInflater.from(parent.getContext())
+            itemView = LayoutInflater.from(mCont)
                     .inflate(R.layout.bids_row, parent, false);
         }
-        mCont = parent.getContext();
+
         return new MyViewHolder(itemView);
     }
 
@@ -80,8 +80,8 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
 
         final Auction auction = moviesList.get(position);
 
-
-        Picasso.get().load(auction.getImg_url()).into(holder.itempic);
+        Utilities.loadImage(mCont, auction.getImg_url(), holder.itempic);
+        //Picasso.get().load(auction.getImg_url()).into(holder.itempic);
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm a");
         String today = dateFormat.format(new Date());
         holder.bidtimer.setText(auction.getTimer());

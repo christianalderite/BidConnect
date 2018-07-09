@@ -80,7 +80,9 @@ public class Account extends AppCompatActivity {
                 }
 
                 joindate.setText(theuser.getJoindate());
-                Picasso.get().load(fbCurrUser.getPhotoUrl()).into(userpic);
+
+                Utilities.loadImage(Account.this, fbCurrUser.getPhotoUrl().toString(), userpic);
+                //Picasso.get().load(fbCurrUser.getPhotoUrl()).into(userpic);
                 ratingbar.setRating(theuser.getRating());
             }
 

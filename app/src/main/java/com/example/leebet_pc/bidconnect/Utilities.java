@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Callback;
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -68,6 +69,12 @@ public final class Utilities {
         }
     }
 
+    public static void setDialogMessage(String message){
+        if(dialogProgress!=null && dialogProgress.isShowing()){
+            dialogProgress.setMessage(message);
+        }
+    }
+
     public static void showUploadingDialog(Context context){
         dialogProgress = new ProgressDialog(context);
         dialogProgress.setCancelable(false);
@@ -97,11 +104,12 @@ public final class Utilities {
         builder.setCancelable(true);
         builder.show();
     }
-/*
+
     public static void loadImage(final Context context, final String uri, final ImageView imageView){
         try{
-            Picasso.(context)
+            Picasso.with(context)
                     .load(uri).fit().centerCrop()
+                    .placeholder(R.drawable.progress_animation)
                     .networkPolicy(NetworkPolicy.OFFLINE)
                     .into(imageView, new Callback() {
                         @Override
@@ -114,14 +122,13 @@ public final class Utilities {
                             // Try again online if cache failed
                             Picasso.with(context)
                                     .load(uri).fit().centerCrop()
-                                    .placeholder(R.drawable.ic_message_24dp)
-                                    .error(R.drawable.ic_message_24dp)
+                                    .placeholder(R.drawable.progress_animation)
+                                    .error(R.drawable.ic_baseline_error_outline_24px)
                                     .into(imageView);
                         }
                     });
         }catch (Exception e){
-            imageView.setImageResource(R.drawable.ic_message_24dp);
+            imageView.setImageResource(R.drawable.ic_baseline_error_outline_24px);
         }
-    }//
-    // */
+    }
 }

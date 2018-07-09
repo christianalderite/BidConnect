@@ -2,13 +2,15 @@ package com.example.leebet_pc.bidconnect;
 
 public class ActualBid {
 
-    private String bidderId;
+    private String bidderID;
+    private String bidID;
     private String auctionID;
-    private Float bidAmount;
+    private double bidAmount;
 
-    public ActualBid(String bidderId, String auctionID, float bidAmount){
+    public ActualBid(String bidID, String auctionID, String bidderID, double bidAmount){
+        this.bidID = bidID;
         this.bidAmount = bidAmount;
-        this.bidderId = bidderId;
+        this.bidderID = bidderID;
         this.auctionID = auctionID;
     }
 
@@ -16,13 +18,15 @@ public class ActualBid {
         return auctionID;
     }
 
-    public Float getBidAmount() {
+    public double getBidAmount() {
         return bidAmount;
     }
 
-    public String getBidderId() {
-        return bidderId;
+    public String getBidderID() {
+        return bidderID;
     }
 
-
+    public String getBidID() {
+        return bidID;
+    }
 }
