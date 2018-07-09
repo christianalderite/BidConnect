@@ -105,6 +105,7 @@ public class ItemPageActivity extends AppCompatActivity {
         dialogBid = findViewById(R.id.makeBidDialog);
         makeBid = findViewById(R.id.itempage_btn_makebid);
         placeBid = findViewById(R.id.btnPlaceBid);
+        txtHighestBid = findViewById(R.id.highestBid);
 
         Intent i = getIntent();
         receiveID = i.getStringExtra("auctionKey");

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,8 +38,9 @@ public class ChatActivity extends AppCompatActivity {
     private EditText typeMessage;
     private ImageButton btnSend;
 
-    private ArrayList<Message> messagesList = new ArrayList<>();
-    private messagesAdapter mAdapter;
+    //private ArrayList<Message> messagesList = new ArrayList<>();
+    private ListView messagesView;
+    private messagesAdapter mAdapter ;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -58,6 +60,10 @@ public class ChatActivity extends AppCompatActivity {
         txtSellerAddress = findViewById(R.id.account_address);
         typeMessage = findViewById(R.id.editText);
         btnSend = findViewById(R.id.btnSend);
+
+        mAdapter = new messagesAdapter(this);
+        messagesView = (ListView) findViewById(R.id.messages_view);
+        messagesView.setAdapter(mAdapter);
 
         Intent fromItemPage = getIntent();
         if (fromItemPage.getExtras() != null) {
@@ -127,8 +133,8 @@ public class ChatActivity extends AppCompatActivity {
                         }
 
                         Message newMessage = new Message(message, photoUrl, isCurrentUser);
-                        messagesList.add(newMessage);
-                        mAdapter.notifyDataSetChanged();
+                        //messagesList.add(newMessage);
+                        mAdapter.add(newMessage);
                     }
                 }
             }
