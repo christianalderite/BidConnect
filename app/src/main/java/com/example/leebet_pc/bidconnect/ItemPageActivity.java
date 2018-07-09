@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import okhttp3.internal.Util;
+
 public class ItemPageActivity extends AppCompatActivity {
 
     private TextView sellername, currbid, buyoutprice, timer, description,category, txtHighestBid;
@@ -43,8 +46,6 @@ public class ItemPageActivity extends AppCompatActivity {
     private Button placeBid;
     private RelativeLayout dialogBid;
     private EditText inputBid;
-
-    private String highestBid;
 
     private String receiveID;
     private Auction receiveAuction;
@@ -75,6 +76,11 @@ public class ItemPageActivity extends AppCompatActivity {
         userrating = findViewById(R.id.itempage_ratingBar);
         category = findViewById(R.id.itempage_cate);
         itempic = findViewById(R.id.itempage_mainitempic);
+
+        inputBid = findViewById(R.id.inputBid);
+        dialogBid = findViewById(R.id.makeBidDialog);
+        makeBid = findViewById(R.id.itempage_btn_makebid);
+        placeBid = findViewById(R.id.btnPlaceBid);
 
         Intent i = getIntent();
         receiveID = i.getStringExtra("auctionKey");
@@ -167,11 +173,18 @@ public class ItemPageActivity extends AppCompatActivity {
                 placeBid.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        if(!TextUtils.isEmpty(inputBid.getText().toString())){
+                            Utilities.makeToast(ItemPageActivity.this,"You placed a bid worth "+inputBid.getText().toString());
+                            dialogBid.setVisibility(View.GONE);
+                        }else{
+                            Utilities.makeToast(ItemPageActivity.this, "Please provide bid amount.");
+                        }
                     }
                 });
             }
         });
+
+
     }
 
     public void updateHighestBid(){
