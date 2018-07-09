@@ -106,6 +106,7 @@ public class ItemPageActivity extends AppCompatActivity {
         userrating = findViewById(R.id.itempage_ratingBar);
         category = findViewById(R.id.itempage_cate);
         itempic = findViewById(R.id.itempage_mainitempic);
+        txtHighestBid = findViewById(R.id.itempage_bid_currbid);
 
         inputBid = findViewById(R.id.inputBid);
         dialogBid = findViewById(R.id.makeBidDialog);
@@ -278,7 +279,7 @@ public class ItemPageActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 ActualBid newBid = dataSnapshot.getValue(ActualBid.class);
-                currbid.setText(Double.toString(newBid.getBidAmount()));
+                //currbid.setText(Double.toString(newBid.getBidAmount()));
                 txtHighestBid.setText(Double.toString(newBid.getBidAmount()));
             }
 

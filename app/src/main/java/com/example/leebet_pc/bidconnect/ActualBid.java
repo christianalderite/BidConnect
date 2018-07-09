@@ -14,6 +14,8 @@ public class ActualBid {
         this.auctionID = auctionID;
     }
 
+    public ActualBid(){}
+
     public String getAuctionID() {
         return auctionID;
     }
