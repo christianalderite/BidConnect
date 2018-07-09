@@ -1,6 +1,7 @@
 package com.example.leebet_pc.bidconnect;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -11,9 +12,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -49,6 +52,15 @@ public class AddAuctionActivity extends AppCompatActivity {
     private Button submitbutton;
     private StorageReference mStorage;
 
+    String date_time = "";
+    int mYear;
+    int mMonth;
+    int mDay;
+
+    int mHour;
+    int mMinute;
+    String mMeridian = "AM";
+
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
     private DatabaseReference dbAuctions;
     private FirebaseAuth mAuth;
@@ -80,18 +92,7 @@ public class AddAuctionActivity extends AppCompatActivity {
         AuctionDuration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(AddAuctionActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        AuctionDur.setText( selectedHour + ":" + selectedMinute);
-                    }
-                }, hour, minute, true);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
+                datePicker();
             }
         });
         dbAuctions = mainDB.getReference("auctions");
@@ -194,6 +195,59 @@ public class AddAuctionActivity extends AppCompatActivity {
             }
         });
     }
+    private void datePicker(){
+
+        // Get Current Date
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                        date_time = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                        //*************Call Time Picker Here ********************
+                        tiemPicker();
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
+    }
+    private void tiemPicker(){
+        // Get Current Time
+        final Calendar c = Calendar.getInstance();
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMinute = c.get(Calendar.MINUTE);
+
+        // Launch Time Picker Dialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay,int minute) {
+
+                        mHour = hourOfDay;
+                        mMinute = minute;
+
+                        Log.i("TIME:",String.valueOf(mHour));
+                        if(mHour>12){
+                            mMeridian = "PM";
+                            mHour-= 12;
+
+                            Log.i("TIME:",String.valueOf(mHour));
+                        }
+
+
+                        Log.i("TIME:",String.valueOf(mHour));
+                        AuctionDur.setText(date_time+" "+mHour + ":" + minute + " "+mMeridian);
+                    }
+                }, mHour, mMinute, false);
+        timePickerDialog.show();
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

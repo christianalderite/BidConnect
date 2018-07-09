@@ -219,6 +219,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="" />
+            
             <TextView
                 android:id="@+id/addauction_duration"
                 android:layout_height="wrap_content"
