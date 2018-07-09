@@ -1,5 +1,8 @@
 package com.example.leebet_pc.bidconnect;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AuctionComment {
 
     private String auctionID;
@@ -38,14 +41,28 @@ public class AuctionComment {
 
     private String auctionCommentID;
     private String username;
+    private String timestamp;
 
     public AuctionComment(String auctionID, String auctionCommentID, String username, String comment) {
+
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
+        String timestamp = dateFormat.format(new Date());
+
         this.auctionID = auctionID;
         this.auctionCommentID = auctionCommentID;
         this.username = username;
+        this.timestamp = timestamp;
         this.comment = comment;
     }
 
     private String comment;
 
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
 }
