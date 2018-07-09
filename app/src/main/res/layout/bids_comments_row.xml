@@ -30,7 +30,7 @@
                     android:layout_weight="0.02">
 
                     <ImageView
-                        android:id="@+id/pic"
+                        android:id="@+id/bid_comment_pic"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:src="@drawable/hart" />

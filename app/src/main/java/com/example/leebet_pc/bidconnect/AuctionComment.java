@@ -38,14 +38,23 @@ public class AuctionComment {
 
     private String auctionCommentID;
     private String username;
+    private String timestamp;
 
-    public AuctionComment(String auctionID, String auctionCommentID, String username, String comment) {
+    public AuctionComment(String auctionID, String auctionCommentID, String username, String timestamp, String comment) {
         this.auctionID = auctionID;
         this.auctionCommentID = auctionCommentID;
         this.username = username;
+        this.timestamp = timestamp;
         this.comment = comment;
     }
 
     private String comment;
 
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
 }
