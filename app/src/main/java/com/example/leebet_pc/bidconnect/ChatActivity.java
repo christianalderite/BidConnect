@@ -107,6 +107,7 @@ public class ChatActivity extends AppCompatActivity {
             newMsg.setValue(newMessage);
 
             dbMessagesOther.child(newMsg.getKey()).setValue(newMessage);
+            typeMessage.setText("");
         }
     }
 
