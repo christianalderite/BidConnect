@@ -1,106 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".ItemPageActivity">
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:fadingEdge="vertical"
-        android:fadingEdgeLength="40dp"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        tools:context=".ItemPageActivity" >
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fadingEdge="none"
+            android:layout_height="250dp"
+            android:fadingEdge="vertical"
+            android:fadingEdgeLength="40dp"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <ImageView
-                android:id="@+id/itempage_mainitempic"
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/carousel1" />
+                android:fadingEdge="none"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@+id/toolbar">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_gravity="bottom"
-                android:background="@drawable/mama_mo_gradient" />
+                <ImageView
+                    android:id="@+id/itempage_mainitempic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/carousel1" />
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:minHeight="250dp"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/mama_mo_gradient" />
 
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:minHeight="250dp"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <include layout="@layout/content_activity_item_page" />
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <include layout="@layout/content_activity_item_page" />
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|end"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="bottom">
+
+            <Button
+                android:id="@+id/itempage_btn_makebid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal|left"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/confirm_corner"
+                android:drawablePadding="5dp"
+                android:layout_alignParentLeft="true"
+
+                android:layout_marginLeft="15dp"
+                android:drawableRight="@drawable/ic_add_bid_24dp"
+                android:elevation="6dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Make a Bid"
+                android:textColor="#ff8a65" />
+            <Button
+                android:id="@+id/itempage_btn_buyout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="12dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/confirm_corner"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/ic_remove_shopping_cart_black_24dp"
+                android:elevation="6dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Buyout"
+                android:textColor="#ff162C" />
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="bottom">
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_margin="10dp"
+        android:visibility="visible"
+        android:background="#000"
+        android:layout_alignParentBottom="true"
+        >
+        <LinearLayout android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:background="@color/colorWhite">
 
-        <Button
-            android:id="@+id/itempage_btn_makebid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal|left"
-            android:layout_marginBottom="12dp"
-            android:background="@drawable/confirm_corner"
-            android:drawablePadding="5dp"
-            android:layout_alignParentLeft="true"
-
-            android:layout_marginLeft="15dp"
-            android:drawableRight="@drawable/ic_add_bid_24dp"
-            android:elevation="6dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Make a Bid"
-            android:textColor="#ff8a65" />
-        <Button
-            android:id="@+id/itempage_btn_buyout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="bottom|right"
-            android:layout_marginBottom="12dp"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/confirm_corner"
-            android:drawablePadding="5dp"
-            android:drawableRight="@drawable/ic_remove_shopping_cart_black_24dp"
-            android:elevation="6dp"
-            android:layout_marginRight="15dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Buyout"
-            android:textColor="#ff162C" />
-    </RelativeLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+     </RelativeLayout>
+</RelativeLayout>
