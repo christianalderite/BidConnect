@@ -42,6 +42,7 @@ import com.squareup.picasso.Picasso;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -237,7 +238,7 @@ public class ItemPageActivity extends AppCompatActivity {
        updateHighestBid();
 
         Log.d("MAMA MO: ","test: " );
-        dbComments.addListenerForSingleValueEvent(new ValueEventListener() {
+        dbComments.orderByChild("timestamp").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -247,10 +248,13 @@ public class ItemPageActivity extends AppCompatActivity {
                     String b =  zucc.getAuctionID();
                       if(a.equals(b)){
                           Log.d("FUCK",a+" --- "+b);
+
+
                           commentList.add(zucc);
                       }
 
                 }
+                Collections.reverse(commentList);
                 CommentAuctionAdapter.notifyDataSetChanged();
             }
 
