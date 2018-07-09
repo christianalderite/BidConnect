@@ -21,6 +21,8 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -55,6 +57,9 @@ public class ItemPageActivity extends AppCompatActivity {
     private DatabaseReference dbAuctions = mainDB.getReference("auctions");
     private DatabaseReference dbAuctionBids = mainDB.getReference("auctionBids");
     private DatabaseReference dbUsers = mainDB.getReference("users");
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
     private Toolbar toolbar;
 
@@ -174,6 +179,7 @@ public class ItemPageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if(!TextUtils.isEmpty(inputBid.getText().toString())){
+                            insertBid(inputBid.getText().toString());
                             Utilities.makeToast(ItemPageActivity.this,"You placed a bid worth "+inputBid.getText().toString());
                             dialogBid.setVisibility(View.GONE);
                         }else{
@@ -184,7 +190,13 @@ public class ItemPageActivity extends AppCompatActivity {
             }
         });
 
+        updateHighestBid();
+    }
 
+    public void insertBid(String bidAmount){
+        String newBidKey = dbAuctionBids.push().getKey();
+        ActualBid newBid = new ActualBid(newBidKey, receiveID, firebaseUser.getUid(), Double.valueOf(bidAmount));
+        dbAuctionBids.child(newBidKey).setValue(newBid);
     }
 
     public void updateHighestBid(){
