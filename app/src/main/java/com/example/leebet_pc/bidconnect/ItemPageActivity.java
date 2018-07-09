@@ -95,7 +95,7 @@ public class ItemPageActivity extends AppCompatActivity {
                     Date date1 = dateFormat.parse(receiveAuction.getTimestamp());
                     Date date2 = dateFormat.parse(timestamp);
                     timeLeftinMS = (date1.getTime() + tominus) - date2.getTime();
-                    //Log.e("DOOM 3","HEY: " + timeLeftinMS + " FROMPOST: " + receiveAuction.getTimestamp());
+
                     startTimer();
                 } catch (ParseException e) {
                     e.printStackTrace();
