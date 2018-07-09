@@ -68,7 +68,7 @@
 
         <Button
             android:id="@+id/itempage_btn_makebid"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal|left"
@@ -77,7 +77,7 @@
             android:drawablePadding="5dp"
             android:layout_alignParentLeft="true"
 
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="15dp"
             android:drawableRight="@drawable/ic_add_bid_24dp"
             android:elevation="6dp"
             android:paddingLeft="20dp"
@@ -86,7 +86,7 @@
             android:textColor="#ff8a65" />
         <Button
             android:id="@+id/itempage_btn_buyout"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_gravity="bottom|right"
@@ -96,10 +96,10 @@
             android:drawablePadding="5dp"
             android:drawableRight="@drawable/ic_remove_shopping_cart_black_24dp"
             android:elevation="6dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="15dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Buyout Item"
+            android:text="Buyout"
             android:textColor="#ff162C" />
     </RelativeLayout>
 
