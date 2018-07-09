@@ -243,7 +243,10 @@ public class ItemPageActivity extends AppCompatActivity {
 
                 for (DataSnapshot object: dataSnapshot.getChildren()){
                     AuctionComment zucc = object.getValue(AuctionComment.class);
-                    commentList.add(zucc);
+
+                    if (zucc.getAuctionID() == receiveAuction.getAuctionID()){
+                        commentList.add(zucc);
+                    }
                     Log.d("MAMA MO: ","test: " + zucc.getComment());
                 }
                 CommentAuctionAdapter.notifyDataSetChanged();

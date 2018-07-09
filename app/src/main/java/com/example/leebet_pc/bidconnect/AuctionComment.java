@@ -57,7 +57,6 @@ public class AuctionComment {
         this.comment = comment;
     }
 
-    public AuctionComment(){}
 
     private String comment;
 
