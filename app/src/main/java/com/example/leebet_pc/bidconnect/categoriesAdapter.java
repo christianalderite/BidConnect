@@ -58,32 +58,35 @@ public class categoriesAdapter extends RecyclerView.Adapter<categoriesAdapter.My
 
 
                 String search_type = myAct.getIntent().getStringExtra("search_type");
+                if (search_type == "search_all_cat") {
+                    Log.i("waw", search_type);
 
-                switch (search_type){
+                    switch (search_type){
 
-                    case "search_all_cat":
-                        Intent searchIntent = new Intent(myAct, SearchCategoryResults.class);
-                        searchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        searchIntent.putExtra("Category", category);
-                        myAct.startActivity(searchIntent);
-                        myAct.finish();
-                        break;
+                        case "search_all_cat":
+                            Intent searchIntent = new Intent(myAct, SearchCategoryResults.class);
+                            searchIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            searchIntent.putExtra("Category", category);
+                            myAct.startActivity(searchIntent);
+                            myAct.finish();
+                            break;
 
-                    case "wew":
-                        break;
+                        case "wew":
+                            break;
 
-                    default:
-                        Intent putIntent = new Intent();
-                        putIntent.putExtra("Category", category);
-                        myAct.setResult(RESULT_OK, putIntent);
-                        myAct.finish();
-                        break;
+                        default:
+                            break;
+                    }
                 }
 
-                if (search_type == "search_all_cat"){
-                    Log.i("waw",search_type);
+                Intent putIntent = new Intent();
+                putIntent.putExtra("Category", category);
+                myAct.setResult(RESULT_OK, putIntent);
+                myAct.finish();
 
-                }
+
+
+
 
             }
         });
