@@ -84,7 +84,7 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
         Picasso.get().load(auction.getImg_url()).into(holder.itempic);
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm a");
         String today = dateFormat.format(new Date());
-        holder.bidtimer.setText(auction.getTimer());
+        //holder.bidtimer.setText(auction.getTimer());
 
         holder.currbid.setText("Current bid temp");
         holder.title.setText(auction.getTitle());

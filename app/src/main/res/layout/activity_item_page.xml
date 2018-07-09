@@ -112,17 +112,4 @@
         </RelativeLayout>
 
     </android.support.design.widget.CoordinatorLayout>
-    <RelativeLayout
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_margin="10dp"
-        android:visibility="visible"
-        android:background="#fff"
-        android:layout_alignParentBottom="true">
-        <LinearLayout android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:background="@color/colorWhite">
-
-        </LinearLayout>
-     </RelativeLayout>
 </RelativeLayout>

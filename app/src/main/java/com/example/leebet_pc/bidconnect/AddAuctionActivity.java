@@ -198,6 +198,9 @@ public class AddAuctionActivity extends AppCompatActivity {
     private void datePicker(){
 
         // Get Current Date
+        final String months[] = {"January", "February", "March", "April",
+                "May", "June", "July", "August", "September",
+                "October", "November", "December"};
         final Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
@@ -209,7 +212,7 @@ public class AddAuctionActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        date_time = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                        date_time = (months[monthOfYear]) + " " + dayOfMonth + ", " + year;
                         //*************Call Time Picker Here ********************
                         tiemPicker();
                     }
@@ -232,17 +235,17 @@ public class AddAuctionActivity extends AppCompatActivity {
                         mHour = hourOfDay;
                         mMinute = minute;
 
-                        Log.i("TIME:",String.valueOf(mHour));
                         if(mHour>12){
                             mMeridian = "PM";
                             mHour-= 12;
-
-                            Log.i("TIME:",String.valueOf(mHour));
+                        }
+                        if(minute < 10){
+                            AuctionDur.setText(date_time+" "+mHour + ":0" + minute + ":00 "+mMeridian);
+                        }
+                        else{
+                            AuctionDur.setText(date_time+" "+mHour + ":" + minute + ":00 "+mMeridian);
                         }
 
-
-                        Log.i("TIME:",String.valueOf(mHour));
-                        AuctionDur.setText(date_time+" "+mHour + ":" + minute + " "+mMeridian);
                     }
                 }, mHour, mMinute, false);
         timePickerDialog.show();
