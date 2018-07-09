@@ -2,6 +2,7 @@ package com.example.leebet_pc.bidconnect;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
@@ -30,12 +32,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AddAuctionActivity extends AppCompatActivity {
-    public TextView chooseCat;
-    public TextView itemCat;
+    public TextView chooseCat, AuctionDuration;
+    public TextView itemCat,AuctionDur;
 
     private ImageView imgchooser;
     private Uri imageUri;
@@ -51,8 +56,6 @@ public class AddAuctionActivity extends AppCompatActivity {
     UploadTask uploadTask;
 
     private EditText itemname, description, minimumprice, stealprice;
-    private Spinner dropdown;
-
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class AddAuctionActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_auction);
+        final View dialogView = View.inflate(AddAuctionActivity.this, R.layout.date_time_picker, null);
 
         itemname = findViewById(R.id.addauction_itemname);
         description = findViewById(R.id.addauction_itemdesc);
@@ -69,14 +73,29 @@ public class AddAuctionActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        AuctionDuration = (TextView) this.findViewById(R.id.addauction_duration);
+        AuctionDur = (TextView) this.findViewById(R.id.addauction_dur);
 
-        dropdown = findViewById(R.id.addauction_duration);
         String[] items = new String[]{"12:00", "24:00", "48:00"};
-
+        AuctionDuration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(AddAuctionActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        AuctionDur.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
         dbAuctions = mainDB.getReference("auctions");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
 
         //Andrew
         imageUri = null;
@@ -146,7 +165,7 @@ public class AddAuctionActivity extends AppCompatActivity {
                                 SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
                                 String timestamp = dateFormat.format(new Date());
 
-                                dbAuctions.child(uniksalonga).setValue( new Auction(uniksalonga, fbCurrUser.getUid(),itemname.getText().toString(),0,dropdown.getSelectedItem().toString(),timestamp,Double.parseDouble(stealprice.getText().toString()),imageurl,
+                                dbAuctions.child(uniksalonga).setValue( new Auction(uniksalonga, fbCurrUser.getUid(),itemname.getText().toString(),0,AuctionDur.getText().toString(),timestamp,Double.parseDouble(stealprice.getText().toString()),imageurl,
                                         itemCat.getText().toString(),description.getText().toString(),Double.parseDouble(minimumprice.getText().toString()),1) ).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -158,7 +177,7 @@ public class AddAuctionActivity extends AppCompatActivity {
                                             itemCat.setText("");
                                             minimumprice.setText("");
                                             stealprice.setText("");
-                                            dropdown.setSelection(0);
+                                            AuctionDur.setText("");
                                             imgchooser.setImageResource(R.drawable.ic_add_a_photo_black_24dp);
                                         }
                                         else{

@@ -212,12 +212,19 @@
             android:layout_weight="1"
             android:gravity="right"
             android:background="#FFF">
-
-            <Spinner
-                android:id="@+id/addauction_duration"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/addauction_dur"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:spinnerMode="dropdown" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="" />
+            <TextView
+                android:id="@+id/addauction_duration"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_next__24dp"/>
 
         </LinearLayout>
     </LinearLayout>
