@@ -129,7 +129,14 @@ public class ItemPageActivity extends AppCompatActivity {
                     Date date2 = dateFormat.parse(timestamp);
                     timeLeftinMS = (date1.getTime()) - date2.getTime();
 
-                    startTimer();
+                    if(timeLeftinMS <=0){
+                        timer.setText("DONE");
+                    }
+                    else{
+                        startTimer();
+                    }
+
+
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

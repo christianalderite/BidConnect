@@ -36,28 +36,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ItemPageActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ItemPageActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="80" column="16" lean-forward="false" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="94" />
+            <state relative-caret-position="153">
+              <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
               <folding>
-                <element signature="e#5497#5498#0" expanded="true" />
-                <element signature="e#5540#5541#0" expanded="true" />
+                <element signature="e#4154#5155#0" expanded="true" />
+                <element signature="e#4655#5086#0" expanded="true" />
+                <element signature="e#5085#5086#0" expanded="true" />
+                <element signature="e#5154#5155#0" expanded="true" />
+                <element signature="e#7445#7446#0" expanded="true" />
+                <element signature="e#7488#7489#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auctionsAdapter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="auctionsAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="101" column="32" lean-forward="true" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+            <state relative-caret-position="229">
+              <caret line="105" column="42" lean-forward="false" selection-start-line="105" selection-start-column="42" selection-end-line="105" selection-end-column="42" />
               <folding>
-                <element signature="e#4516#4517#0" expanded="true" />
-                <element signature="e#4571#4572#0" expanded="true" />
+                <element signature="e#4670#4671#0" expanded="true" />
+                <element signature="e#4733#4734#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Utilities.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="27" column="41" lean-forward="false" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2182,14 +2196,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/SearchCategoryResults.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/AddAuctionActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="423" />
-    <option name="y" value="56" />
+    <option name="x" value="110" />
+    <option name="y" value="-8" />
     <option name="width" value="1938" />
     <option name="height" value="1048" />
   </component>
@@ -2286,14 +2300,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/caches/build_file_checksums.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/misc.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/build.gradle</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/AddAuctionActivity.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/content_add_auction.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/content_activity_item_page.xml</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -2301,35 +2309,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_8_18,_10_38_PM_[Default]/build_file_checksums.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_8_18,_10_38_PM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_8_18,_7_27_PM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_8_18,_7_27_PM_[Default]1/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_1_35_PM_[Default]/build_file_checksums.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_1_35_PM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_1_41_PM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_1_43_PM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_1_43_PM_[Default]1/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_1_44_PM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_8_08_AM_[Default]/build_file_checksums.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_8_08_AM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_12_05_AM_[Default]/build_file_checksums.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_12_05_AM_[Default]/build_file_checksums1.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_12_05_AM_[Default]/build_file_checksums2.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_12_05_AM_[Default]/build_file_checksums3.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_12_05_AM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_12_05_AM__Default_.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_8_29_AM_[Default]/build_file_checksums.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_8_29_AM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_8_29_AM_[Default]1/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_8_29_AM__Default_.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_8_29_AM__Default_1.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_9_58_AM_[Default]/build_file_checksums.ser</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_9_58_AM_[Default]/shelved.patch</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_2018_9_58_AM__Default_.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ActualBid.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/activity_search_category_results.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/res/layout/dialog_make_bid.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/AuctionComment.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -2587,7 +2567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531120586925</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implented Timer on AuctionAdapters.">
+      <created>1531124050060</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1531124050060</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2654,7 +2641,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Backend for Adding Auction almost done&#10;- Adding auction works&#10;- Added auctions for now only shows up in latest bids section&#10;- The Item page doesn't have working comments yet" />
     <MESSAGE value="Fixed Timer in Item Page, no timer in homepage items yet." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Timer in Item Page, no timer in homepage items yet." />
+    <MESSAGE value="Implented Timer on AuctionAdapters." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implented Timer on AuctionAdapters." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2685,8 +2673,12 @@
         <state relative-caret-position="1496">
           <caret line="113" column="45" lean-forward="false" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
           <folding>
-            <element signature="e#5497#5498#0" expanded="true" />
-            <element signature="e#5540#5541#0" expanded="true" />
+            <element signature="e#4154#5155#0" expanded="true" />
+            <element signature="e#4655#5086#0" expanded="true" />
+            <element signature="e#5085#5086#0" expanded="true" />
+            <element signature="e#5154#5155#0" expanded="true" />
+            <element signature="e#7445#7446#0" expanded="true" />
+            <element signature="e#7488#7489#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2813,24 +2805,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Utilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="80" column="16" lean-forward="false" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="94" />
-          <folding>
-            <element signature="e#5497#5498#0" expanded="true" />
-            <element signature="e#5540#5541#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="27" column="41" lean-forward="false" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="101" column="32" lean-forward="true" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
+        <state relative-caret-position="229">
+          <caret line="105" column="42" lean-forward="false" selection-start-line="105" selection-start-column="42" selection-end-line="105" selection-end-column="42" />
           <folding>
-            <element signature="e#4516#4517#0" expanded="true" />
-            <element signature="e#4571#4572#0" expanded="true" />
+            <element signature="e#4670#4671#0" expanded="true" />
+            <element signature="e#4733#4734#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="137" column="0" lean-forward="true" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding>
+            <element signature="e#4154#5155#0" expanded="true" />
+            <element signature="e#4655#5086#0" expanded="true" />
+            <element signature="e#5085#5086#0" expanded="true" />
+            <element signature="e#5154#5155#0" expanded="true" />
+            <element signature="e#7445#7446#0" expanded="true" />
+            <element signature="e#7488#7489#0" expanded="true" />
           </folding>
         </state>
       </provider>
