@@ -110,20 +110,9 @@ public class ItemPageActivity extends AppCompatActivity {
                 String timestamp = dateFormat.format(new Date());
 
                 try {
-                    long tominus = 0;
-                    if(receiveAuction.getTimer().equals("12:00")){
-                        tominus = 43200000;
-                    }
-                    else if(receiveAuction.getTimer().equals("24:00")){
-                        tominus = 86400000;
-                    }
-                    else{
-                        tominus = 172800000;
-                    }
-
-                    Date date1 = dateFormat.parse(receiveAuction.getTimestamp());
+                    Date date1 = dateFormat.parse(receiveAuction.getTimer());
                     Date date2 = dateFormat.parse(timestamp);
-                    timeLeftinMS = (date1.getTime() + tominus) - date2.getTime();
+                    timeLeftinMS = (date1.getTime()) - date2.getTime();
 
                     startTimer();
                 } catch (ParseException e) {

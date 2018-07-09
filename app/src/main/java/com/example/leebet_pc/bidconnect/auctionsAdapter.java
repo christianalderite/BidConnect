@@ -2,9 +2,12 @@ package com.example.leebet_pc.bidconnect;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +36,9 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
 
     private DatabaseReference dbAuctions = FirebaseDatabase.getInstance().getReference("auctions");
     private DatabaseReference dbUsers = FirebaseDatabase.getInstance().getReference("users");
+
+    private CountDownTimer countDownTimer;
+    private long timeLeftinMS = 600000;//10mintes
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView viewcount, bidtimer, username, timestamp, currbid, buyoutprice, title;
@@ -83,8 +90,36 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
         Utilities.loadImage(mCont, auction.getImg_url(), holder.itempic);
         //Picasso.get().load(auction.getImg_url()).into(holder.itempic);
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm a");
-        String today = dateFormat.format(new Date());
-        holder.bidtimer.setText(auction.getTimer());
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
+        String today = dateFormat2.format(new Date());
+        Log.e("MAMA KO KALBO","today: " + today);
+        try {
+            Date date1 = dateFormat2.parse(auction.getTimer());
+            Date date2 = dateFormat2.parse(today);
+            timeLeftinMS = (date1.getTime()) - date2.getTime();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        countDownTimer = new CountDownTimer(timeLeftinMS,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftinMS = millisUntilFinished;
+
+                //Update UI
+                int seconds = (int) (timeLeftinMS / 1000) % 60;
+                int minutes = (int) ((timeLeftinMS / (1000 * 60)) % 60);
+                int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)) % 24);
+
+		        holder.bidtimer.setText( String.format("%02d:%02d:%02d", hours, minutes, seconds) );
+            }
+
+            @Override
+            public void onFinish() {
+                countDownTimer.cancel();
+            }
+        }.start();
 
         holder.currbid.setText("Current bid temp");
         holder.title.setText(auction.getTitle());
@@ -132,4 +167,5 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
     public int getItemCount() {
         return moviesList.size();
     }
+
 }
