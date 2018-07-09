@@ -203,7 +203,7 @@ public class ItemPageActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        })
+        });
     }
 
     @Override
