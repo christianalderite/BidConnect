@@ -80,8 +80,6 @@ public class ItemPageActivity extends AppCompatActivity {
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
                 String timestamp = dateFormat.format(new Date());
-                Log.e("ULAN","GAGAMPAMNAN: " + timestamp);
-                Log.e("MAMA KO KALBO", " TIMEMS: " + timeLeftinMS + " ORIGINAL DATE1: " + receiveAuction.getTimer());
 
                 try {
                     Date date1 = dateFormat.parse(receiveAuction.getTimer());
