@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,15 +12,20 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -29,15 +35,24 @@ import java.util.Date;
 
 public class ItemPageActivity extends AppCompatActivity {
 
-    private TextView sellername, currbid, buyoutprice, timer, description,category;
+    private TextView sellername, currbid, buyoutprice, timer, description,category, txtHighestBid;
     private ImageView userpic,itempic;
     private RatingBar userrating;
 
+    private Button makeBid;
+    private Button placeBid;
+    private RelativeLayout dialogBid;
+    private EditText inputBid;
+
+    private String highestBid;
+
     private String receiveID;
     private Auction receiveAuction;
+    private User sellerUser;
 
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
     private DatabaseReference dbAuctions = mainDB.getReference("auctions");
+    private DatabaseReference dbAuctionBids = mainDB.getReference("auctionBids");
     private DatabaseReference dbUsers = mainDB.getReference("users");
 
     private Toolbar toolbar;
@@ -76,7 +91,9 @@ public class ItemPageActivity extends AppCompatActivity {
                 buyoutprice.setText("₱"+Double.toString(receiveAuction.getBuyoutprice()));
                 description.setText(receiveAuction.getDesc());
                 category.setText(receiveAuction.getCategory());
-                Picasso.get().load(receiveAuction.getImg_url()).into(itempic);
+
+                Utilities.loadImage(ItemPageActivity.this, receiveAuction.getImg_url(),itempic);
+                //Picasso.get().load(receiveAuction.getImg_url()).into(itempic);
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
                 String timestamp = dateFormat.format(new Date());
@@ -94,8 +111,10 @@ public class ItemPageActivity extends AppCompatActivity {
                 dbUsers.child(receiveAuction.getUsername()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        Picasso.get().load(dataSnapshot.child("photourl").getValue().toString()).into(userpic);
-                        sellername.setText(dataSnapshot.child("username").getValue().toString());
+
+                        sellerUser = dataSnapshot.getValue(User.class);
+                        Utilities.loadImage(ItemPageActivity.this, sellerUser.getPhotourl().toString(),userpic);
+                        sellername.setText(sellerUser.getUsername());
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) { }});
@@ -117,10 +136,67 @@ public class ItemPageActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent toChat = new Intent(ItemPageActivity.this, ChatActivity.class);
+                toChat.putExtra("userName", sellerUser.getUsername());
+                toChat.putExtra("displayName", sellerUser.getFullname());
+                toChat.putExtra("userID", sellerUser.getUid());
+                toChat.putExtra("userAddress",sellerUser.getAddress());
+                toChat.putExtra("photoUrl",sellerUser.getPhotourl());
+                startActivity(toChat);
             }
         });
+
+        makeBid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogBid.setVisibility(View.VISIBLE);
+                dialogBid.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogBid.setVisibility(View.GONE);
+                    }
+                });
+
+                placeBid.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public void updateHighestBid(){
+        Query highestBid = dbAuctionBids.orderByChild("bidAmount").limitToFirst(1);
+        highestBid.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                ActualBid newBid = dataSnapshot.getValue(ActualBid.class);
+                currbid.setText(Double.toString(newBid.getBidAmount()));
+                txtHighestBid.setText(Double.toString(newBid.getBidAmount()));
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        })
     }
 
     @Override

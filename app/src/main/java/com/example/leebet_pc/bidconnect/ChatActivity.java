@@ -12,11 +12,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private String sellerPhotoUrl, sellerDisplayName, sellerUserName, sellerUid;
+    private String sellerPhotoUrl, sellerDisplayName, sellerUserName, sellerUid, sellerAddress;
     private String yourPhotoUrl, yourDisplayName, yourUid;
 
     private TextView txtSellerName;
     private TextView txtSellerUserName;
+    private TextView txtSellerAddress;
     private ImageView imgSellerImage;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -31,6 +32,7 @@ public class ChatActivity extends AppCompatActivity {
         imgSellerImage = findViewById(R.id.account_userphoto);
         txtSellerName = findViewById(R.id.fullName);
         txtSellerUserName = findViewById(R.id.userName);
+        txtSellerAddress = findViewById(R.id.account_address);
 
         Intent fromItemPage = getIntent();
         if (fromItemPage.getExtras() != null) {
@@ -40,10 +42,12 @@ public class ChatActivity extends AppCompatActivity {
             sellerDisplayName = bundle.getString("displayName");
             sellerUserName = bundle.getString("userName");
             sellerUid = bundle.getString("userID");
+            sellerAddress = bundle.getString("userAddress");
 
             Utilities.loadImage(this, sellerPhotoUrl, imgSellerImage);
             txtSellerUserName.setText(sellerUserName);
             txtSellerName.setText(sellerDisplayName);
+            txtSellerAddress.setText(sellerAddress);
 
         }else{
             finish();
