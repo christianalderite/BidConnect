@@ -214,6 +214,7 @@ xd
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:windowSoftInputMode="stateHidden"
                     android:hint="Write a comment..."
                     android:inputType="textMultiLine" />
 
@@ -227,6 +228,7 @@ xd
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerComment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/bids_comments_row" />
