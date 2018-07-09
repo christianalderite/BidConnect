@@ -76,7 +76,6 @@ public class AddAuctionActivity extends AppCompatActivity {
         dbAuctions = mainDB.getReference("auctions");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-
         dropdown.setAdapter(adapter);
 
         //Andrew
@@ -84,7 +83,7 @@ public class AddAuctionActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
         progressDialog.setMessage("Step 1 of 2\nUploading Image..."); // Setting Message
-        progressDialog.setTitle("Add Auction"); // Setting Title
+        progressDialog.setTitle("Add An Auction"); // Setting Title
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
         progressDialog.setCancelable(false);
 
@@ -148,7 +147,7 @@ public class AddAuctionActivity extends AppCompatActivity {
                                 String timestamp = dateFormat.format(new Date());
 
                                 dbAuctions.child(uniksalonga).setValue( new Auction(uniksalonga, fbCurrUser.getUid(),itemname.getText().toString(),0,dropdown.getSelectedItem().toString(),timestamp,Double.parseDouble(stealprice.getText().toString()),imageurl,
-                                        "Gadgets",description.getText().toString(),Double.parseDouble(minimumprice.getText().toString()),1) ).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        itemCat.getText().toString(),description.getText().toString(),Double.parseDouble(minimumprice.getText().toString()),1) ).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
