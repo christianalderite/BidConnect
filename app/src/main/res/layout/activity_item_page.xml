@@ -117,7 +117,7 @@
         android:layout_height="400dp"
         android:layout_margin="10dp"
         android:visibility="visible"
-        android:background="#000"
+        android:background="#fff"
         android:layout_alignParentBottom="true">
         <LinearLayout android:layout_height="match_parent"
             android:layout_width="match_parent"
