@@ -72,6 +72,7 @@ public class ItemPageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 receiveAuction = dataSnapshot.getValue(Auction.class);
                 toolbar.setTitle(receiveAuction.getTitle());
+                currbid.setText(String.valueOf(receiveAuction.getMinprice()));
                 buyoutprice.setText(Double.toString(receiveAuction.getBuyoutprice()));
                 description.setText(receiveAuction.getDesc());
                 category.setText(receiveAuction.getCategory());

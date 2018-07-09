@@ -1,0 +1,38 @@
+Index: .idea/assetWizardSettings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"WizardSettings\">\n    <option name=\"children\">\n      <map>\n        <entry key=\"vectorWizard\">\n          <value>\n            <PersistentState>\n              <option name=\"children\">\n                <map>\n                  <entry key=\"vectorAssetStep\">\n                    <value>\n                      <PersistentState>\n                        <option name=\"values\">\n                          <map>\n                            <entry key=\"assetSourceType\" value=\"FILE\" />\n                            <entry key=\"outputName\" value=\"ic_delete_icon\" />\n                            <entry key=\"sourceFile\" value=\"C:\\Users\\11526963\\Desktop\\ic_delete_icon.svg\" />\n                          </map>\n                        </option>\n                      </PersistentState>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </PersistentState>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+===================================================================
+--- .idea/assetWizardSettings.xml	(revision 8f4d6a5f0c93bfbad7964769c8caa0a5b9b6535f)
++++ .idea/assetWizardSettings.xml	(date 1531065960618)
+@@ -11,11 +11,27 @@
+                   <entry key="vectorAssetStep">
+                     <value>
+                       <PersistentState>
++                        <option name="children">
++                          <map>
++                            <entry key="clipartAsset">
++                              <value>
++                                <PersistentState>
++                                  <option name="values">
++                                    <map>
++                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_playlist_add_black_24dp.xml" />
++                                    </map>
++                                  </option>
++                                </PersistentState>
++                              </value>
++                            </entry>
++                          </map>
++                        </option>
+                         <option name="values">
+                           <map>
+-                            <entry key="assetSourceType" value="FILE" />
+-                            <entry key="outputName" value="ic_delete_icon" />
+-                            <entry key="sourceFile" value="C:\Users\11526963\Desktop\ic_delete_icon.svg" />
++                            <entry key="color" value="bcc3e5" />
++                            <entry key="outputName" value="ic_add_bid_24dp" />
++                            <entry key="overrideSize" value="true" />
++                            <entry key="sourceFile" value="C:\Program Files\Android\Android Studio\bin\C:\Users\johna\Desktop\baseline-remove_red_eye-24px.svg" />
+                           </map>
+                         </option>
+                       </PersistentState>
