@@ -181,7 +181,7 @@ public class AddAuctionActivity extends AppCompatActivity {
                                             imgchooser.setImageResource(R.drawable.ic_add_a_photo_black_24dp);
                                         }
                                         else{
-                                            Toast.makeText(getApplicationContext(),"There was an error. Please try again.",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),"There was a error. Please try again.",Toast.LENGTH_SHORT).show();
                                             progressDialog.dismiss();
                                         }
                                     }
