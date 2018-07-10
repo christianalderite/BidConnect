@@ -11,12 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="694f3b57-8526-46ee-934d-e6e9c8ce38df" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_logout.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Account.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Account.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Login.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Login.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml" />
     </list>
     <ignored path="C:\Users\Christian Alderite\AndroidStudioProjects\BidConnect\.idea\shelf/" />
     <ignored path="C:\Users\johna\AndroidStudioProjects\BidConnect\.idea\shelf/" />
@@ -82,8 +80,8 @@
       <file leaf-file-name="ItemPageActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="228" column="25" lean-forward="false" selection-start-line="228" selection-start-column="25" selection-end-line="228" selection-end-column="25" />
+            <state relative-caret-position="163">
+              <caret line="57" column="38" lean-forward="false" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6677#9744#0" expanded="true" />
@@ -98,6 +96,8 @@
                 <element signature="e#9743#9744#0" expanded="true" />
                 <element signature="e#9794#10985#0" expanded="true" />
                 <element signature="e#10984#10985#0" expanded="true" />
+                <element signature="e#13141#13431#0" expanded="true" />
+                <element signature="e#13430#13431#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,8 +106,8 @@
       <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="82" column="49" lean-forward="false" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
+            <state relative-caret-position="205">
+              <caret line="124" column="14" lean-forward="false" selection-start-line="124" selection-start-column="14" selection-end-line="125" selection-end-column="48" />
               <folding>
                 <element signature="e#2506#2981#0" expanded="true" />
                 <element signature="e#2980#2981#0" expanded="true" />
@@ -120,11 +120,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Login.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_item_page.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="153" column="58" lean-forward="false" selection-start-line="153" selection-start-column="58" selection-end-line="153" selection-end-column="58" />
+            <state relative-caret-position="300">
+              <caret line="154" column="25" lean-forward="false" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="commentAuctionAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/commentAuctionAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="66" column="42" lean-forward="false" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -180,9 +213,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>AuctionDur</find>
-      <find>date_time</find>
-      <find>timestam</find>
       <find>userDB</find>
       <find>latestAu</find>
       <find>mov</find>
@@ -209,7 +239,10 @@
       <find>itempage_btn_buyout</find>
       <find>itempage_btn_makebid</find>
       <find>Log.e</find>
+      <find>GoogleSignInClient</find>
       <find>focus</find>
+      <find>dialogbid</find>
+      <find>mauth</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2254,7 +2287,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/SearchCategoryResults.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ActualBid.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/AuctionComment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/selling_row.xml" />
@@ -2268,16 +2300,17 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_add_auction.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/KeyboardUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/EditTextBackEvent.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_activity_item_page.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/KeyboardEditText.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Account.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Login.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml" />
       </list>
     </option>
   </component>
@@ -2344,6 +2377,12 @@
               <item name="BidConnect" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="BidConnect" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="BidConnect" type="1abcf292:AndroidViewProjectNode" />
@@ -2712,7 +2751,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531244598931</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added logout button in profile page">
+      <created>1531246641528</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1531246641528</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2730,7 +2776,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2800,7 +2846,8 @@
     <MESSAGE value="Hoywag nyo nga delete ung comment wew" />
     <MESSAGE value="Fixed A Lot of Things&#10;- Auctioned items in home are now updated properly&#10;- Force close in Selling fragment fixed&#10;- Fixed timer not showing more than 12 hours&#10;- Comment textfield no longer gets automatic focus once an item page opens" />
     <MESSAGE value="Better implementation of comments focus logic thru a custom EditText element" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better implementation of comments focus logic thru a custom EditText element" />
+    <MESSAGE value="Added logout button in profile page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logout button in profile page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2868,6 +2915,8 @@
             <element signature="e#9743#9744#0" expanded="true" />
             <element signature="e#9794#10985#0" expanded="true" />
             <element signature="e#10984#10985#0" expanded="true" />
+            <element signature="e#13141#13431#0" expanded="true" />
+            <element signature="e#13430#13431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2924,14 +2973,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="36" lean-forward="false" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="38" column="53" lean-forward="true" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -3016,14 +3057,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/commentAuctionAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="75" />
           <folding />
         </state>
       </provider>
@@ -3188,17 +3221,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="60" column="8" lean-forward="false" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_activity_item_page.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -3241,17 +3263,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -3271,10 +3282,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="154" column="25" lean-forward="false" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/commentAuctionAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="73" column="45" lean-forward="false" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="66" column="42" lean-forward="false" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="228" column="25" lean-forward="false" selection-start-line="228" selection-start-column="25" selection-end-line="228" selection-end-column="25" />
+        <state relative-caret-position="163">
+          <caret line="57" column="38" lean-forward="false" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6677#9744#0" expanded="true" />
@@ -3289,14 +3335,16 @@
             <element signature="e#9743#9744#0" expanded="true" />
             <element signature="e#9794#10985#0" expanded="true" />
             <element signature="e#10984#10985#0" expanded="true" />
+            <element signature="e#13141#13431#0" expanded="true" />
+            <element signature="e#13430#13431#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="82" column="49" lean-forward="false" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
+        <state relative-caret-position="205">
+          <caret line="124" column="14" lean-forward="false" selection-start-line="124" selection-start-column="14" selection-end-line="125" selection-end-column="48" />
           <folding>
             <element signature="e#2506#2981#0" expanded="true" />
             <element signature="e#2980#2981#0" expanded="true" />
@@ -3308,10 +3356,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="153" column="58" lean-forward="false" selection-start-line="153" selection-start-column="58" selection-end-line="153" selection-end-column="58" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
           <folding />
         </state>
       </provider>

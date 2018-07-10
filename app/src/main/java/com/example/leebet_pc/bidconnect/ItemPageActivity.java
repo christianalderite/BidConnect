@@ -286,6 +286,7 @@ public class ItemPageActivity extends AppCompatActivity {
                 toChat.putExtra("userID", sellerUser.getUid());
                 toChat.putExtra("userAddress",sellerUser.getAddress());
                 toChat.putExtra("photoUrl",sellerUser.getPhotourl());
+                toChat.putExtra("productId",receiveID);
                 startActivity(toChat);
             }
         });
@@ -294,6 +295,19 @@ public class ItemPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialogBid.setVisibility(View.VISIBLE);
+                dialogBid.setScaleX(0);
+                dialogBid.setScaleY(0);
+                dialogBid.animate()
+                        .scaleY(1)
+                        .scaleX(1)
+                        .setDuration(300).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        dialogBid.setVisibility(View.VISIBLE);
+                    }
+                });
+
                 dialogBid.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

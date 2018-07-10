@@ -30,6 +30,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private String sellerPhotoUrl, sellerDisplayName, sellerUserName, sellerUid, sellerAddress;
     private String yourPhotoUrl, yourDisplayName, yourUid;
+    private String productId;
 
     private TextView txtSellerName;
     private TextView txtSellerUserName;
@@ -75,13 +76,15 @@ public class ChatActivity extends AppCompatActivity {
             sellerUid = bundle.getString("userID");
             sellerAddress = bundle.getString("userAddress");
 
+            productId = bundle.getString("productId");
+
             Utilities.loadImage(this, sellerPhotoUrl, imgSellerImage);
             txtSellerUserName.setText(sellerUserName);
             txtSellerName.setText(sellerDisplayName);
             txtSellerAddress.setText(sellerAddress);
 
-            dbMessages = dbConversations.child(firebaseUser.getUid()).child(sellerUid);
-            dbMessagesOther = dbConversations.child(sellerUid).child(firebaseUser.getUid());
+            dbMessages = dbConversations.child(firebaseUser.getUid()).child(sellerUid).child(productId);
+            dbMessagesOther = dbConversations.child(sellerUid).child(firebaseUser.getUid()).child(productId);
 
             displayMessages();
 
