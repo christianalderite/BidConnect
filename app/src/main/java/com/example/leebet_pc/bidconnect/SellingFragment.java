@@ -3,26 +3,44 @@ package com.example.leebet_pc.bidconnect;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SellingFragment extends android.support.v4.app.Fragment {
     private static final String TAG = "Selling Fragement";
 
-    private List<Bid> movieList = new ArrayList<>();
+    private List<Auction> sellingList = new ArrayList<>();
     private Button btnTEST;
     private RecyclerView recyclerView;
     private sellingAuctionAdapter bAdapter;
+
+    private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
+    private DatabaseReference dbAuctions = mainDB.getReference("auctions");
+
+    private User sellerUser;
+    private DatabaseReference dbUsers = mainDB.getReference("users");
+
+    FirebaseUser fbCurrUser;
 
 
     @Nullable
@@ -32,33 +50,38 @@ public class SellingFragment extends android.support.v4.app.Fragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.selling_recycler);
 
-        bAdapter = new sellingAuctionAdapter(1,movieList);
+        bAdapter = new sellingAuctionAdapter(1,sellingList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bAdapter);
-        prepareData();
+
+
+        dbAuctions.orderByChild("timestamp").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot object: dataSnapshot.getChildren()){
+                    Auction zucc = object.getValue(Auction.class);
+                    String a = fbCurrUser.getUid();
+                    String b =  zucc.getUsername();
+                    if(a.equals(b)){
+                        Log.d("mine po",a+" --- "+b);
+
+                        sellingList.add(zucc);
+                    }
+
+                }
+                Collections.reverse(sellingList);
+                bAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         return view;
-    }
-    public void prepareData(){
-
-        Bid movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱50.00","199.0","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱130.00","750.0","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱360.00","455.0","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱60.00","650.0","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱229.00","500.0","");
-        movieList.add(movie);
-
-        bAdapter.notifyDataSetChanged();
     }
 }

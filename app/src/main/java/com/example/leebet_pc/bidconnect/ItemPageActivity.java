@@ -8,6 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -38,7 +41,10 @@ import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import okhttp3.internal.Util;
 
@@ -55,6 +61,8 @@ public class ItemPageActivity extends AppCompatActivity {
 
     private EditText commentContent;
     private ImageButton commentSend;
+
+    private List<AuctionComment> commentList = new ArrayList<>();
 
    private String receiveID;
     private Auction receiveAuction;
@@ -76,6 +84,9 @@ public class ItemPageActivity extends AppCompatActivity {
     private boolean timerRunning;
 
     private FirebaseAuth mAuth;
+
+    private RecyclerView recyclerComment;
+    private commentAuctionAdapter CommentAuctionAdapter;
 
     FirebaseUser fbCurrUser;
 
@@ -231,6 +242,38 @@ public class ItemPageActivity extends AppCompatActivity {
         });
 
         updateHighestBid();
+        dbComments.orderByChild("timestamp").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot object: dataSnapshot.getChildren()){
+                    AuctionComment zucc = object.getValue(AuctionComment.class);
+                    String a = receiveAuction.getAuctionID();
+                    String b =  zucc.getAuctionID();
+                    if(a.equals(b)){
+                        Log.d("FUCK",a+" --- "+b);
+
+
+                        commentList.add(zucc);
+                    }
+
+                }
+                Collections.reverse(commentList);
+                CommentAuctionAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        CommentAuctionAdapter = new commentAuctionAdapter(1,commentList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerComment.setLayoutManager(layoutManager);
+        recyclerComment.setItemAnimator(new DefaultItemAnimator());
+        recyclerComment.setAdapter(CommentAuctionAdapter);
     }
 
     public void insertBid(String bidAmount){
