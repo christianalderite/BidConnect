@@ -85,6 +85,14 @@
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:tint="@color/cardview_light_background"
                 app:srcCompat="@drawable/ic_edit_icon" />
+
+            <ImageButton
+                android:id="@+id/account_logoutbtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:tint="@android:color/background_light"
+                app:srcCompat="@drawable/ic_logout" />
         </LinearLayout>
 
     </LinearLayout>

@@ -60,8 +60,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_send_icon" />
-                            <entry key="sourceFile" value="C:\Users\11526963\Desktop\baseline-send-24px.svg" />
+                            <entry key="outputName" value="ic_logout" />
+                            <entry key="sourceFile" value="C:\Users\johna\Desktop\ic_logout.svg" />
                           </map>
                         </option>
                       </PersistentState>

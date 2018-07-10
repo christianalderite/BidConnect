@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
@@ -32,6 +33,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth mAuth;
     private final static int RC_SIGN_IN = 2;
     FirebaseAuth.AuthStateListener mAuthStateListener;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,9 @@ public class Login extends AppCompatActivity {
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
     }
 
     @Override
@@ -103,6 +108,7 @@ public class Login extends AppCompatActivity {
 
     private void signIn() {
         Utilities.dismissDialog();
+        mGoogleSignInClient.signOut();
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -119,6 +125,7 @@ public class Login extends AppCompatActivity {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
+
                 // Google Sign In failed, update UI appropriately
                 Utilities.makeToast(this, "Google Sign In Failed");
                 //Log.w(TAG, "Google sign in failed", e);
@@ -144,6 +151,7 @@ public class Login extends AppCompatActivity {
                             Utilities.makeToast(Login.this, "Authentication Failed!");
                             //Snackbar.make(findViewById(R.id.main_layout), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
                             //updateUI(null);
+                            mGoogleSignInClient.signOut();
                         }
 
                         // ...

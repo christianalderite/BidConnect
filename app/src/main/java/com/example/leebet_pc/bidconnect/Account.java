@@ -1,13 +1,19 @@
 package com.example.leebet_pc.bidconnect;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -42,6 +48,8 @@ public class Account extends AppCompatActivity {
     private DatabaseReference userDB;
     private User theuser;
     private RatingBar ratingbar;
+    private ImageButton logoutbtn;
+    FirebaseAuth.AuthStateListener mAuthListener;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +64,23 @@ public class Account extends AppCompatActivity {
         joindate = findViewById(R.id.account_joinDate);
         userpic = findViewById(R.id.account_userphoto);
         ratingbar = findViewById(R.id.account_userRating);
+        logoutbtn = findViewById(R.id.account_logoutbtn);
 
         mAuth = FirebaseAuth.getInstance();
         fbCurrUser = mAuth.getCurrentUser();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if(firebaseAuth.getCurrentUser() == null){
+                    Intent i = new Intent(Account.this,Login.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
+                    finish();
+                }
+            }
+        };
+        mAuth.addAuthStateListener(mAuthListener);
 
         userDB = mainDB.getReference("users").child(fbCurrUser.getUid());
         userDB.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -89,6 +111,31 @@ public class Account extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                //Yes button clicked
+                                mAuth.signOut();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(Account.this);
+                builder.setMessage("Proceed to log out?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
             }
         });
 
