@@ -1,5 +1,8 @@
 package com.example.leebet_pc.bidconnect;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +10,6 @@ import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +17,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -23,7 +24,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,7 +40,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,7 +48,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import okhttp3.internal.Util;
 
 public class ItemPageActivity extends AppCompatActivity {
 
@@ -57,6 +55,7 @@ public class ItemPageActivity extends AppCompatActivity {
     private TextView sellername, currbid, buyoutprice, timer, description,category, txtHighestBid;
     private ImageView userpic,itempic;
     private RatingBar userrating;
+    private LinearLayout growingpains;
 
     private Button makeBid;
     private Button placeBid;
@@ -64,8 +63,9 @@ public class ItemPageActivity extends AppCompatActivity {
     private RelativeLayout dialogBid;
     private EditText inputBid;
 
-    private EditText commentContent;
+    private KeyboardEditText commentContent;
     private ImageButton commentSend;
+    private KeyboardEditText thegod;
 
     private List<AuctionComment> commentList = new ArrayList<>();
 
@@ -85,7 +85,7 @@ public class ItemPageActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private CountDownTimer countDownTimer;
-    private long timeLeftinMS = 600000;//10mintes
+    private long timeLeftinMS = 600000;//10minutes
     private boolean timerRunning;
 
     private FirebaseAuth mAuth;
@@ -104,7 +104,8 @@ public class ItemPageActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fbCurrUser = mAuth.getCurrentUser();
 
-        thelinear = findViewById(R.id.itempage_LINEARLINEAR);
+        thelinear = findViewById(R.id.seventeen_ac);
+        growingpains = findViewById(R.id.growingpains_ac);
         commentContent = findViewById(R.id.itempage_commentcontent);
         commentSend = findViewById(R.id.itempage_commentsend);
 
@@ -129,6 +130,7 @@ public class ItemPageActivity extends AppCompatActivity {
         receiveID = i.getStringExtra("auctionKey");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         recyclerComment = findViewById(R.id.recyclerComment);
+
 
         DatabaseReference dbItem = dbAuctions.child(receiveID);
 
@@ -166,17 +168,64 @@ public class ItemPageActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+
                 commentContent.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
                         if(hasFocus){
-                            makeBid.setVisibility(View.INVISIBLE);
-                            buyoutBtn.setVisibility(View.INVISIBLE);
+                            //makeBid.setVisibility(View.INVISIBLE);
+                            //buyoutBtn.setVisibility(View.INVISIBLE);
+                            makeBid.animate()
+                                    .setStartDelay(0)
+                                    .scaleY(0)
+                                    .scaleX(0)
+                                    .setDuration(0).setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    super.onAnimationEnd(animation);
+                                    makeBid.setVisibility(View.GONE);
+                                }
+                            });
+
+                            buyoutBtn.animate()
+                                    .setStartDelay(0)
+                                    .scaleY(0)
+                                    .scaleX(0)
+                                    .setDuration(0).setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    super.onAnimationEnd(animation);
+                                    buyoutBtn.setVisibility(View.GONE);
+                                }
+                            });
                         }
                         else{
-
                             makeBid.setVisibility(View.VISIBLE);
                             buyoutBtn.setVisibility(View.VISIBLE);
+
+                            makeBid.animate()
+                                    .setStartDelay(300)
+                                    .scaleY(1)
+                                    .scaleX(1)
+                                    .setDuration(300).setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    super.onAnimationEnd(animation);
+                                    makeBid.setVisibility(View.VISIBLE);
+                                }
+                            });
+
+                            buyoutBtn.animate()
+                                    .setStartDelay(300)
+                                    .scaleY(1)
+                                    .scaleX(1)
+                                    .setDuration(300).setListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    super.onAnimationEnd(animation);
+                                    buyoutBtn.setVisibility(View.VISIBLE);
+                                }
+                            });
                         }
                     }
                 });
@@ -196,7 +245,9 @@ public class ItemPageActivity extends AppCompatActivity {
                                             commentContent.setText("");
                                         }
                                     });
-
+                        }
+                        else{
+                            Utilities.makeToast(getApplicationContext(),"Cannot post an empty comment.");
                         }
                     }
                 });
@@ -373,5 +424,11 @@ public class ItemPageActivity extends AppCompatActivity {
         int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)));
 
         timer.setText( String.format("%02d:%02d:%02d", hours, minutes, seconds) );
+    }
+
+    private void closeKeyboard() {
+        InputMethodManager inputManager = (InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
     }
 }
