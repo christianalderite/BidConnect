@@ -14,19 +14,21 @@
 
         android:gravity="center"
         android:layout_marginBottom="8dp">
+
         <ImageView
             android:id="@+id/btn_upload_img"
+            android:layout_width="300dp"
             android:layout_height="150dp"
-            android:layout_width="150dp"
-            android:textAllCaps="false"
-            android:clickable="true"
-            android:textColor="#7986CB"
             android:layout_margin="14dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_add_a_photo_black_24dp"
-            android:drawableTop="@drawable/ic_add_circle_72dp"
+            android:background="@drawable/dashed_corner"
+            android:clickable="true"
             android:drawableBottom="@drawable/ic_camera_24dp"
-            android:background="@drawable/dashed_corner"/>
+            android:drawableTop="@drawable/ic_add_circle_72dp"
+            android:maxWidth="300dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_add_a_photo_black_24dp"
+            android:textAllCaps="false"
+            android:textColor="#7986CB" />
 
     </LinearLayout>
 
@@ -199,12 +201,13 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:background="#FFF">
+
             <TextView
-                android:drawableStart="@drawable/ic_time_24dp"
-                android:drawablePadding="10dp"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Bidding Duration (Hours)"/>
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_time_24dp"
+                android:text="Cutoff Date" />
         </LinearLayout>
         <LinearLayout
             android:layout_height="wrap_content"

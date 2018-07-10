@@ -7,7 +7,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ItemPageActivity"
     android:orientation="vertical"
-    tools:showIn="@layout/activity_item_page">
+    tools:showIn="@layout/activity_item_page"
+    android:animateLayoutChanges="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -204,8 +205,11 @@ xd
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/itempage_LINEARLINEAR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:gravity="center_vertical">
 
                 <EditText
@@ -213,13 +217,13 @@ xd
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:windowSoftInputMode="stateHidden"
-                    android:focusable="true"
                     android:descendantFocusability="beforeDescendants"
+                    android:ems="10"
+                    android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:hint="Write a comment..."
-                    android:inputType="textMultiLine" />
+                    android:inputType="textMultiLine"
+                    android:windowSoftInputMode="stateHidden" />
 
                 <ImageButton
                     android:id="@+id/itempage_commentsend"

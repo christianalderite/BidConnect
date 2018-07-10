@@ -13,8 +13,9 @@ public class Auction {
     private String desc;
     private double minprice;
     private int status;
+    private String actualusername;
 
-    public Auction(String auctionID, String username, String title, long views, String timer, String timestamp, double buyoutprice, String img_url, String category, String desc, double minprice, int status) {
+    public Auction(String auctionID, String username, String title, long views, String timer, String timestamp, double buyoutprice, String img_url, String category, String desc, double minprice, int status, String actualusername) {
         this.auctionID = auctionID;
         this.username = username;
         this.title = title;
@@ -27,6 +28,7 @@ public class Auction {
         this.desc = desc;
         this.minprice = minprice;
         this.status = status;
+        this.actualusername = actualusername;
     }
 
     public Auction(){}
@@ -125,5 +127,13 @@ public class Auction {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getActualusername() {
+        return actualusername;
+    }
+
+    public void setActualusername(String actualusername) {
+        this.actualusername = actualusername;
     }
 }

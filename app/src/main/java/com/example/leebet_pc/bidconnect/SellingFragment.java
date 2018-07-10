@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,12 +42,16 @@ public class SellingFragment extends android.support.v4.app.Fragment {
     private DatabaseReference dbUsers = mainDB.getReference("users");
 
     FirebaseUser fbCurrUser;
+    FirebaseAuth mAuth;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.selling_fragment,container,false);
+
+        mAuth = FirebaseAuth.getInstance();
+        fbCurrUser = mAuth.getCurrentUser();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.selling_recycler);
 

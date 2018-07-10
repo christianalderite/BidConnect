@@ -68,6 +68,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         mainDB = FirebaseDatabase.getInstance();
         dbAuctions = mainDB.getReference("auctions");
+        dbAuctions.keepSynced(true);
 
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = this.getWindow();
@@ -220,6 +221,7 @@ public class HomeActivity extends AppCompatActivity {
                     Log.d("MAMA MO: ","test: " + theauc.getDesc());
                 }
                 bAdapter.notifyDataSetChanged();
+                dbAuctions.keepSynced(true);
             }
 
             @Override

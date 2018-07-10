@@ -46,7 +46,8 @@
         <activity
             android:name=".ItemPageActivity"
             android:label="@string/title_activity_item_page"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".SearchActivity" />
         <activity android:name=".CategoriesActivity" />
         <activity

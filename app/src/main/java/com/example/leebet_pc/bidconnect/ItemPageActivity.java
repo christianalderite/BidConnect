@@ -1,5 +1,6 @@
 package com.example.leebet_pc.bidconnect;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -16,10 +17,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -50,12 +53,14 @@ import okhttp3.internal.Util;
 
 public class ItemPageActivity extends AppCompatActivity {
 
+    private LinearLayout thelinear;
     private TextView sellername, currbid, buyoutprice, timer, description,category, txtHighestBid;
     private ImageView userpic,itempic;
     private RatingBar userrating;
 
     private Button makeBid;
     private Button placeBid;
+    private Button buyoutBtn;
     private RelativeLayout dialogBid;
     private EditText inputBid;
 
@@ -99,6 +104,7 @@ public class ItemPageActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fbCurrUser = mAuth.getCurrentUser();
 
+        thelinear = findViewById(R.id.itempage_LINEARLINEAR);
         commentContent = findViewById(R.id.itempage_commentcontent);
         commentSend = findViewById(R.id.itempage_commentsend);
 
@@ -111,6 +117,7 @@ public class ItemPageActivity extends AppCompatActivity {
         userrating = findViewById(R.id.itempage_ratingBar);
         category = findViewById(R.id.itempage_cate);
         itempic = findViewById(R.id.itempage_mainitempic);
+        buyoutBtn = findViewById(R.id.itempage_btn_buyout);
 
         inputBid = findViewById(R.id.inputBid);
         dialogBid = findViewById(R.id.makeBidDialog);
@@ -121,6 +128,7 @@ public class ItemPageActivity extends AppCompatActivity {
         Intent i = getIntent();
         receiveID = i.getStringExtra("auctionKey");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        recyclerComment = findViewById(R.id.recyclerComment);
 
         DatabaseReference dbItem = dbAuctions.child(receiveID);
 
@@ -133,6 +141,8 @@ public class ItemPageActivity extends AppCompatActivity {
                 buyoutprice.setText("₱"+Double.toString(receiveAuction.getBuyoutprice()));
                 description.setText(receiveAuction.getDesc());
                 category.setText(receiveAuction.getCategory());
+
+                dbAuctions.child(receiveAuction.getAuctionID() + "/views").setValue(receiveAuction.getViews() + 1);
 
                 Utilities.loadImage(ItemPageActivity.this, receiveAuction.getImg_url(),itempic);
                 //Picasso.get().load(receiveAuction.getImg_url()).into(itempic);
@@ -345,7 +355,8 @@ public class ItemPageActivity extends AppCompatActivity {
     private void updateTimer(){
         int seconds = (int) (timeLeftinMS / 1000) % 60;
         int minutes = (int) ((timeLeftinMS / (1000 * 60)) % 60);
-        int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)) % 24);
+        //int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)) % 24);
+        int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)));
 
         timer.setText( String.format("%02d:%02d:%02d", hours, minutes, seconds) );
     }

@@ -35,7 +35,6 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
     private Integer mode;
 
     private DatabaseReference dbAuctions = FirebaseDatabase.getInstance().getReference("auctions");
-    private DatabaseReference dbUsers = FirebaseDatabase.getInstance().getReference("users");
 
     private CountDownTimer countDownTimer;
     private long timeLeftinMS = 600000;//10mintes
@@ -114,7 +113,7 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
                     //Update UI
                     int seconds = (int) (timeLeftinMS / 1000) % 60;
                     int minutes = (int) ((timeLeftinMS / (1000 * 60)) % 60);
-                    int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)) % 24);
+                    int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)));
 
                     holder.bidtimer.setText( String.format("%02d:%02d:%02d", hours, minutes, seconds) );
                 }
@@ -126,34 +125,11 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
             }.start();
         }
 
-
-
         holder.currbid.setText("Current bid temp");
         holder.title.setText(auction.getTitle());
+        holder.username.setText(auction.getActualusername());
 
-        dbAuctions.child(auction.getAuctionID() + "/views").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                holder.viewcount.setText(dataSnapshot.getValue().toString());
-                auction.setViews(Long.parseLong(dataSnapshot.getValue().toString()));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        dbUsers.child(auction.getUsername() + "/username").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(holder.username!=null){
-                    holder.username.setText( dataSnapshot.getValue().toString() );
-                }
-
-            }
-            @Override public void onCancelled(@NonNull DatabaseError databaseError) { }});
-
+        holder.viewcount.setText(Long.toString(auction.getViews()));
 
         if(mode==ACTIVITY_HOME){
             holder.uson.setOnClickListener(new View.OnClickListener() {

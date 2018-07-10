@@ -75,7 +75,7 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
         aucDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Utilities.loadImage(mCont, dataSnapshot.child("photourl").getValue().toString(), holder.img);
+                Utilities.loadImage(mCont, dataSnapshot.child("img_url").getValue().toString(), holder.img);
 
             }
 

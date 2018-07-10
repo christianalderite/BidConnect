@@ -29,8 +29,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -51,6 +54,7 @@ public class AddAuctionActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 90;
     private Button submitbutton;
     private StorageReference mStorage;
+    private String mainusername;
 
     String date_time = "";
     int mYear;
@@ -64,6 +68,7 @@ public class AddAuctionActivity extends AppCompatActivity {
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
     private DatabaseReference dbAuctions;
     private FirebaseAuth mAuth;
+    private DatabaseReference dbUsers;
     FirebaseUser fbCurrUser;
     UploadTask uploadTask;
 
@@ -96,6 +101,7 @@ public class AddAuctionActivity extends AppCompatActivity {
             }
         });
         dbAuctions = mainDB.getReference("auctions");
+        dbUsers = mainDB.getReference("users");
 
 
         //Andrew
@@ -146,6 +152,13 @@ public class AddAuctionActivity extends AppCompatActivity {
 
                     uploadTask = mStorage.putFile(imageUri);
 
+                    dbUsers.child(fbCurrUser.getUid() + "/username").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                mainusername = dataSnapshot.getValue().toString();
+                        }
+                        @Override public void onCancelled(@NonNull DatabaseError databaseError) { }});
+
                     /////MAMA MO////
                     Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                         @Override
@@ -167,7 +180,7 @@ public class AddAuctionActivity extends AppCompatActivity {
                                 String timestamp = dateFormat.format(new Date());
 
                                 dbAuctions.child(uniksalonga).setValue( new Auction(uniksalonga, fbCurrUser.getUid(),itemname.getText().toString(),0,AuctionDur.getText().toString(),timestamp,Double.parseDouble(stealprice.getText().toString()),imageurl,
-                                        itemCat.getText().toString(),description.getText().toString(),Double.parseDouble(minimumprice.getText().toString()),1) ).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        itemCat.getText().toString(),description.getText().toString(),Double.parseDouble(minimumprice.getText().toString()),1, mainusername) ).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
