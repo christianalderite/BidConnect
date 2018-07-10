@@ -166,6 +166,20 @@ public class ItemPageActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                commentContent.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(hasFocus){
+                            makeBid.setVisibility(View.INVISIBLE);
+                            buyoutBtn.setVisibility(View.INVISIBLE);
+                        }
+                        else{
+
+                            makeBid.setVisibility(View.VISIBLE);
+                            buyoutBtn.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
                 commentSend.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
