@@ -106,7 +106,7 @@
                         android:layout_weight=".35"
                         android:gravity="left|center"
                         android:paddingLeft="10dp"
-                        android:text="₱ 129.00"
+                        android:text="No bids yet."
                         android:textColor="#4b460b"
                         android:textSize="18sp"
                         android:textStyle="bold" />
