@@ -62,20 +62,20 @@ public class SellingFragment extends android.support.v4.app.Fragment {
         recyclerView.setAdapter(bAdapter);
 
 
-        dbAuctions.orderByChild("timestamp").addListenerForSingleValueEvent(new ValueEventListener() {
+        dbAuctions.orderByChild("timestamp").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot object: dataSnapshot.getChildren()){
+
+
                     Auction zucc = object.getValue(Auction.class);
                     String a = fbCurrUser.getUid();
                     String b =  zucc.getUsername();
                     if(a.equals(b)){
-                        Log.d("mine po",a+" --- "+b);
 
                         sellingList.add(zucc);
                     }
-
                 }
                 Collections.reverse(sellingList);
                 bAdapter.notifyDataSetChanged();

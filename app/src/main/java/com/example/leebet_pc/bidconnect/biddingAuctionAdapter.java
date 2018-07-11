@@ -1,32 +1,67 @@
 package com.example.leebet_pc.bidconnect;
 
 import android.content.Context;
+import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAdapter.MyViewHolder> {
 
-    private List<Bid> moviesList;
+    private List<ActualBid> moviesList;
     private static final Integer ACTIVITY_ACCOUNT = 2;
     private static final Integer ACTIVITY_HOME = 1;
 
     private Integer mode;
     private Context mCont;
 
+
+    private FirebaseAuth mAuth;
+    FirebaseUser fbCurrUser;
+    private long timeLeftinMS = 600000;//10mintes
+    private CountDownTimer countDownTimer;
+
+    private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
+    private DatabaseReference dbAuctionBids = mainDB.getReference("auctionBids");
+    private DatabaseReference dbMyBids;
+    private DatabaseReference aucDB;
+    private Auction myAuction;
+    private ActualBid myHighestBid;
+    private ActualBid highestBid;
+
+    private DatabaseReference dbSingleItem;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView  time, currbid, buyoutprice, title, status, highest;
-        public CardView img;
+        public ImageView img;
+        public Button buyoutbtn, cancelbtn;
+
         public MyViewHolder(View view) {
             super(view);
-            img = (CardView) view.findViewById(R.id.bid_img);
+
+            img = (ImageView) view.findViewById(R.id.bid_img);
             time = (TextView) view.findViewById(R.id.bid_time_left);
             currbid = (TextView) view.findViewById(R.id.bid_curr_bid);
             title = (TextView) view.findViewById(R.id.bid_item_name);
@@ -34,9 +69,12 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
             status = (TextView) view.findViewById(R.id.bid_status);
             highest = (TextView) view.findViewById(R.id.bid_highest_bid);
 
+            buyoutbtn = (Button) view.findViewById(R.id.bid_buyout_button);
+            cancelbtn = (Button) view.findViewById(R.id.bid_cancel_button);
+
         }
     }
-    public biddingAuctionAdapter(Integer mode, List<Bid> moviesList) {
+    public biddingAuctionAdapter(Integer mode, List<ActualBid> moviesList) {
         this.mode = mode;
         this.moviesList = moviesList;
     }
@@ -50,22 +88,101 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
     }
 
     @Override
-    public void onBindViewHolder(biddingAuctionAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final biddingAuctionAdapter.MyViewHolder holder, int position) {
 
-        Bid movie = moviesList.get(position);
+        ActualBid auc = moviesList.get(position);
+        mAuth = FirebaseAuth.getInstance();
 
-        //public TextView viidtimer, username, timestamp, currbid, buyoutprice;
-       // holder.img.setbac(movie.getImg_url()); WILLL SET LATER MGA BOBO
-        holder.time.setText(movie.getTimer());
-        holder.currbid.setText(movie.getCurrbid());
+        aucDB = mainDB.getReference("auctions").child(auc.getAuctionID());
 
-        holder.buyoutprice.setText(movie.getBuyoutprice());
-        holder.title.setText(movie.getTitle());
-        holder.status.setText(movie.getStatus());
-        holder.highest.setText(movie.getHighestbid());
+        Log.d("mine powzxd",aucDB+" --- "+auc.getAuctionID());
+        aucDB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot object: dataSnapshot.getChildren()){
+                    myAuction  = object.getValue(Auction.class);
+                    holder.buyoutprice.setText(String.valueOf(myAuction.getBuyoutprice()));
+                    holder.title.setText(myAuction.getTitle());
+                    holder.highest.setText(String.valueOf(getHighestBid(myAuction.getAuctionID())));
 
-        float currbid_fl = Float.valueOf(movie.getCurrbid());
-        float highbid_fl = Float.valueOf(movie.getHighestbid());
+                    Log.d("mine pozz",myAuction.getBuyoutprice()+" --- "+myAuction.getTitle());
+
+                    Log.d("mine poss",String.valueOf(getHighestBid(myAuction.getAuctionID()))+" -xd- "+myAuction.getTitle());
+                    Utilities.loadImage(mCont, dataSnapshot.child("img_url").getValue().toString(), holder.img);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        dbAuctionBids.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot object: dataSnapshot.getChildren()){
+                    ActualBid newBid = object.getValue(ActualBid.class);
+                    myHighestBid = newBid;
+                    holder.currbid.setText(String.valueOf(myHighestBid.getBidAmount()));
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        /*
+        * Fetched from firebase:
+        * - time left
+        * - get my latest bid.
+        * - get highest bid.
+        * - status: winning, and outbid
+        * */
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm a");
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
+        String today = dateFormat2.format(new Date());
+        Log.e("MAMA KO KALBO","today: " + today);
+        try {
+            Date date1 = dateFormat2.parse(myAuction.getTimer());
+            Date date2 = dateFormat2.parse(today);
+            timeLeftinMS = (date1.getTime()) - date2.getTime();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(timeLeftinMS <= 0){
+            holder.time.setText("DONE");
+        }
+        else{
+            countDownTimer = new CountDownTimer(timeLeftinMS,1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    timeLeftinMS = millisUntilFinished;
+
+                    int seconds = (int) (timeLeftinMS / 1000) % 60;
+                    int minutes = (int) ((timeLeftinMS / (1000 * 60)) % 60);
+                    int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)));
+
+                    holder.time.setText( String.format("%02d:%02d:%02d", hours, minutes, seconds) );
+                }
+                @Override
+                public void onFinish() {
+                    countDownTimer.cancel();
+                }
+            }.start();
+        }
+
+
+        //
+
+
+        Double currbid_fl = myHighestBid.getBidAmount(); //Float.valueOf();
+        Double highbid_fl = highestBid.getBidAmount();
 
         if (currbid_fl<highbid_fl){
             holder.status.setText("Outbid");
@@ -79,5 +196,24 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
     @Override
     public int getItemCount() {
         return moviesList.size();
+    }
+    public double getHighestBid(String auctionID){
+
+        dbSingleItem = FirebaseDatabase.getInstance().getReference("auctionBids/" + auctionID);
+        dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot object: dataSnapshot.getChildren()){
+                    ActualBid newBid = object.getValue(ActualBid.class);
+                    highestBid = newBid;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return highestBid.getBidAmount();
     }
 }

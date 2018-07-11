@@ -38,7 +38,7 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
     private DatabaseReference dbAuctions = FirebaseDatabase.getInstance().getReference("auctions");
 
     private CountDownTimer countDownTimer;
-    private long timeLeftinMS = 600000;//10mintes
+    private long timeLeftinMS = 600000;//10mintesƒdb
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView viewcount, bidtimer, username, timestamp, currbid, buyoutprice, title;
@@ -129,7 +129,6 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
         holder.currbid.setText("Current bid temp");
         holder.title.setText(auction.getTitle());
         holder.username.setText(auction.getActualusername());
-
         holder.viewcount.setText(Long.toString(auction.getViews()));
 
         if(mode==ACTIVITY_HOME){
@@ -143,7 +142,6 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
                 }
             });
         }
-
     }
 
     @Override
