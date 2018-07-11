@@ -5,6 +5,7 @@ import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,44 +71,36 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
     @Override
     public void onBindViewHolder(final sellingAuctionAdapter.MyViewHolder holder, int position) {
 
-        Auction auc = moviesList.get(position);
+        final Auction auc = moviesList.get(position);
 
-        dbSingleItem = mainDB.getReference("auctionBids").child(auc.getAuctionID());
+
         mAuth = FirebaseAuth.getInstance();
+
         aucDB = mainDB.getReference("auctions").child(auc.getAuctionID());
-        aucDB.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Utilities.loadImage(mCont, dataSnapshot.child("img_url").getValue().toString(), holder.img);
+        dbSingleItem = mainDB.getReference("auctionBids/"+auc.getAuctionID());
 
-            }
+        Log.e("EYUT", "tangina auc id: " + auc.getAuctionID());
+    try {
+    aucDB.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            Utilities.loadImage(mCont, dataSnapshot.child("img_url").getValue().toString(), holder.img);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        }
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-
+        }
+    });
         dbSingleItem.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ActualBid newBid = dataSnapshot.getValue(ActualBid.class);
 
-                Query highestBid = dbSingleItem.child(newBid.getBidID()).orderByChild("bidAmount").limitToLast(1);
-                highestBid.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-                            String Key = childSnapshot.getKey();
-                            holder.currbid.setText(Key);
-                        }
-                    }
+                for(DataSnapshot object: dataSnapshot.getChildren()){
+                    ActualBid newBid = object.getValue(ActualBid.class);
+                    holder.currbid.setText(Double.toString(newBid.getBidAmount()));
+                }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
             }
 
             @Override
@@ -116,9 +109,14 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
             }
         });
 
-        holder.time.setText(auc.getTimer());
-        holder.buyoutprice.setText(String.valueOf(auc.getBuyoutprice()));
-        holder.title.setText(auc.getTitle());
+
+}catch (Exception e){
+    Log.e("waweyut","dukha pota");
+}
+    holder.time.setText(auc.getTimer());
+    holder.buyoutprice.setText(String.valueOf(auc.getBuyoutprice()));
+    holder.title.setText(auc.getTitle());
+
     }
 
     @Override
