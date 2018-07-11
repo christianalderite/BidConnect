@@ -17,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
     private Integer mode;
 
     private Context mCont;
+    private DatabaseReference dbSingleItem;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView  time, currbid, buyoutprice, title;
@@ -70,6 +72,7 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
 
         Auction auc = moviesList.get(position);
 
+        dbSingleItem = mainDB.getReference("auctionBids").child(auc.getAuctionID());
         mAuth = FirebaseAuth.getInstance();
         aucDB = mainDB.getReference("auctions").child(auc.getAuctionID());
         aucDB.addValueEventListener(new ValueEventListener() {
@@ -84,10 +87,36 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
 
             }
         });
-        //public TextView viidtimer, username, timestamp, currbid, buyoutprice;
-        // holder.img.setbac(movie.getImg_url()); WILLL SET LATER MGA BOBO
+
+        dbSingleItem.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ActualBid newBid = dataSnapshot.getValue(ActualBid.class);
+
+                Query highestBid = dbSingleItem.child(newBid.getBidID()).orderByChild("bidAmount").limitToLast(1);
+                highestBid.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                            String Key = childSnapshot.getKey();
+                            holder.currbid.setText(Key);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         holder.time.setText(auc.getTimer());
-        //holder.currbid.setText(movie.getCurrbid());
         holder.buyoutprice.setText(String.valueOf(auc.getBuyoutprice()));
         holder.title.setText(auc.getTitle());
     }
