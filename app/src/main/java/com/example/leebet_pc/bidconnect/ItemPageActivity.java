@@ -142,6 +142,7 @@ public class ItemPageActivity extends AppCompatActivity {
 
 
         DatabaseReference dbItem = dbAuctions.child(receiveID);
+        dbItem.keepSynced(true);
 
         dbItem.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -382,7 +383,7 @@ public class ItemPageActivity extends AppCompatActivity {
     public void insertBid(String bidAmount){
         String newBidKey = dbAuctionBids.push().getKey();
         ActualBid newBid = new ActualBid(newBidKey, receiveID, firebaseUser.getUid(), Double.valueOf(bidAmount));
-        dbAuctionBids.child(newBidKey).setValue(newBid);
+        dbAuctionBids.child(receiveAuction.getAuctionID()).child(newBidKey).setValue(newBid);
     }
 
     public void updateHighestBid(){
