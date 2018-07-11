@@ -65,7 +65,7 @@
                             android:id="@+id/sell_curr_bid"
                             android:textColor="#4b460b"
                             android:paddingLeft="10dp"
-                            android:text="₱ 129.00"/>
+                            android:text="No bids yet."/>
                         <TextView
                             android:layout_height="match_parent"
                             android:layout_width="0dp"
