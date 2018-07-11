@@ -347,6 +347,7 @@ public class ItemPageActivity extends AppCompatActivity {
         });
 
         updateHighestBid();
+
         dbComments.orderByChild("timestamp").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -360,6 +361,30 @@ public class ItemPageActivity extends AppCompatActivity {
                     }
 
                 }
+                Collections.reverse(commentList);
+                CommentAuctionAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        dbComments.orderByChild("timestamp").limitToLast(1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Collections.reverse(commentList);
+                for (DataSnapshot object: dataSnapshot.getChildren()){
+                    AuctionComment zucc = object.getValue(AuctionComment.class);
+                    String a = receiveAuction.getAuctionID();
+                    String b =  zucc.getAuctionID();
+                    if(a.equals(b)){
+                        commentList.add(zucc);
+
+                    }
+                }
+
                 Collections.reverse(commentList);
                 CommentAuctionAdapter.notifyDataSetChanged();
             }
