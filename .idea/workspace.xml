@@ -11,7 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="694f3b57-8526-46ee-934d-e6e9c8ce38df" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" />
     </list>
@@ -79,14 +78,14 @@
       <file leaf-file-name="ItemPageActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="160" column="0" lean-forward="false" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+            <state relative-caret-position="133">
+              <caret line="388" column="35" lean-forward="true" selection-start-line="388" selection-start-column="35" selection-end-line="389" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#14168#14438#0" expanded="true" />
-                <element signature="e#14437#14438#0" expanded="true" />
-                <element signature="e#14486#15134#0" expanded="true" />
-                <element signature="e#15133#15134#0" expanded="true" />
+                <element signature="e#14170#14440#0" expanded="true" />
+                <element signature="e#14439#14440#0" expanded="true" />
+                <element signature="e#14488#15136#0" expanded="true" />
+                <element signature="e#15135#15136#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,7 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>updateHi</find>
       <find>latestA</find>
       <find>comment</find>
       <find>dbComm</find>
@@ -166,6 +164,7 @@
       <find>itempage_bid_currbid</find>
       <find>currbid.setText</find>
       <find>update</find>
+      <find>currbid</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2689,7 +2688,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531278086503</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="ayos db">
+      <created>1531304397408</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1531304397408</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2779,7 +2785,8 @@
     <MESSAGE value="Better implementation of comments focus logic thru a custom EditText element" />
     <MESSAGE value="Added logout button in profile page" />
     <MESSAGE value="MORE aesthethiccs" />
-    <option name="LAST_COMMIT_MESSAGE" value="MORE aesthethiccs" />
+    <MESSAGE value="ayos db" />
+    <option name="LAST_COMMIT_MESSAGE" value="ayos db" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2827,10 +2834,10 @@
           <caret line="113" column="45" lean-forward="false" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14168#14438#0" expanded="true" />
-            <element signature="e#14437#14438#0" expanded="true" />
-            <element signature="e#14486#15134#0" expanded="true" />
-            <element signature="e#15133#15134#0" expanded="true" />
+            <element signature="e#14170#14440#0" expanded="true" />
+            <element signature="e#14439#14440#0" expanded="true" />
+            <element signature="e#14488#15136#0" expanded="true" />
+            <element signature="e#15135#15136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3210,14 +3217,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="160" column="0" lean-forward="false" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+        <state relative-caret-position="133">
+          <caret line="388" column="35" lean-forward="true" selection-start-line="388" selection-start-column="35" selection-end-line="389" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14168#14438#0" expanded="true" />
-            <element signature="e#14437#14438#0" expanded="true" />
-            <element signature="e#14486#15134#0" expanded="true" />
-            <element signature="e#15133#15134#0" expanded="true" />
+            <element signature="e#14170#14440#0" expanded="true" />
+            <element signature="e#14439#14440#0" expanded="true" />
+            <element signature="e#14488#15136#0" expanded="true" />
+            <element signature="e#15135#15136#0" expanded="true" />
           </folding>
         </state>
       </provider>

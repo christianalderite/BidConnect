@@ -149,7 +149,7 @@ public class ItemPageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 receiveAuction = dataSnapshot.getValue(Auction.class);
                 toolbar.setTitle(receiveAuction.getTitle());
-                currbid.setText("₱"+String.valueOf(receiveAuction.getMinprice()));
+                //currbid.setText("₱"+String.valueOf(receiveAuction.getMinprice()));
                 buyoutprice.setText("₱"+Double.toString(receiveAuction.getBuyoutprice()));
                 description.setText(receiveAuction.getDesc());
                 category.setText(receiveAuction.getCategory());
@@ -387,7 +387,7 @@ public class ItemPageActivity extends AppCompatActivity {
     }
 
     public void updateHighestBid(){
-        Query highestBid = dbAuctionBids.orderByChild("bidAmount").limitToFirst(1);
+        Query highestBid = dbAuctionBids.child(receiveID).orderByChild("bidAmount").limitToLast(1);
         highestBid.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
