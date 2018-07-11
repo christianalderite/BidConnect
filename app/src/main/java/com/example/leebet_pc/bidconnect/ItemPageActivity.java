@@ -140,7 +140,7 @@ public class ItemPageActivity extends AppCompatActivity {
         receiveID = i.getStringExtra("auctionKey");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         recyclerComment = findViewById(R.id.recyclerComment);
-        dbSingleItem = mainDB.getReference("auctionBids/" + receiveID);
+        dbSingleItem = FirebaseDatabase.getInstance().getReference("auctionBids/" + receiveID);
 
 
         DatabaseReference dbItem = dbAuctions.child(receiveID);
@@ -278,7 +278,6 @@ public class ItemPageActivity extends AppCompatActivity {
                 setSupportActionBar(toolbar);
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
-
             }
 
             @Override
@@ -389,14 +388,16 @@ public class ItemPageActivity extends AppCompatActivity {
     }
 
     public void updateHighestBid(){
-        //Query highestBid = dbAuctionBids.child(receiveID).orderByChild("bidAmount").limitToLast(1);
+        //Query highestBid = dbSingleItem.child("-LH7moxrG30oXqxXQ21o");
         dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ActualBid newBid = dataSnapshot.getValue(ActualBid.class);
-                currbid.setText(Double.toString(newBid.getBidAmount()));
-                txtHighestBid.setText(Double.toString(newBid.getBidAmount()));
-                Log.e("CRUISIN TOGETHER: ","mama mo: " + newBid.getBidAmount());
+                for(DataSnapshot object: dataSnapshot.getChildren()){
+                    ActualBid newBid = object.getValue(ActualBid.class);
+                    currbid.setText(Double.toString(newBid.getBidAmount()));
+                    txtHighestBid.setText(Double.toString(newBid.getBidAmount()));
+                    Log.e("SINASAKAL","PUSO: " + newBid.getAuctionID());
+                }
             }
 
             @Override
