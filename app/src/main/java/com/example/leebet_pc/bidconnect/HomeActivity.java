@@ -218,8 +218,8 @@ public class HomeActivity extends AppCompatActivity {
                 for (DataSnapshot object: dataSnapshot.getChildren()){
                     Auction theauc = object.getValue(Auction.class);
                     latestAucs.add(theauc);
-                    Log.d("MAMA MO: ","test: " + theauc.getDesc());
                 }
+                bAdapter.reverseItems();
                 bAdapter.notifyDataSetChanged();
                 dbAuctions.keepSynced(true);
             }

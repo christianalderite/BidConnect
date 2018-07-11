@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -148,6 +149,11 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
     @Override
     public int getItemCount() {
         return moviesList.size();
+    }
+
+    public void reverseItems(){
+        Collections.reverse(moviesList);
+        notifyDataSetChanged();
     }
 
 }

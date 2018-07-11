@@ -356,9 +356,6 @@ public class ItemPageActivity extends AppCompatActivity {
                     String a = receiveAuction.getAuctionID();
                     String b =  zucc.getAuctionID();
                     if(a.equals(b)){
-                        Log.d("FUCK",a+" --- "+b);
-
-
                         commentList.add(zucc);
                     }
 
@@ -396,7 +393,6 @@ public class ItemPageActivity extends AppCompatActivity {
                     ActualBid newBid = object.getValue(ActualBid.class);
                     currbid.setText(Double.toString(newBid.getBidAmount()));
                     txtHighestBid.setText(Double.toString(newBid.getBidAmount()));
-                    Log.e("SINASAKAL","PUSO: " + newBid.getAuctionID());
                 }
             }
 

@@ -11,9 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="694f3b57-8526-46ee-934d-e6e9c8ce38df" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java" />
     </list>
     <ignored path="C:\Users\Christian Alderite\AndroidStudioProjects\BidConnect\.idea\shelf/" />
     <ignored path="C:\Users\johna\AndroidStudioProjects\BidConnect\.idea\shelf/" />
@@ -76,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemPageActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ItemPageActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="398" column="35" lean-forward="true" selection-start-line="398" selection-start-column="35" selection-end-line="398" selection-end-column="35" />
+            <state relative-caret-position="224">
+              <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#14309#14579#0" expanded="true" />
@@ -88,6 +89,26 @@
                 <element signature="e#14627#15275#0" expanded="true" />
                 <element signature="e#15274#15275#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="221" column="38" lean-forward="true" selection-start-line="221" selection-start-column="38" selection-end-line="221" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="auctionsAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,7 +157,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>receiveA</find>
       <find>sellerUs</find>
       <find>mainDb</find>
       <find>Global</find>
@@ -166,6 +186,7 @@
       <find>dbSingleItem</find>
       <find>receiveAuction</find>
       <find>dbSingle</find>
+      <find>Log.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2213,7 +2234,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ActualBid.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/AuctionComment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/selling_row.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Auction.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/AddAuctionActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
@@ -2221,7 +2241,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/SellingFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/sellingAuctionAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_add_auction.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/KeyboardUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/EditTextBackEvent.java" />
@@ -2233,7 +2252,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Login.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java" />
       </list>
     </option>
   </component>
@@ -2711,7 +2732,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531305523234</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="NAG-AABANG SA LANGIT KAHIT SULYAP NG NARDA">
+      <created>1531307393892</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1531307393892</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2803,7 +2831,8 @@
     <MESSAGE value="MORE aesthethiccs" />
     <MESSAGE value="ayos db" />
     <MESSAGE value="ayos bid" />
-    <option name="LAST_COMMIT_MESSAGE" value="ayos bid" />
+    <MESSAGE value="NAG-AABANG SA LANGIT KAHIT SULYAP NG NARDA" />
+    <option name="LAST_COMMIT_MESSAGE" value="NAG-AABANG SA LANGIT KAHIT SULYAP NG NARDA" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3019,16 +3048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="213" column="37" lean-forward="false" selection-start-line="213" selection-start-column="37" selection-end-line="213" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_auction.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -3055,13 +3074,6 @@
         <state relative-caret-position="166">
           <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="108" column="25" lean-forward="false" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -3151,14 +3163,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/AddAuctionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="65" column="28" lean-forward="false" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2730">
@@ -3232,10 +3236,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/auctionsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ItemPageActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="398" column="35" lean-forward="true" selection-start-line="398" selection-start-column="35" selection-end-line="398" selection-end-column="35" />
+        <state relative-caret-position="224">
+          <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#14309#14579#0" expanded="true" />
@@ -3243,6 +3255,22 @@
             <element signature="e#14627#15275#0" expanded="true" />
             <element signature="e#15274#15275#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/AddAuctionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="65" column="28" lean-forward="false" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="221" column="38" lean-forward="true" selection-start-line="221" selection-start-column="38" selection-end-line="221" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
