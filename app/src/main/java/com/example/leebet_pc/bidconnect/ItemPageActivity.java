@@ -84,6 +84,7 @@ public class ItemPageActivity extends AppCompatActivity {
     private DatabaseReference dbAuctionBids = mainDB.getReference("auctionBids");
     private DatabaseReference dbUsers = mainDB.getReference("users");
     private DatabaseReference dbComments = mainDB.getReference("auctionComments");
+    private DatabaseReference dbSingleItem;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -139,6 +140,7 @@ public class ItemPageActivity extends AppCompatActivity {
         receiveID = i.getStringExtra("auctionKey");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         recyclerComment = findViewById(R.id.recyclerComment);
+        dbSingleItem = mainDB.getReference("auctionBids/" + receiveID);
 
 
         DatabaseReference dbItem = dbAuctions.child(receiveID);
@@ -387,28 +389,14 @@ public class ItemPageActivity extends AppCompatActivity {
     }
 
     public void updateHighestBid(){
-        Query highestBid = dbAuctionBids.child(receiveID).orderByChild("bidAmount").limitToLast(1);
-        highestBid.addChildEventListener(new ChildEventListener() {
+        //Query highestBid = dbAuctionBids.child(receiveID).orderByChild("bidAmount").limitToLast(1);
+        dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ActualBid newBid = dataSnapshot.getValue(ActualBid.class);
                 currbid.setText(Double.toString(newBid.getBidAmount()));
                 txtHighestBid.setText(Double.toString(newBid.getBidAmount()));
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                Log.e("CRUISIN TOGETHER: ","mama mo: " + newBid.getBidAmount());
             }
 
             @Override
