@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +19,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,6 +60,8 @@ public class ItemPageActivity extends AppCompatActivity {
     private ImageView userpic,itempic;
     private RatingBar userrating;
     private LinearLayout growingpains;
+    private ImageView bgdimmer;
+    private CardView thecard;
 
     private Button makeBid;
     private Button placeBid;
@@ -69,7 +75,7 @@ public class ItemPageActivity extends AppCompatActivity {
 
     private List<AuctionComment> commentList = new ArrayList<>();
 
-   private String receiveID;
+    private String receiveID;
     private Auction receiveAuction;
     private User sellerUser;
 
@@ -103,6 +109,9 @@ public class ItemPageActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         fbCurrUser = mAuth.getCurrentUser();
+
+        bgdimmer = findViewById(R.id.bgdimmer);
+        thecard = findViewById(R.id.isangbandila);
 
         thelinear = findViewById(R.id.seventeen_ac);
         growingpains = findViewById(R.id.growingpains_ac);
@@ -294,17 +303,21 @@ public class ItemPageActivity extends AppCompatActivity {
         makeBid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bgdimmer.setAlpha(0.0f);
                 dialogBid.setVisibility(View.VISIBLE);
-                dialogBid.setScaleX(0);
-                dialogBid.setScaleY(0);
-                dialogBid.animate()
+                bgdimmer.animate().alpha(1.0f).setDuration(300);
+                thecard.setScaleX(0);
+                thecard.setScaleY(0);
+                thecard.animate()
                         .scaleY(1)
                         .scaleX(1)
-                        .setDuration(300).setListener(new AnimatorListenerAdapter() {
+                        .setInterpolator(new OvershootInterpolator())
+                        .setDuration(500).setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         dialogBid.setVisibility(View.VISIBLE);
+                        //dialogBid.setBackgroundResource(R.color.common_google_signin_btn_text_light_focused);
                     }
                 });
 
@@ -312,6 +325,7 @@ public class ItemPageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         dialogBid.setVisibility(View.GONE);
+                        //dialogBid.setBackgroundResource(0);
                     }
                 });
 

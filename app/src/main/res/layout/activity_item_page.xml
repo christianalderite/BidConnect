@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".ItemPageActivity" >
+        tools:context=".ItemPageActivity">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar"
@@ -123,9 +123,19 @@
         android:gravity="center"
         android:visibility="gone">
 
+        <ImageView
+            android:id="@+id/bgdimmer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@color/common_google_signin_btn_text_light_focused" />
+
         <android.support.v7.widget.CardView
+            android:id="@+id/isangbandila"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:layout_margin="4dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="12dp">
