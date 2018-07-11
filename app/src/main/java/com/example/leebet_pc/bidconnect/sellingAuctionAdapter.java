@@ -2,6 +2,7 @@ package com.example.leebet_pc.bidconnect;
 
 import android.content.Context;
 import android.media.Image;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAdapter.MyViewHolder> {
@@ -37,6 +41,9 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
     FirebaseUser fbCurrUser;
 
     private Integer mode;
+
+    private CountDownTimer countDownTimer;
+    private long timeLeftinMS = 600000;//10mintes
 
     private Context mCont;
     private DatabaseReference dbSingleItem;
@@ -80,42 +87,75 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
         dbSingleItem = mainDB.getReference("auctionBids/"+auc.getAuctionID());
 
         Log.e("EYUT", "tangina auc id: " + auc.getAuctionID());
-    try {
-    aucDB.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            Utilities.loadImage(mCont, dataSnapshot.child("img_url").getValue().toString(), holder.img);
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm a");
+            SimpleDateFormat dateFormat2 = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
+            String today = dateFormat2.format(new Date());
+            Log.e("MAMA KO KALBO","today: " + today);
+            try {
+                Date date1 = dateFormat2.parse(auc.getTimer());
+                Date date2 = dateFormat2.parse(today);
+                timeLeftinMS = (date1.getTime()) - date2.getTime();
 
-        }
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
-        }
-    });
-        dbSingleItem.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            if(timeLeftinMS <= 0){
+                holder.time.setText("DONE");
+            }
+            else{
+                countDownTimer = new CountDownTimer(timeLeftinMS,1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        timeLeftinMS = millisUntilFinished;
 
-                for(DataSnapshot object: dataSnapshot.getChildren()){
-                    ActualBid newBid = object.getValue(ActualBid.class);
-                    holder.currbid.setText(Double.toString(newBid.getBidAmount()));
+                        //Update UI
+                        int seconds = (int) (timeLeftinMS / 1000) % 60;
+                        int minutes = (int) ((timeLeftinMS / (1000 * 60)) % 60);
+                        int hours = (int) ((timeLeftinMS / (1000 * 60 * 60)));
+
+                        holder.time.setText( String.format("%02d:%02d:%02d", hours, minutes, seconds) );
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        countDownTimer.cancel();
+                    }
+                }.start();
+            }
+            aucDB.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Utilities.loadImage(mCont, dataSnapshot.child("img_url").getValue().toString(), holder.img);
+
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            dbSingleItem.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot object: dataSnapshot.getChildren()){
+                        ActualBid newBid = object.getValue(ActualBid.class);
+                        holder.currbid.setText(Double.toString(newBid.getBidAmount()));
+                    }
+
                 }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
 
-            }
-        });
-
-
-}catch (Exception e){
-    Log.e("waweyut","dukha pota");
-}
-    holder.time.setText(auc.getTimer());
-    holder.buyoutprice.setText(String.valueOf(auc.getBuyoutprice()));
-    holder.title.setText(auc.getTitle());
+        }catch (Exception e){ }
+        holder.time.setText(auc.getTimer());
+        holder.buyoutprice.setText(String.valueOf(auc.getBuyoutprice()));
+        holder.title.setText(auc.getTitle());
 
     }
 
