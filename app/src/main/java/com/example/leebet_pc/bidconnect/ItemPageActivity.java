@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,13 +45,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class ItemPageActivity extends AppCompatActivity {
@@ -382,12 +386,23 @@ public class ItemPageActivity extends AppCompatActivity {
 
     public void insertBid(String bidAmount){
         String newBidKey = dbAuctionBids.push().getKey();
-        ActualBid newBid = new ActualBid(newBidKey, receiveID, firebaseUser.getUid(), Double.valueOf(bidAmount));
-        dbAuctionBids.child(receiveAuction.getAuctionID()).child(newBidKey).setValue(newBid);
+
+        ActualBid newBid = new ActualBid(firebaseUser.getUid(), receiveID, firebaseUser.getUid(), Double.valueOf(bidAmount));
+
+        dbAuctionBids = mainDB.getReference("auctionBids/" + receiveAuction.getAuctionID()+"/"+newBid.getBidID());
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/auctionID/", newBid.getAuctionID());
+        childUpdates.put("/bidAmount/", newBid.getBidAmount());
+        childUpdates.put("/bidID/", newBid.getBidID());
+        childUpdates.put("/bidderID/", newBid.getBidderID());
+        dbAuctionBids.updateChildren(childUpdates);
+
+
+       // dbAuctionBids.child(receiveAuction.getAuctionID()).child(newBidKey).setValue(newBid);
     }
 
     public void updateHighestBid(){
-        //Query highestBid = dbSingleItem.child("-LH7moxrG30oXqxXQ21o");
         dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
