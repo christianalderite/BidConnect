@@ -76,8 +76,8 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
         });
 
         Log.d("mine po",aucBidsList.size()+" -- ");
-        Collections.reverse(aucBidsList);
-        bAdapter.notifyDataSetChanged();
+        //Collections.reverse(aucBidsList);
+        //bAdapter.notifyDataSetChanged();
         return view;
     }
     public void getUserBids(List<String> auctions){
@@ -103,11 +103,17 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
                         String a = fbCurrUser.getUid();
                         String b =  zucc.getBidderID();
 
+                        if (a.equalsIgnoreCase(b)){
 
-                        bobo.add(ace);
-                        aucBidsList.add(zucc);
+                            bobo.add(ace);
+                            aucBidsList.add(zucc);
+                        }
+                        //aucBidsList.add(zucc);
                         Log.d("mine po",aucBidsList.size()+" -- "+aucStr+"xd:"+zucc.getBidID());
                     }
+
+                    Collections.reverse(bobo);
+                    bAdapter.notifyDataSetChanged();
 
                 }
                 @Override

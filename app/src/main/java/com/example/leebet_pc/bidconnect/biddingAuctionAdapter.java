@@ -95,12 +95,13 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
 
         aucDB = mainDB.getReference("auctions").child(auc.getAuctionID());
 
-        Log.d("mine powzxd",aucDB+" --- "+auc.getAuctionID());
         aucDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot object: dataSnapshot.getChildren()){
                     myAuction  = object.getValue(Auction.class);
+
+                    Log.d("minez"," -"+myAuction.getAuctionID());
                     holder.buyoutprice.setText(String.valueOf(myAuction.getBuyoutprice()));
                     holder.title.setText(myAuction.getTitle());
                     holder.highest.setText(String.valueOf(getHighestBid(myAuction.getAuctionID())));
