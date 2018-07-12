@@ -23,6 +23,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -56,8 +57,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.widget.AbsListView.OnScrollListener.SCROLL_STATE_IDLE;
+
 
 public class ItemPageActivity extends AppCompatActivity {
+    private String oldestPostId;
 
     private LinearLayout thelinear;
     private TextView sellername, currbid, buyoutprice, timer, description,category, txtHighestBid;
@@ -67,9 +71,7 @@ public class ItemPageActivity extends AppCompatActivity {
     private ImageView bgdimmer;
     private CardView thecard;
 
-    private Button makeBid;
-    private Button placeBid;
-    private Button buyoutBtn;
+    private Button makeBid, placeBid, buyoutBtn;
     private RelativeLayout dialogBid;
     private EditText inputBid;
 
@@ -355,8 +357,8 @@ public class ItemPageActivity extends AppCompatActivity {
         dbComments.orderByChild("timestamp").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 for (DataSnapshot object: dataSnapshot.getChildren()){
+                    oldestPostId = object.getKey();
                     AuctionComment zucc = object.getValue(AuctionComment.class);
                     String a = receiveAuction.getAuctionID();
                     String b =  zucc.getAuctionID();
@@ -374,7 +376,6 @@ public class ItemPageActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         CommentAuctionAdapter = new commentAuctionAdapter(1,commentList);

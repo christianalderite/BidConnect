@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.squareup.picasso.Picasso;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,11 +41,12 @@ public class HomeActivity extends AppCompatActivity {
 
     private List<Bid> movieList = new ArrayList<>();
     private List<Auction> latestAucs = new ArrayList<>();
+    private List<Auction> latestAucs2 = new ArrayList<>();
     private RecyclerView recyclerView;
     private auctionsAdapter bAdapter;
 
     private RecyclerView recyclerView2;
-    private bidsAdapter bAdapter2;
+    private auctionsAdapter bAdapter2;
 
     private RecyclerView recyclerView3;
     private bidsAdapter bAdapter3;
@@ -54,6 +58,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private Button btnSeeAllCategories;
     private ProgressDialog progressDialog;
+
+    private CarouselView carouselView;
+    int[] sampleImages = {R.drawable.carousel1, R.drawable.broeli, R.drawable.broelih,R.drawable.hart};
 
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
@@ -70,6 +77,11 @@ public class HomeActivity extends AppCompatActivity {
         dbAuctions = mainDB.getReference("auctions");
         dbAuctions.keepSynced(true);
 
+        carouselView = (CarouselView) findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+
+        carouselView.setImageListener(imageListener);
+
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -84,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
         dbUsers = mainDB.getReference("users");
 
         Utilities.showLoadingDialog(this);
+        Utilities.setDialogMessage("Logging in...");
 //        progressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
 //        progressDialog.setMessage("Fetching data..."); // Setting Message
 //        progressDialog.setTitle("BidConnect"); // Setting Title
@@ -160,13 +173,15 @@ public class HomeActivity extends AppCompatActivity {
 
         //LATEST BIDS LIST//
 
+        //POPULAR AUCTIONS//
         recyclerView2 = (RecyclerView) findViewById(R.id.bids_recycler_3rd);
 
-        bAdapter2 = new bidsAdapter(1,movieList);
+        bAdapter2 = new auctionsAdapter(1,latestAucs2);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView2.setLayoutManager(layoutManager2);
         recyclerView2.setItemAnimator(new DefaultItemAnimator());
         recyclerView2.setAdapter(bAdapter2);
+        //POPULAR AUCTIONS//
 
         recyclerView3 = (RecyclerView) findViewById(R.id.bids_recycler_4th);
 
@@ -176,42 +191,20 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView3.setItemAnimator(new DefaultItemAnimator());
         recyclerView3.setAdapter(bAdapter3);
 
-        prepareMovieData();
         prepareLatestList();
+        preparePopularList();
     }
 
-    private void prepareMovieData() {
-        //public Bid(String username, String title, String views, String timer, String timestamp, String currbid, String buyoutprice)
-        Bid movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-        movieList.add(movie);
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
 
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-        movieList.add(movie);
-
-        movie = new Bid("elisoriano","GALASYA 3:3","2.6k","1:33:00","11 hours ago","₱350.00","Current bid: 350.0 PHP","");
-        movieList.add(movie);
-
-        bAdapter2.notifyDataSetChanged();
-        bAdapter3.notifyDataSetChanged();
-
-    }
 
     private void prepareLatestList(){
+        latestAucs.clear();
         dbAuctions.orderByChild("timestamp").limitToLast(10).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -222,6 +215,7 @@ public class HomeActivity extends AppCompatActivity {
                 bAdapter.reverseItems();
                 bAdapter.notifyDataSetChanged();
                 dbAuctions.keepSynced(true);
+
             }
 
             @Override
@@ -229,7 +223,27 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void preparePopularList(){
+        latestAucs.clear();
+        dbAuctions.orderByChild("views").limitToLast(10).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot object: dataSnapshot.getChildren()){
+                    Auction theauc = object.getValue(Auction.class);
+                    latestAucs2.add(theauc);
+                }
+                bAdapter2.reverseItems();
+                bAdapter2.notifyDataSetChanged();
+                dbAuctions.keepSynced(true);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void NewUserSession(){
