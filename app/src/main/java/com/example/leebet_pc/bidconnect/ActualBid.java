@@ -26,7 +26,7 @@ public class ActualBid {
     public ActualBid(){
 
     }
-    public ActualBid(String bidID, String auctionID, String bidderID, double bidAmount){
+    public ActualBid(String auctionID, double bidAmount, String bidID,String bidderID ){
         this.bidID = bidID;
         this.bidAmount = bidAmount;
         this.bidderID = bidderID;

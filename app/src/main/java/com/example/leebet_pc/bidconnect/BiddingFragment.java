@@ -30,14 +30,14 @@ import java.util.List;
 public class BiddingFragment extends android.support.v4.app.Fragment {
     private static final String TAG = "Bidding Fragement";
 
-    private List<String> aucsList = new ArrayList<>();
-    private List<ActualBid> aucBidsList = new ArrayList<>();
+    private List<Auction> aucsList = new ArrayList<>();
     private Button btnTEST;
     private RecyclerView recyclerView;
+    private boolean hasBidz;
     private biddingAuctionAdapter bAdapter;
 
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
-    private DatabaseReference dbAuctionBids = mainDB.getReference("auctionBids");
+    private DatabaseReference dbAuctionBids = mainDB.getReference("auctions");
     private User sellerUser;
     private DatabaseReference dbUsers = mainDB.getReference("users");
 
@@ -53,7 +53,7 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
         fbCurrUser = mAuth.getCurrentUser();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.bidding_recycler);
-        bAdapter = new biddingAuctionAdapter(1,aucBidsList);
+        bAdapter = new biddingAuctionAdapter(1,aucsList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -63,10 +63,33 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot object: dataSnapshot.getChildren()){
-                    String zucc = object.getKey();
-                    aucsList.add(zucc);
+                    final Auction auc_zucc = object.getValue(Auction.class);
+                    final DatabaseReference dbTemp = mainDB.getReference("auctionBids").child(auc_zucc.getAuctionID());
+
+                    Log.e("auc_zucc: ",auc_zucc.getTitle());
+                    dbTemp.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.hasChild(fbCurrUser.getUid())){
+                                aucsList.add(auc_zucc);
+                                bAdapter.notifyDataSetChanged();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+                    bAdapter.notifyDataSetChanged();
                 }
-                getUserBids(aucsList);
+
+
+                Collections.reverse(aucsList);
+                bAdapter.notifyDataSetChanged();
+
+                Log.e("HELLO TANGINA MO KA: ",aucsList.size()+" -- ");
+
             }
 
             @Override
@@ -75,16 +98,44 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
             }
         });
 
-        Log.d("mine po",aucBidsList.size()+" -- ");
         //Collections.reverse(aucBidsList);
         //bAdapter.notifyDataSetChanged();
         return view;
     }
+    public void setBool(boolean bool){
+        hasBidz = bool;
+    }
+    public void hasBids(Auction auc){
+
+        DatabaseReference dbTemp = mainDB.getReference("auctionBids").child(auc.getAuctionID());
+        DatabaseReference dbBOBO = mainDB.getReference("auctionBids").child(auc.getAuctionID()).child("sd");
+
+
+        dbTemp.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot object: dataSnapshot.getChildren()){
+
+                    hasBidz = dataSnapshot.hasChild(fbCurrUser.getUid());
+                    Log.e("SET BOOL",hasBidz+"");
+                    if (hasBidz){
+                        setBool(true);
+                    }
+                    else{
+                        setBool(false);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    /*
     public void getUserBids(List<String> auctions){
 
-
         final ArrayList<ActualBid> bobo = new ArrayList<>();
-
         for(final String aucStr : auctions){
             DatabaseReference dbTemp = mainDB.getReference("auctionBids").child(aucStr);
             dbTemp.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -94,11 +145,6 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
 
                         ActualBid zucc = object.getValue(ActualBid.class);
                         ActualBid ace = new ActualBid();
-
-                        ace.setAuctionID(zucc.getAuctionID());
-                        ace.setBidID(zucc.getBidID());
-                        ace.setBidderID(zucc.getBidderID());
-                        ace.setBidAmount(zucc.getBidAmount());
 
                         String a = fbCurrUser.getUid();
                         String b =  zucc.getBidderID();
@@ -114,7 +160,6 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
 
                     Collections.reverse(bobo);
                     bAdapter.notifyDataSetChanged();
-
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -123,6 +168,9 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
             });
         }
 
-        Log.d("mine:",bobo.size()+"");
     }
+
+
+    */
+
 }

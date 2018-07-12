@@ -388,7 +388,7 @@ public class ItemPageActivity extends AppCompatActivity {
     public void insertBid(String bidAmount){
         String newBidKey = dbAuctionBids.push().getKey();
 
-        ActualBid newBid = new ActualBid(firebaseUser.getUid(), receiveID, firebaseUser.getUid(), Double.valueOf(bidAmount));
+        ActualBid newBid = new ActualBid(receiveID, Double.valueOf(bidAmount),  firebaseUser.getUid(),firebaseUser.getUid());
 
         dbAuctionBids = mainDB.getReference("auctionBids/" + receiveAuction.getAuctionID()+"/"+newBid.getBidID());
 

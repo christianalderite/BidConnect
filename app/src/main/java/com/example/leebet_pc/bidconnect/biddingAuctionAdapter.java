@@ -30,7 +30,7 @@ import java.util.List;
 
 public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAdapter.MyViewHolder> {
 
-    private List<ActualBid> moviesList;
+    private List<Auction> moviesList;
     private static final Integer ACTIVITY_ACCOUNT = 2;
     private static final Integer ACTIVITY_HOME = 1;
 
@@ -44,7 +44,6 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
     private CountDownTimer countDownTimer;
 
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
-    private DatabaseReference dbAuctionBids = mainDB.getReference("auctionBids");
     private DatabaseReference dbMyBids;
     private DatabaseReference aucDB;
     private Auction myAuction;
@@ -74,7 +73,7 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
 
         }
     }
-    public biddingAuctionAdapter(Integer mode, List<ActualBid> moviesList) {
+    public biddingAuctionAdapter(Integer mode, List<Auction> moviesList) {
         this.mode = mode;
         this.moviesList = moviesList;
     }
@@ -90,42 +89,69 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
     @Override
     public void onBindViewHolder(final biddingAuctionAdapter.MyViewHolder holder, int position) {
 
-        ActualBid auc = moviesList.get(position);
+        final Auction auc = moviesList.get(position);
         mAuth = FirebaseAuth.getInstance();
 
+        fbCurrUser = mAuth.getCurrentUser();
         aucDB = mainDB.getReference("auctions").child(auc.getAuctionID());
+
+        holder.buyoutprice.setText(String.valueOf(auc.getBuyoutprice()));
+        holder.title.setText(auc.getTitle());
 
         aucDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot object: dataSnapshot.getChildren()){
-                    myAuction  = object.getValue(Auction.class);
-
-                    Log.d("minez"," -"+myAuction.getAuctionID());
-                    holder.buyoutprice.setText(String.valueOf(myAuction.getBuyoutprice()));
-                    holder.title.setText(myAuction.getTitle());
-                    holder.highest.setText(String.valueOf(getHighestBid(myAuction.getAuctionID())));
-
-                    Log.d("mine pozz",myAuction.getBuyoutprice()+" --- "+myAuction.getTitle());
-
-                    Log.d("mine poss",String.valueOf(getHighestBid(myAuction.getAuctionID()))+" -xd- "+myAuction.getTitle());
                     Utilities.loadImage(mCont, dataSnapshot.child("img_url").getValue().toString(), holder.img);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
+        DatabaseReference dbAuctionBids = mainDB.getReference("auctionBids").child(auc.getAuctionID()).child(fbCurrUser.getUid()).child(fbCurrUser.getUid());
         dbAuctionBids.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot object: dataSnapshot.getChildren()){
+
+                    String newBidz = object.getValue().toString();
                     ActualBid newBid = object.getValue(ActualBid.class);
                     myHighestBid = newBid;
+
                     holder.currbid.setText(String.valueOf(myHighestBid.getBidAmount()));
+
+                    dbSingleItem = FirebaseDatabase.getInstance().getReference("auctionBids/" + auc.getAuctionID());
+                    dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for(DataSnapshot object: dataSnapshot.getChildren()){
+                                ActualBid newBid = object.getValue(ActualBid.class);
+                                highestBid = newBid;
+
+                                holder.highest.setText(String.valueOf(highestBid));
+
+                                Double currbid_fl = myHighestBid.getBidAmount(); //Float.valueOf();
+                                Double highbid_fl = highestBid.getBidAmount();
+
+                                if (currbid_fl<highbid_fl){
+                                    holder.status.setText("Outbid");
+                                    holder.status.setTextColor(ContextCompat.getColor(mCont, R.color.outbid));
+                                }
+                                else{
+                                    holder.status.setText("Winning");
+                                    holder.status.setTextColor(ContextCompat.getColor(mCont, R.color.win));
+                                }
+
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
 
             }
@@ -143,12 +169,13 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
         * - status: winning, and outbid
         * */
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm a");
-        SimpleDateFormat dateFormat2 = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
-        String today = dateFormat2.format(new Date());
-        Log.e("MAMA KO KALBO","today: " + today);
         try {
-            Date date1 = dateFormat2.parse(myAuction.getTimer());
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm a");
+            SimpleDateFormat dateFormat2 = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
+            String today = dateFormat2.format(new Date());
+
+            Date date1 = dateFormat2.parse(auc.getTimer());
             Date date2 = dateFormat2.parse(today);
             timeLeftinMS = (date1.getTime()) - date2.getTime();
 
@@ -182,17 +209,7 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
         //
 
 
-        Double currbid_fl = myHighestBid.getBidAmount(); //Float.valueOf();
-        Double highbid_fl = highestBid.getBidAmount();
 
-        if (currbid_fl<highbid_fl){
-            holder.status.setText("Outbid");
-            holder.status.setTextColor(ContextCompat.getColor(mCont, R.color.outbid));
-        }
-        else{
-            holder.status.setText("Winning");
-            holder.status.setTextColor(ContextCompat.getColor(mCont, R.color.win));
-        }
     }
     @Override
     public int getItemCount() {
@@ -209,7 +226,6 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
                     highestBid = newBid;
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
