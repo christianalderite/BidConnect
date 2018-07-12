@@ -44,7 +44,7 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
     private CountDownTimer countDownTimer;
 
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
-    private DatabaseReference dbMyBids;
+    private DatabaseReference dbBids;
     private DatabaseReference aucDB;
     private Auction myAuction;
     private ActualBid myHighestBid;
@@ -94,7 +94,7 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
 
         fbCurrUser = mAuth.getCurrentUser();
         aucDB = mainDB.getReference("auctions").child(auc.getAuctionID());
-
+        dbBids = mainDB.getReference("auctionBids/"+auc.getAuctionID()+"/"+fbCurrUser.getUid());
         holder.buyoutprice.setText(String.valueOf(auc.getBuyoutprice()));
         holder.title.setText(auc.getTitle());
 
@@ -111,47 +111,21 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
             }
         });
 
-        DatabaseReference dbAuctionBids = mainDB.getReference("auctionBids").child(auc.getAuctionID()).child(fbCurrUser.getUid()).child(fbCurrUser.getUid());
-        dbAuctionBids.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
+        DatabaseReference dbAuctionBids = FirebaseDatabase.getInstance().getReference("auctionBids/"+auc.getAuctionID());
+        dbAuctionBids.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 for(DataSnapshot object: dataSnapshot.getChildren()){
+                    myHighestBid = object.getValue(ActualBid.class);
 
-                    String newBidz = object.getValue().toString();
-                    ActualBid newBid = object.getValue(ActualBid.class);
-                    myHighestBid = newBid;
-
-                    holder.currbid.setText(String.valueOf(myHighestBid.getBidAmount()));
-
-                    dbSingleItem = FirebaseDatabase.getInstance().getReference("auctionBids/" + auc.getAuctionID());
-                    dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for(DataSnapshot object: dataSnapshot.getChildren()){
-                                ActualBid newBid = object.getValue(ActualBid.class);
-                                highestBid = newBid;
-
-                                holder.highest.setText(String.valueOf(highestBid));
-
-                                Double currbid_fl = myHighestBid.getBidAmount(); //Float.valueOf();
-                                Double highbid_fl = highestBid.getBidAmount();
-
-                                if (currbid_fl<highbid_fl){
-                                    holder.status.setText("Outbid");
-                                    holder.status.setTextColor(ContextCompat.getColor(mCont, R.color.outbid));
-                                }
-                                else{
-                                    holder.status.setText("Winning");
-                                    holder.status.setTextColor(ContextCompat.getColor(mCont, R.color.win));
-                                }
-
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
+                    if(myHighestBid.getAuctionID().equalsIgnoreCase(auc.getAuctionID())
+                    && myHighestBid.getBidderID().equalsIgnoreCase(fbCurrUser.getUid()))
+                    {
+                        Log.e("WEWZ: ", myHighestBid.getBidAmount() + " >huhuhu pota");
+                        holder.currbid.setText(String.valueOf(myHighestBid.getBidAmount()));
+                        break;
+                    }
                 }
 
             }
@@ -170,7 +144,35 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
         * */
 
         try {
+            dbSingleItem = FirebaseDatabase.getInstance().getReference("auctionBids/" + auc.getAuctionID());
+            dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot object: dataSnapshot.getChildren()){
+                        ActualBid newBid = object.getValue(ActualBid.class);
+                        highestBid = newBid;
 
+                        holder.highest.setText(String.valueOf(highestBid.getBidAmount()));
+
+                        Double currbid_fl = myHighestBid.getBidAmount(); //Float.valueOf();
+                        Double highbid_fl = highestBid.getBidAmount();
+
+                        if (currbid_fl<highbid_fl){
+                            holder.status.setText("Outbid");
+                            holder.status.setTextColor(ContextCompat.getColor(mCont, R.color.outbid));
+                        }
+                        else{
+                            holder.status.setText("Winning");
+                            holder.status.setTextColor(ContextCompat.getColor(mCont, R.color.win));
+                        }
+
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
             SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm a");
             SimpleDateFormat dateFormat2 = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
             String today = dateFormat2.format(new Date());
