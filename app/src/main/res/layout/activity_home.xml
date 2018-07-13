@@ -16,7 +16,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="192dp">
+            android:layout_height="195dp">
 
             <com.synnapps.carouselview.CarouselView
                 android:id="@+id/carouselView"
