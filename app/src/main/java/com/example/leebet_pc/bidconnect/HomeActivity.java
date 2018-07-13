@@ -205,17 +205,18 @@ public class HomeActivity extends AppCompatActivity {
 
     private void prepareLatestList(){
         latestAucs.clear();
-        dbAuctions.orderByChild("timestamp").limitToLast(10).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbAuctions.orderByChild("timestamp").limitToLast(20).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot object: dataSnapshot.getChildren()){
                     Auction theauc = object.getValue(Auction.class);
-                    latestAucs.add(theauc);
+                    if (theauc.getStatus() == 1){
+                        latestAucs.add(theauc);
+                    }
                 }
                 bAdapter.reverseItems();
                 bAdapter.notifyDataSetChanged();
                 dbAuctions.keepSynced(true);
-
             }
 
             @Override
@@ -227,12 +228,15 @@ public class HomeActivity extends AppCompatActivity {
 
     private void preparePopularList(){
         latestAucs.clear();
-        dbAuctions.orderByChild("views").limitToLast(10).addListenerForSingleValueEvent(new ValueEventListener() {
+        dbAuctions.orderByChild("views").limitToLast(20).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot object: dataSnapshot.getChildren()){
                     Auction theauc = object.getValue(Auction.class);
-                    latestAucs2.add(theauc);
+                    if(theauc.getStatus() == 1){
+
+                        latestAucs2.add(theauc);
+                    }
                 }
                 bAdapter2.reverseItems();
                 bAdapter2.notifyDataSetChanged();
