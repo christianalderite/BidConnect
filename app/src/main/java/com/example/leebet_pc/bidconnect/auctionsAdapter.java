@@ -127,6 +127,24 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
         }
 
         holder.currbid.setText("Current bid temp");
+
+
+        DatabaseReference dbSingleItem = FirebaseDatabase.getInstance().getReference("auctionBids/" + auction.getAuctionID());
+        dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot object: dataSnapshot.getChildren()){
+                    ActualBid newBid = object.getValue(ActualBid.class);
+                    holder.currbid.setText(Double.toString(newBid.getBidAmount()));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         holder.title.setText(auction.getTitle());
         holder.username.setText(auction.getActualusername());
         holder.viewcount.setText(Long.toString(auction.getViews()));

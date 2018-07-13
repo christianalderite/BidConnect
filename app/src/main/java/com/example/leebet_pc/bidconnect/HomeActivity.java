@@ -233,6 +233,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot object: dataSnapshot.getChildren()){
                     Auction theauc = object.getValue(Auction.class);
+
                     if (theauc.getStatus() == 2 || theauc.getStatus() == 4){
                         latestSold.add(theauc);
                     }

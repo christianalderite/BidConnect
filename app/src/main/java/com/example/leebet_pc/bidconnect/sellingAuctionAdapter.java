@@ -135,7 +135,7 @@ public class sellingAuctionAdapter extends RecyclerView.Adapter<sellingAuctionAd
 
                 }
             });
-            dbSingleItem.addValueEventListener(new ValueEventListener() {
+            dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
