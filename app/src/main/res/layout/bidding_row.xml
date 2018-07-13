@@ -146,13 +146,9 @@
                                         android:background="@drawable/bidding_buttons"
                                         android:text="Cancel"/>
                                 </LinearLayout>
-
-
                             </LinearLayout>
                         </LinearLayout>
-
                     </LinearLayout>
-
                 </LinearLayout>
             </LinearLayout>
              <LinearLayout
@@ -165,7 +161,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".25"
                     android:id="@+id/bid_status"
-                    android:textColor="#7986cb"
+                    android:textColor="#7c7c1b"
                     android:gravity="left"
                     android:textStyle="bold"
                     android:paddingLeft="10dp"
