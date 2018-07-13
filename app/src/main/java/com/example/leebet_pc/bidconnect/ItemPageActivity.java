@@ -4,12 +4,14 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -106,6 +108,8 @@ public class ItemPageActivity extends AppCompatActivity {
     private RecyclerView recyclerComment;
     private commentAuctionAdapter CommentAuctionAdapter;
 
+    private EndlessRecyclerViewScrollListener scrollListener;
+
     FirebaseUser fbCurrUser;
 
     @Override
@@ -177,6 +181,26 @@ public class ItemPageActivity extends AppCompatActivity {
 
                     if(timeLeftinMS <=0){
                         timer.setText("DONE");
+                        makeBid.setClickable(false);
+                        buyoutBtn.setClickable(false);
+
+                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which){
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        //Yes button clicked
+                                        break;
+
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        //No button clicked
+                                        break;
+                                }
+                            }
+                        };
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ItemPageActivity.this);
+                        builder.setMessage("This item is already expired/sold").setPositiveButton("Ok",dialogClickListener).show();
                     }
                     else{
                         startTimer();
@@ -400,7 +424,7 @@ public class ItemPageActivity extends AppCompatActivity {
         dbAuctionBids.updateChildren(childUpdates);
 
 
-       // dbAuctionBids.child(receiveAuction.getAuctionID()).child(newBidKey).setValue(newBid);
+        // dbAuctionBids.child(receiveAuction.getAuctionID()).child(newBidKey).setValue(newBid);
     }
 
     public void updateHighestBid(){
@@ -447,6 +471,28 @@ public class ItemPageActivity extends AppCompatActivity {
     private void stopTimer(){
         countDownTimer.cancel();
         timerRunning = false;
+
+        timer.setText("DONE");
+        makeBid.setClickable(false);
+        buyoutBtn.setClickable(false);
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ItemPageActivity.this);
+        builder.setMessage("This item is already expired/sold").setPositiveButton("Ok",dialogClickListener).show();
     }
 
     private void updateTimer(){

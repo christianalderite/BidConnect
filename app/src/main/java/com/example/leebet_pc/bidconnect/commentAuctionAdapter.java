@@ -100,4 +100,9 @@ public class commentAuctionAdapter extends RecyclerView.Adapter<commentAuctionAd
     public int getItemCount() {
         return moviesList.size();
     }
+
+    public void addItem(AuctionComment newItem){
+        moviesList.add(newItem);
+        notifyDataSetChanged();
+    }
 }
