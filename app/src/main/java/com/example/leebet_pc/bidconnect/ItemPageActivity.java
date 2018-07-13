@@ -190,6 +190,7 @@ public class ItemPageActivity extends AppCompatActivity {
                                 switch (which){
                                     case DialogInterface.BUTTON_POSITIVE:
                                         //Yes button clicked
+                                        disappearFab();
                                         break;
 
                                     case DialogInterface.BUTTON_NEGATIVE:
@@ -482,6 +483,7 @@ public class ItemPageActivity extends AppCompatActivity {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
                         //Yes button clicked
+                        disappearFab();
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -508,5 +510,31 @@ public class ItemPageActivity extends AppCompatActivity {
         InputMethodManager inputManager = (InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
+    }
+
+    private void disappearFab(){
+        makeBid.animate()
+                .setStartDelay(0)
+                .scaleY(0)
+                .scaleX(0)
+                .setDuration(300).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                makeBid.setVisibility(View.GONE);
+            }
+        });
+
+        buyoutBtn.animate()
+                .setStartDelay(0)
+                .scaleY(0)
+                .scaleX(0)
+                .setDuration(300).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                buyoutBtn.setVisibility(View.GONE);
+            }
+        });
     }
 }
