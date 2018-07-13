@@ -3,6 +3,7 @@ package com.example.leebet_pc.bidconnect;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -93,6 +94,7 @@ public class ItemPageActivity extends AppCompatActivity {
     private DatabaseReference dbUsers = mainDB.getReference("users");
     private DatabaseReference dbComments = mainDB.getReference("auctionComments");
     private DatabaseReference dbSingleItem;
+    private DatabaseReference dbThisItem = mainDB.getReference("auctions");
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
@@ -107,8 +109,7 @@ public class ItemPageActivity extends AppCompatActivity {
 
     private RecyclerView recyclerComment;
     private commentAuctionAdapter CommentAuctionAdapter;
-
-    private EndlessRecyclerViewScrollListener scrollListener;
+    private ValueEventListener rtrsantugon;
 
     FirebaseUser fbCurrUser;
 
@@ -207,7 +208,6 @@ public class ItemPageActivity extends AppCompatActivity {
                         startTimer();
                     }
 
-
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -272,6 +272,14 @@ public class ItemPageActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+                buyoutBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        buyOut();
+                    }
+                });
+
                 commentSend.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -304,11 +312,49 @@ public class ItemPageActivity extends AppCompatActivity {
                         sellername.setText(sellerUser.getUsername());
                     }
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) { }});
+                    public void onCancelled(@NonNull DatabaseError databaseError) { }
+                });
 
                 setSupportActionBar(toolbar);
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+                rtrsantugon = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        long condition = (long) dataSnapshot.getValue();
+                        if(timeLeftinMS > 0){
+                            if(condition == 2){
+                                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        switch (which){
+                                            case DialogInterface.BUTTON_POSITIVE:
+                                                //Yes button clicked
+                                                disappearFab();
+                                                break;
+                                            case DialogInterface.BUTTON_NEGATIVE:
+                                                //No button clicked
+                                                break;
+                                        }
+                                    }
+                                };
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ItemPageActivity.this);
+                                if (!ItemPageActivity.this.isFinishing()){
+                                    builder.setMessage("This item is already expired/sold").setPositiveButton("Ok",dialogClickListener).show();
+                                }
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                };
+
+                dbThisItem.child(receiveID).child("status").addValueEventListener(rtrsantugon);
             }
 
             @Override
@@ -424,9 +470,9 @@ public class ItemPageActivity extends AppCompatActivity {
         childUpdates.put("/bidderID/", newBid.getBidderID());
         dbAuctionBids.updateChildren(childUpdates);
 
-
         // dbAuctionBids.child(receiveAuction.getAuctionID()).child(newBidKey).setValue(newBid);
     }
+
 
     public void updateHighestBid(){
         dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
@@ -444,6 +490,38 @@ public class ItemPageActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void buyOut(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
+        final String timestamp = dateFormat.format(new Date());
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        dbThisItem.child(receiveID).child("status").removeEventListener(rtrsantugon);
+                        dbThisItem = mainDB.getReference("auctions/" + receiveID);
+                        Map<String, Object> childUpdates = new HashMap<>();
+                        childUpdates.put("/status/", 2);
+                        childUpdates.put("/timer/",timestamp);
+                        dbThisItem.updateChildren(childUpdates);
+                        disappearFab();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+        AlertDialog.Builder builder = new AlertDialog.Builder(ItemPageActivity.this);
+        if (!ItemPageActivity.this.isFinishing()){
+            builder.setMessage("Are you sure you want to buyout this item?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+        }
+
     }
 
     @Override
@@ -494,7 +572,10 @@ public class ItemPageActivity extends AppCompatActivity {
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ItemPageActivity.this);
-        builder.setMessage("This item is already expired/sold").setPositiveButton("Ok",dialogClickListener).show();
+        if (!ItemPageActivity.this.isFinishing()){
+            builder.setMessage("This item is already expired/sold").setPositiveButton("Ok",dialogClickListener).show();
+        }
+
     }
 
     private void updateTimer(){
