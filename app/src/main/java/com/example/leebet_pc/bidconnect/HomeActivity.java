@@ -40,6 +40,8 @@ import java.util.Map;
 public class HomeActivity extends AppCompatActivity {
 
     private List<Bid> movieList = new ArrayList<>();
+
+    private List<Auction> latestSold = new ArrayList<>();
     private List<Auction> latestAucs = new ArrayList<>();
     private List<Auction> latestAucs2 = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -49,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
     private auctionsAdapter bAdapter2;
 
     private RecyclerView recyclerView3;
-    private bidsAdapter bAdapter3;
+    private auctionsAdapter bAdapter3;
     private ImageButton btnAccount;
     private ImageButton btnProfile;
     private ImageButton btnGroups;
@@ -171,9 +173,8 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bAdapter);
 
-        //LATEST BIDS LIST//
+        //POPULAR BIDS LIST//
 
-        //POPULAR AUCTIONS//
         recyclerView2 = (RecyclerView) findViewById(R.id.bids_recycler_3rd);
 
         bAdapter2 = new auctionsAdapter(1,latestAucs2);
@@ -181,11 +182,11 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView2.setLayoutManager(layoutManager2);
         recyclerView2.setItemAnimator(new DefaultItemAnimator());
         recyclerView2.setAdapter(bAdapter2);
-        //POPULAR AUCTIONS//
+        //COMPLETED BIDS LIST//
 
         recyclerView3 = (RecyclerView) findViewById(R.id.bids_recycler_4th);
 
-        bAdapter3 = new bidsAdapter(1,movieList);
+        bAdapter3 = new auctionsAdapter(1,latestSold);
         LinearLayoutManager layoutManager3 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView3.setLayoutManager(layoutManager3);
         recyclerView3.setItemAnimator(new DefaultItemAnimator());
@@ -193,6 +194,7 @@ public class HomeActivity extends AppCompatActivity {
 
         prepareLatestList();
         preparePopularList();
+        prepareLatestSoldList();
     }
 
     ImageListener imageListener = new ImageListener() {
@@ -225,7 +227,26 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+    private void prepareLatestSoldList(){
+        dbAuctions.orderByChild("timestamp").limitToLast(20).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot object: dataSnapshot.getChildren()){
+                    Auction theauc = object.getValue(Auction.class);
+                    if (theauc.getStatus() == 2 && theauc.getStatus() == 4){
+                        latestSold.add(theauc);
+                    }
+                }
+                bAdapter3.notifyDataSetChanged();
 
+                dbAuctions.keepSynced(true);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
     private void preparePopularList(){
         latestAucs.clear();
         dbAuctions.orderByChild("views").limitToLast(20).addListenerForSingleValueEvent(new ValueEventListener() {
