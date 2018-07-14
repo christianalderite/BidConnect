@@ -10,17 +10,17 @@
     android:focusable="true"
     android:orientation="vertical"
     android:paddingBottom="8dp"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
     android:paddingTop="8dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/bid_bobo_andrew"
         android:layout_width="185dp"
-        android:layout_height="180dp"
+        android:layout_height="195dp"
         android:elevation="6dp"
         app:cardUseCompatPadding="true"
-        app:cardCornerRadius="4dp">
+        app:cardCornerRadius="2dp">
 
 
         <LinearLayout
@@ -117,35 +117,30 @@
                         android:layout_weight="1"
                         android:text="tangangtanga"
                         android:textAlignment="viewStart"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textSize="12sp"
+                        android:textColor="@color/indigo"
+                        android:textStyle="normal" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/bid_currentbidlabel"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight=".55"
-                        android:text="Current bid:" />
+                    android:orientation="horizontal"
+                    android:gravity="bottom">
 
                     <TextView
                         android:id="@+id/bid_currentbid"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
+                        android:paddingLeft="4dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight=".45"
+                        android:gravity="left"
                         android:text="100.0 PHP"
+                        android:textColor="@color/shopeeColor"
                         android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
                 </LinearLayout>
 
             </LinearLayout>

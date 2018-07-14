@@ -623,5 +623,7 @@ private FloatingActionButton fab;
                 buyoutBtn.setVisibility(View.GONE);
             }
         });
+
+
     }
 }
