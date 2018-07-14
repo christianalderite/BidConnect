@@ -108,7 +108,7 @@ public class HomeActivity extends AppCompatActivity {
         dbUsers = mainDB.getReference("users");
 
         Utilities.showLoadingDialog(this);
-        Utilities.setDialogMessage("Logging in...");
+        Utilities.setDialogMessage("Fetching data...");
 //        progressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
 //        progressDialog.setMessage("Fetching data..."); // Setting Message
 //        progressDialog.setTitle("BidConnect"); // Setting Title
