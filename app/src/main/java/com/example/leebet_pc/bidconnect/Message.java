@@ -5,19 +5,21 @@ import com.squareup.picasso.MemoryPolicy;
 import java.util.Date;
 
 public class Message {
-    private String text; // message body
+    private String message; // message body
     private String photoUrl;
     private String senderId;
     private String senderFullName;
+    private String productId;
     private long timeStamp;
     private boolean belongsToCurrentUser; // is this message sent by us?
+    private User user;
 
     public Message(){
 
     }
 
-//    public Message(String text, String senderId, String senderFullName, String photoUrl, boolean isCurrentUser) {
-//        this.text = text;
+//    public Message(String message, String senderId, String senderFullName, String photoUrl, boolean isCurrentUser) {
+//        this.message = message;
 //        this.senderId = senderId;
 //        this.senderFullName = senderFullName;
 //        this.timeStamp = new Date().getTime();
@@ -25,10 +27,29 @@ public class Message {
 //        this.belongsToCurrentUser = belongsToCurrentUser;
 //    }
 
-    public Message(String text, String photoUrl, boolean isCurrentUser){
-        this.text=text;
+    public Message(String message, String photoUrl, boolean isCurrentUser){
+        this.message=message;
         this.photoUrl=photoUrl;
         this.belongsToCurrentUser=isCurrentUser;
+    }
+
+    public Message (String message, String senderId, String senderFullName, String photoUrl){
+        this.message=message;
+        this.senderId=senderId;
+        this.senderFullName=senderFullName;
+        this.photoUrl=photoUrl;
+    }
+
+    public Message (String message, String productId, User user){
+        this.message=message;
+        this.productId=productId;
+        this.user=user;
+    }
+
+    public Message (String senderId, String productId, String message){
+        this.message=message;
+        this.senderId=senderId;
+        this.productId=productId;
     }
 
     public long getTimeStamp() {
@@ -47,11 +68,19 @@ public class Message {
         return senderId;
     }
 
-    public String getText() {
-        return text;
+    public String getmessage() {
+        return message;
     }
 
     public boolean isBelongsToCurrentUser() {
         return belongsToCurrentUser;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public String getProductId() {
+        return productId;
     }
 }

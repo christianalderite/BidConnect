@@ -146,8 +146,14 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
         });
 
         holder.title.setText(auction.getTitle());
-        holder.username.setText(auction.getActualusername());
+
+        if(holder.username!=null){
+            holder.username.setText(auction.getActualusername());
+        }
+
         holder.viewcount.setText(Long.toString(auction.getViews()));
+
+
 
         if(mode==ACTIVITY_HOME){
             holder.uson.setOnClickListener(new View.OnClickListener() {

@@ -57,6 +57,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton btnGroups;
     private ImageButton btnAuctions;
     private Button btnSearch;
+    private ImageButton messages;
 
     private Button btnSeeAllCategories;
     private ProgressDialog progressDialog;
@@ -81,6 +82,15 @@ public class HomeActivity extends AppCompatActivity {
 
         carouselView = (CarouselView) findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
+        messages = findViewById(R.id.imgBtnMessages);
+        messages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toMessenger = new Intent(HomeActivity.this, MessagesActivity.class);
+                startActivity(toMessenger);
+            }
+        });
+
 
         carouselView.setImageListener(imageListener);
 

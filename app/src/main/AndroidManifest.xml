@@ -48,14 +48,15 @@
             android:name=".ItemPageActivity"
             android:label="@string/title_activity_item_page"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".CategoriesActivity" />
         <activity
             android:name=".activity_notifications"
             android:label="@string/title_activity_notifications"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".MessagesActivity"></activity>
     </application>
 
 </manifest>

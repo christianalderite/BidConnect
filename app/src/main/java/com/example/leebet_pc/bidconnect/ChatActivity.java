@@ -86,6 +86,9 @@ public class ChatActivity extends AppCompatActivity {
             dbMessages = dbConversations.child(firebaseUser.getUid()).child(sellerUid).child(productId);
             dbMessagesOther = dbConversations.child(sellerUid).child(firebaseUser.getUid()).child(productId);
 
+//            dbMessages = dbConversations.child(firebaseUser.getUid());
+//            dbMessagesOther = dbConversations.child(sellerUid);
+
             displayMessages();
 
             btnSend.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +109,7 @@ public class ChatActivity extends AppCompatActivity {
             DatabaseReference newMsg = dbMessages.push();
             Map<String, String> newMessage = new HashMap<String, String>();
             newMessage.put("senderId", firebaseUser.getUid());
+            newMessage.put("productId", productId);
             newMessage.put("message", temp);
             newMsg.setValue(newMessage);
 

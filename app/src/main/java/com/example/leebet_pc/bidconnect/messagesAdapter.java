@@ -58,7 +58,7 @@ public class messagesAdapter extends BaseAdapter{
             convertView = messageInflater.inflate(R.layout.my_message, null);
             holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
             convertView.setTag(holder);
-            holder.messageBody.setText(message.getText());
+            holder.messageBody.setText(message.getmessage());
         } else { // this message was sent by someone else so let's create an advanced chat bubble on the left
             convertView = messageInflater.inflate(R.layout.their_message, null);
             holder.avatar = (CircleImageView) convertView.findViewById(R.id.avatar);
@@ -67,7 +67,7 @@ public class messagesAdapter extends BaseAdapter{
             convertView.setTag(holder);
 
             //holder.name.setText(message.getSenderFullName());
-            holder.messageBody.setText(message.getText());
+            holder.messageBody.setText(message.getmessage());
             Utilities.loadImage(context, message.getPhotoUrl(), holder.avatar);
         }
 

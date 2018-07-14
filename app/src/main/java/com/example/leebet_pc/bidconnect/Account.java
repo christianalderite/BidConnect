@@ -50,6 +50,7 @@ public class Account extends AppCompatActivity {
     private User theuser;
     private RatingBar ratingbar;
     private ImageButton logoutbtn;
+
     FirebaseAuth.AuthStateListener mAuthListener;
     
     @Override
@@ -173,4 +174,29 @@ public class Account extends AppCompatActivity {
 
         bAdapter.notifyDataSetChanged();
     }
+
+//    public void prepareAuctions(){
+//        biddingItems.clear();
+//        DatabaseReference dbAuctions = mainDB.getReference("auctions");
+//        dbAuctions.orderByChild("timestamp").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot object: dataSnapshot.getChildren()){
+//                    Auction theauc = object.getValue(Auction.class);
+//                    if(theauc.getStatus() == 1){
+//
+//                        latestAucs2.add(theauc);
+//                    }
+//                }
+//                bAdapter.reverseItems();
+//                bAdapter.notifyDataSetChanged();
+//                dbAuctions.keepSynced(true);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 }
