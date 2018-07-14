@@ -73,7 +73,7 @@ public class ItemPageActivity extends AppCompatActivity {
     private LinearLayout growingpains;
     private ImageView bgdimmer;
     private CardView thecard;
-
+private FloatingActionButton fab;
     private Button makeBid, placeBid, buyoutBtn;
     private RelativeLayout dialogBid;
     private EditText inputBid;
@@ -147,6 +147,7 @@ public class ItemPageActivity extends AppCompatActivity {
         placeBid = findViewById(R.id.btnPlaceBid);
         txtHighestBid = findViewById(R.id.highestBid);
 
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         Intent i = getIntent();
         receiveID = i.getStringExtra("auctionKey");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -160,9 +161,16 @@ public class ItemPageActivity extends AppCompatActivity {
         dbItem.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 receiveAuction = dataSnapshot.getValue(Auction.class);
+
+                if(fbCurrUser.getUid().equalsIgnoreCase(receiveAuction.getUsername())){
+                    makeBid.setVisibility(View.GONE);
+                    buyoutBtn.setVisibility(View.GONE);
+                    fab.setVisibility(View.GONE);
+                }
+
                 toolbar.setTitle(receiveAuction.getTitle());
-                //currbid.setText("₱"+String.valueOf(receiveAuction.getMinprice()));
                 buyoutprice.setText("₱"+Double.toString(receiveAuction.getBuyoutprice()));
                 description.setText(receiveAuction.getDesc());
                 category.setText(receiveAuction.getCategory());
@@ -170,7 +178,6 @@ public class ItemPageActivity extends AppCompatActivity {
                 dbAuctions.child(receiveAuction.getAuctionID() + "/views").setValue(receiveAuction.getViews() + 1);
 
                 Utilities.loadImage(ItemPageActivity.this, receiveAuction.getImg_url(),itempic);
-                //Picasso.get().load(receiveAuction.getImg_url()).into(itempic);
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy h:mm:ss a");
                 String timestamp = dateFormat.format(new Date());
@@ -364,7 +371,6 @@ public class ItemPageActivity extends AppCompatActivity {
         });
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
