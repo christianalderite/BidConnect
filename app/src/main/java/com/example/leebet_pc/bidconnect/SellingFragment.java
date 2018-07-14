@@ -73,7 +73,7 @@ public class SellingFragment extends android.support.v4.app.Fragment {
                     String a = fbCurrUser.getUid();
                     String b =  zucc.getUsername();
                     if(a.equals(b)){
-                        if(zucc.getStatus() == 1){
+                        if(zucc.getStatus() != 1){
                             sellingList.add(zucc);
                         }
                     }
