@@ -1,9 +1,11 @@
 package com.example.leebet_pc.bidconnect;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,10 +34,7 @@ import java.util.List;
 public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAdapter.MyViewHolder> {
 
     private List<Auction> moviesList;
-    private static final Integer ACTIVITY_ACCOUNT = 2;
-    private static final Integer ACTIVITY_HOME = 1;
-
-    private Integer mode;
+    private String unikSalonga = "";
     private Context mCont;
 
 
@@ -46,6 +46,7 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
     private DatabaseReference dbBids;
     private DatabaseReference aucDB;
+    private DatabaseReference dbCancel;
     private Auction myAuction;
     private ActualBid myHighestBid;
     private ActualBid highestBid;
@@ -73,9 +74,9 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
 
         }
     }
-    public biddingAuctionAdapter(Integer mode, List<Auction> moviesList) {
-        this.mode = mode;
+    public biddingAuctionAdapter(Integer mode, List<Auction> moviesList,Context mContext) {
         this.moviesList = moviesList;
+        this.mCont = mContext;
     }
     @Override
     public biddingAuctionAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -87,7 +88,7 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
     }
 
     @Override
-    public void onBindViewHolder(final biddingAuctionAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final biddingAuctionAdapter.MyViewHolder holder, final int position) {
 
         final Auction auc = moviesList.get(position);
         mAuth = FirebaseAuth.getInstance();
@@ -122,8 +123,9 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
                     if(myHighestBid.getAuctionID().equalsIgnoreCase(auc.getAuctionID())
                     && myHighestBid.getBidderID().equalsIgnoreCase(fbCurrUser.getUid()))
                     {
-                        Log.e("WEWZ: ", myHighestBid.getBidAmount() + " >huhuhu pota");
+                        Log.e("WEWZ: ", myHighestBid.getBidAmount() + " >huhuhu pota" + " MY SILVIA: " + myHighestBid.getAuctionID() + " POS: " + position);
                         holder.currbid.setText(String.valueOf(myHighestBid.getBidAmount()));
+                        unikSalonga = myHighestBid.getAuctionID();
                         break;
                     }
                 }
@@ -133,6 +135,38 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+        });
+
+        holder.cancelbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                //Yes button clicked
+                                dbCancel = mainDB.getReference("auctionBids/" + auc.getAuctionID() + "/" + myHighestBid.getBidID());
+                                dbCancel.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        moviesList.remove(position);
+                                        notifyDataSetChanged();
+                                    }
+                                });
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+                AlertDialog.Builder builder = new AlertDialog.Builder(mCont);
+                builder.setMessage("Cancel this bid?").setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
+            }
+
         });
 
         /*
@@ -211,8 +245,9 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
         //
 
 
-
     }
+
+
     @Override
     public int getItemCount() {
         return moviesList.size();
@@ -235,4 +270,6 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
         });
         return highestBid.getBidAmount();
     }
+
+
 }

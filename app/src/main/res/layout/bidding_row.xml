@@ -133,18 +133,19 @@
                                         android:drawableStart="@drawable/ic_remove_shopping_cart_black_24dp"
                                         android:background="@drawable/bidding_buttons"
                                         android:text="Buyout"/>
+
                                     <Button
+                                        android:id="@+id/bid_cancel_button"
                                         android:layout_width="0dp"
                                         android:layout_height="22dp"
                                         android:layout_weight=".20"
-                                        android:id="@+id/bid_cancel_button"
+                                        android:background="@drawable/bidding_buttons"
+                                        android:drawableEnd="@drawable/ic_close_black_24dp"
+                                        android:text="Cancel"
+                                        android:textAllCaps="false"
                                         android:textColor="@color/indigo"
                                         android:textSize="10sp"
-                                        android:textStyle="bold"
-                                        android:textAllCaps="false"
-                                        android:drawableEnd="@drawable/ic_close_black_24dp"
-                                        android:background="@drawable/bidding_buttons"
-                                        android:text="Cancel"/>
+                                        android:textStyle="bold" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>

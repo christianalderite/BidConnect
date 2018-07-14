@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,7 +54,7 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
         fbCurrUser = mAuth.getCurrentUser();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.bidding_recycler);
-        bAdapter = new biddingAuctionAdapter(1,aucsList);
+        bAdapter = new biddingAuctionAdapter(1,aucsList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

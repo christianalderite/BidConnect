@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -67,7 +68,6 @@ public class Account extends AppCompatActivity {
         logoutbtn = findViewById(R.id.account_logoutbtn);
 
         mAuth = FirebaseAuth.getInstance();
-        fbCurrUser = mAuth.getCurrentUser();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -81,6 +81,7 @@ public class Account extends AppCompatActivity {
             }
         };
         mAuth.addAuthStateListener(mAuthListener);
+        fbCurrUser = mAuth.getCurrentUser();
 
         userDB = mainDB.getReference("users").child(fbCurrUser.getUid());
         userDB.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -104,7 +105,6 @@ public class Account extends AppCompatActivity {
                 joindate.setText(theuser.getJoindate());
 
                 Utilities.loadImage(Account.this, fbCurrUser.getPhotoUrl().toString(), userpic);
-                //Picasso.get().load(fbCurrUser.getPhotoUrl()).into(userpic);
                 ratingbar.setRating(theuser.getRating());
             }
 
