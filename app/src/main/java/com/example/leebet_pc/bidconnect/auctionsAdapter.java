@@ -126,7 +126,7 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
             }.start();
         }
 
-        holder.currbid.setText("Current bid temp");
+        holder.currbid.setText("N/A");
 
 
         DatabaseReference dbSingleItem = FirebaseDatabase.getInstance().getReference("auctionBids/" + auction.getAuctionID());
