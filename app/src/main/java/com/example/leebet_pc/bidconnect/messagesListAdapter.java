@@ -1,8 +1,8 @@
 package com.example.leebet_pc.bidconnect;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapter.MyViewHolder> {
@@ -32,8 +31,8 @@ public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapt
             super(itemView);
 
             displayName = itemView.findViewById(R.id.displayName);
-            displayMessage = itemView.findViewById(R.id.message);
-            displayPhoto = itemView.findViewById(R.id.rv_notif_icon);
+            displayMessage = itemView.findViewById(R.id.message_af);
+            displayPhoto = itemView.findViewById(R.id.message_userpic);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -78,6 +77,6 @@ public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapt
 
     @Override
     public int getItemCount() {
-        return 0;
+        return messageNotificationList.size();
     }
 }

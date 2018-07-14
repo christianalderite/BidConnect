@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@+id/rv_notif_icon"
+        android:id="@+id/message_userpic"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="8dp"
@@ -32,7 +32,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/message"
+            android:id="@+id/message_af"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:maxLines="2"

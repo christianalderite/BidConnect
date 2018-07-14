@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,6 +50,7 @@ public class MessagesActivity extends AppCompatActivity {
 
         dbReceived = dbRoot.child("conversations").child(firebaseUser.getUid());
         dbUser = dbRoot.child("users");
+        dbReceived.keepSynced(true);
 
         //fetchMessages();
 
@@ -113,6 +115,7 @@ public class MessagesActivity extends AppCompatActivity {
                                             for (DataSnapshot message : dataSnapshot.getChildren()) {
                                                 String messageText = message.child("message").getValue(String.class);
                                                 buildUserMessageRow(userId, productId, messageText);
+                                                Log.e("TANGNINANG MESSAGE TO: ",messageText);
                                             }
                                         }
 
