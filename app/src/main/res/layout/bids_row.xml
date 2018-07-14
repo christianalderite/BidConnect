@@ -8,19 +8,15 @@
     android:background="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    android:orientation="vertical"
-    android:paddingBottom="8dp"
-    android:paddingLeft="2dp"
-    android:paddingRight="2dp"
-    android:paddingTop="8dp">
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/bid_bobo_andrew"
         android:layout_width="185dp"
         android:layout_height="195dp"
-        android:elevation="6dp"
+        android:elevation="3dp"
         app:cardUseCompatPadding="true"
-        app:cardCornerRadius="2dp">
+        app:cardCornerRadius="0dp">
 
 
         <LinearLayout
@@ -130,16 +126,26 @@
                     android:gravity="bottom">
 
                     <TextView
-                        android:id="@+id/bid_currentbid"
-                        android:layout_width="0dp"
+                        android:id="@+id/label"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="4dp"
                         android:layout_marginTop="4dp"
-                        android:layout_weight=".45"
+                        android:gravity="right"
+                        android:text="PHP"
+                        android:textColor="@color/status_color"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+                    <TextView
+                        android:id="@+id/bid_currentbid"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight=".7"
                         android:gravity="left"
-                        android:text="100.0 PHP"
-                        android:textColor="@color/shopeeColor"
-                        android:textSize="14sp"
+                        android:text="100.0"
+                        android:textColor="@color/status_color"
+                        android:textSize="16sp"
                         android:textStyle="normal" />
                 </LinearLayout>
 
