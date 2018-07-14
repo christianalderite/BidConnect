@@ -151,7 +151,10 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         moviesList.remove(position);
-                                        notifyDataSetChanged();
+                                        notifyItemRemoved(position);
+                                        //this line below gives you the animation and also updates the
+                                        //list items after the deleted item
+                                        notifyItemRangeChanged(position, getItemCount());
                                     }
                                 });
                                 break;

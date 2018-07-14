@@ -10,23 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8d2d9b4-f820-48f7-8978-8e06adef6f88" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_10_18,_12_53_AM_[Default]/shelved.patch" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_1_46_PM_[Default]/shelved.patch" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_1_47_PM_[Default]/shelved.patch" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_5_14_PM_[Default]/shelved.patch" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_6_35_PM_[Default]/shelved.patch" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_6_39_PM_[Default]/shelved.patch" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_7_31_PM_[Default]/shelved.patch" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_7_9_18,_9_18_PM_[Default]/shelved.patch" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Account.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Account.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/BiddingFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/BiddingFragment.java" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/biddingAuctionAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/biddingAuctionAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bidding_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bidding_row.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,15 +43,15 @@
       <file leaf-file-name="biddingAuctionAdapter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/biddingAuctionAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="141" column="41" lean-forward="true" selection-start-line="141" selection-start-column="41" selection-end-line="141" selection-end-column="41" />
+            <state relative-caret-position="-1083">
+              <caret line="156" column="89" lean-forward="false" selection-start-line="156" selection-start-column="89" selection-end-line="156" selection-end-column="89" />
               <folding>
-                <element signature="e#5592#7172#0" expanded="true" />
-                <element signature="e#5755#6889#0" expanded="true" />
-                <element signature="e#6270#6624#0" expanded="true" />
-                <element signature="e#6623#6624#0" expanded="true" />
-                <element signature="e#6888#6889#0" expanded="true" />
-                <element signature="e#7171#7172#0" expanded="true" />
+                <element signature="e#5592#7446#0" expanded="true" />
+                <element signature="e#5755#7163#0" expanded="true" />
+                <element signature="e#6270#6898#0" expanded="true" />
+                <element signature="e#6897#6898#0" expanded="true" />
+                <element signature="e#7162#7163#0" expanded="true" />
+                <element signature="e#7445#7446#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2500,6 +2485,14 @@
       <option name="presentableId" value="Default" />
       <updated>1531550510228</updated>
     </task>
+    <task id="LOCAL-00001" summary="Cancel Bid in Bidding Fragment implemented">
+      <created>1531567877796</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1531567877796</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2539,6 +2532,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Cancel Bid in Bidding Fragment implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cancel Bid in Bidding Fragment implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2590,15 +2587,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/biddingAuctionAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="141" column="41" lean-forward="true" selection-start-line="141" selection-start-column="41" selection-end-line="141" selection-end-column="41" />
+        <state relative-caret-position="-1083">
+          <caret line="156" column="89" lean-forward="false" selection-start-line="156" selection-start-column="89" selection-end-line="156" selection-end-column="89" />
           <folding>
-            <element signature="e#5592#7172#0" expanded="true" />
-            <element signature="e#5755#6889#0" expanded="true" />
-            <element signature="e#6270#6624#0" expanded="true" />
-            <element signature="e#6623#6624#0" expanded="true" />
-            <element signature="e#6888#6889#0" expanded="true" />
-            <element signature="e#7171#7172#0" expanded="true" />
+            <element signature="e#5592#7446#0" expanded="true" />
+            <element signature="e#5755#7163#0" expanded="true" />
+            <element signature="e#6270#6898#0" expanded="true" />
+            <element signature="e#6897#6898#0" expanded="true" />
+            <element signature="e#7162#7163#0" expanded="true" />
+            <element signature="e#7445#7446#0" expanded="true" />
           </folding>
         </state>
       </provider>
