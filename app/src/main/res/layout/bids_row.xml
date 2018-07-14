@@ -134,6 +134,8 @@
                         android:layout_weight=".7"
                         android:gravity="left"
                         android:text="100.0"
+
+                        android:paddingStart="4dp"
                         android:textColor="@color/status_color"
                         android:textSize="14sp"
                         android:textStyle="normal" />
