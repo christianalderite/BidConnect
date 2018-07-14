@@ -1,244 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".AddAuctionActivity"
     tools:showIn="@layout/activity_add_auction">
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
 
-        android:gravity="center"
-        android:layout_marginBottom="8dp">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
 
-        <ImageView
-            android:id="@+id/btn_upload_img"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_margin="14dp"
-            android:background="@drawable/dashed_corner"
-            android:clickable="true"
-            android:drawableBottom="@drawable/ic_camera_24dp"
-            android:drawableTop="@drawable/ic_add_circle_72dp"
-            android:maxWidth="300dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_add_a_photo_black_24dp"
-            android:textAllCaps="false"
-            android:textColor="#7986CB" />
+            android:gravity="center"
+            android:layout_marginBottom="8dp">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/btn_upload_img"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_margin="14dp"
+                android:background="@drawable/dashed_corner"
+                android:clickable="true"
+                android:drawableBottom="@drawable/ic_camera_24dp"
+                android:drawableTop="@drawable/ic_add_circle_72dp"
+                android:maxWidth="300dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_add_a_photo_black_24dp"
+                android:textAllCaps="false"
+                android:textColor="#7986CB" />
 
-    <LinearLayout
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:background="@drawable/customborder"
             android:padding="8dp"
             android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:counterEnabled="true"
+                app:counterMaxLength="60">
+
+                <EditText
+                    android:id="@+id/addauction_itemname"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Item Name"
+                    android:maxLength="60"
+                    android:textSize="18sp" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:counterEnabled="true"
-            app:counterMaxLength="60">
+            android:background="@drawable/customborder"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#FFF">
 
-            <EditText
-                android:id="@+id/addauction_itemname"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:background="@android:color/transparent"
-                android:hint="Item Name"
-                android:maxLength="60"
-                android:textSize="18sp" />
-        </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/addauction_itemdesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Description"
+                    android:textSize="16sp" />
             </LinearLayout>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:background="@drawable/customborder"
-        android:padding="10dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#FFF">
-
-            <EditText
-                android:id="@+id/addauction_itemdesc"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:background="@android:color/transparent"
-                android:hint="Description"
-                android:textSize="16sp" />
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:background="@drawable/customborder"
-        android:padding="10dp"
-        android:orientation="horizontal">
         <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#FFF">
-            <TextView
-                android:drawableStart="@drawable/ic_category_24dp"
-                android:drawablePadding="10dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/customborder"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Category"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:background="#FFF">
-
-            <TextView
-                android:id="@+id/addauction_cat"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="" />
-            <TextView
-                android:id="@+id/choose_cat"
+                android:background="#FFF">
+                <TextView
+                    android:drawableStart="@drawable/ic_category_24dp"
+                    android:drawablePadding="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Category"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:clickable="true"
-                android:drawableEnd="@drawable/ic_next__24dp"/>
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:background="@drawable/customborder"
-        android:padding="10dp"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#FFF">
-            <TextView
-                android:drawableStart="@drawable/ic_arrowdown_24dp"
-                android:drawablePadding="10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Minimum Price"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:background="#FFF">
-
-            <EditText
-                android:id="@+id/addauction_minprice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:gravity="right"
-                android:hint="Set starting price."
-                android:inputType="number"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:background="@drawable/customborder"
-        android:padding="10dp"
-        android:layout_marginBottom="4dp"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#FFF">
-            <TextView
-                android:drawableStart="@drawable/ic_gavel_black_24dp"
-                android:drawablePadding="10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Buyout Price"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:background="#FFF">
-
-            <EditText
-                android:id="@+id/addauction_buyoutprice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:gravity="right"
-                android:hint="Set steal price."
-                android:inputType="number"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="60dp"
-        android:layout_width="match_parent"
-        android:background="@drawable/customborder"
-        android:padding="10dp"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight=".47"
-            android:background="#FFF">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_time_24dp"
-                android:text="Cutoff Date" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:background="#FFF">
-            <TextView
-                android:id="@+id/addauction_dur"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="" />
-            
-            <TextView
-                android:id="@+id/addauction_duration"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:clickable="true"
-                android:drawableEnd="@drawable/ic_next__24dp"/>
+                android:gravity="right"
+                android:background="#FFF">
 
+                <TextView
+                    android:id="@+id/addauction_cat"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="" />
+                <TextView
+                    android:id="@+id/choose_cat"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_next__24dp"/>
+            </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/customborder"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#FFF">
+                <TextView
+                    android:drawableStart="@drawable/ic_arrowdown_24dp"
+                    android:drawablePadding="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Minimum Price"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:background="#FFF">
+
+                <EditText
+                    android:id="@+id/addauction_minprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="right"
+                    android:hint="Set starting price."
+                    android:inputType="number"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/customborder"
+            android:padding="10dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#FFF">
+                <TextView
+                    android:drawableStart="@drawable/ic_gavel_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Buyout Price"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:background="#FFF">
+
+                <EditText
+                    android:id="@+id/addauction_buyoutprice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:gravity="right"
+                    android:hint="Set steal price."
+                    android:inputType="number"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/customborder"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".47"
+                android:background="#FFF">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_time_24dp"
+                    android:text="Cutoff Date" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:background="#FFF">
+                <TextView
+                    android:id="@+id/addauction_dur"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/addauction_duration"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_next__24dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/addauction_submitbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/confirm_corner"
+            android:text="CONFIRM" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/addauction_submitbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/confirm_corner"
-        android:text="CONFIRM" />
-</LinearLayout>
+
+
+</ScrollView>
