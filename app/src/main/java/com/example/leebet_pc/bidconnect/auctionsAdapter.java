@@ -135,7 +135,7 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot object: dataSnapshot.getChildren()){
                     ActualBid newBid = object.getValue(ActualBid.class);
-                    holder.currbid.setText(Double.toString(newBid.getBidAmount()));
+                    holder.currbid.setText("P"+Double.toString(newBid.getBidAmount()));
                 }
             }
 
