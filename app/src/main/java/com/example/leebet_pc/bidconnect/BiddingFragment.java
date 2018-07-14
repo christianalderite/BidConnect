@@ -72,7 +72,9 @@ public class BiddingFragment extends android.support.v4.app.Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.hasChild(fbCurrUser.getUid())){
-                                aucsList.add(auc_zucc);
+                                if (auc_zucc.getStatus() == 1){
+                                    aucsList.add(auc_zucc);
+                                }
                                 bAdapter.notifyDataSetChanged();
                             }
                         }
