@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private String sellerPhotoUrl, sellerDisplayName, sellerUserName, sellerUid, sellerAddress;
+    private String sellerPhotoUrl, sellerDisplayName, sellerUserName, sellerUid, sellerAddress, productName;
     private String yourPhotoUrl, yourDisplayName, yourUid;
     private String productId;
 
@@ -36,8 +36,10 @@ public class ChatActivity extends AppCompatActivity {
     private TextView txtSellerUserName;
     private TextView txtSellerAddress;
     private ImageView imgSellerImage;
+    private TextView txtProductName;
     private EditText typeMessage;
     private ImageButton btnSend;
+    private Button btnAuction;
 
     //private ArrayList<Message> messagesList = new ArrayList<>();
     private ListView messagesView;
@@ -46,9 +48,11 @@ public class ChatActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference dbAuctions = database.getReference("auctions");
     private DatabaseReference dbConversations = database.getReference("conversations");
     private DatabaseReference dbMessages;
     private DatabaseReference dbMessagesOther;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +63,10 @@ public class ChatActivity extends AppCompatActivity {
         txtSellerName = findViewById(R.id.fullName);
         txtSellerUserName = findViewById(R.id.userName);
         txtSellerAddress = findViewById(R.id.account_address);
+        txtProductName = findViewById(R.id.displayProductName);
         typeMessage = findViewById(R.id.editText);
         btnSend = findViewById(R.id.btnSend);
+        btnAuction = findViewById(R.id.btnAuction);
 
         mAdapter = new messagesAdapter(this);
         messagesView = (ListView) findViewById(R.id.messages_view);
@@ -75,6 +81,8 @@ public class ChatActivity extends AppCompatActivity {
             sellerUserName = bundle.getString("userName");
             sellerUid = bundle.getString("userID");
             sellerAddress = bundle.getString("userAddress");
+            productName = bundle.getString("productName");
+
 
             productId = bundle.getString("productId");
 
@@ -82,6 +90,8 @@ public class ChatActivity extends AppCompatActivity {
             txtSellerUserName.setText(sellerUserName);
             txtSellerName.setText(sellerDisplayName);
             txtSellerAddress.setText(sellerAddress);
+            txtProductName.setText(productName);
+
 
             dbMessages = dbConversations.child(firebaseUser.getUid()).child(sellerUid).child(productId);
             dbMessagesOther = dbConversations.child(sellerUid).child(firebaseUser.getUid()).child(productId);
@@ -95,6 +105,14 @@ public class ChatActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     sendMessage();
+                }
+            });
+            btnAuction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent myIntent = new Intent(ChatActivity.this, ItemPageActivity.class);
+                    myIntent.putExtra("auctionKey", productId); //Optional parameters
+                    startActivity(myIntent);
                 }
             });
 

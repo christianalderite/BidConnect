@@ -2,7 +2,6 @@ package com.example.leebet_pc.bidconnect;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +23,16 @@ public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapt
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView displayName, displayMessage;
+        public TextView displayName, displayMessage, displayAuctionName;
         public ImageView displayPhoto;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
             displayName = itemView.findViewById(R.id.displayName);
-            displayMessage = itemView.findViewById(R.id.message_af);
-            displayPhoto = itemView.findViewById(R.id.message_userpic);
+            displayMessage = itemView.findViewById(R.id.displayMessage);
+            displayPhoto = itemView.findViewById(R.id.displayPhoto);
+            displayAuctionName = itemView.findViewById(R.id.displayProductName);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -47,6 +47,7 @@ public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapt
                     toChat.putExtra("userAddress",sellerUser.getAddress());
                     toChat.putExtra("photoUrl",sellerUser.getPhotourl());
                     toChat.putExtra("productId", newMessage.getProductId());
+                    toChat.putExtra("productName",newMessage.getProductName());
                     messagesActivity.startActivity(toChat);
 
                 }
@@ -70,8 +71,13 @@ public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapt
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Message msg = messageNotificationList.get(position);
-        holder.displayName.setText(msg.getUser().getUsername());
-        holder.displayMessage.setText(msg.getmessage());
+        holder.displayName.setText(msg.getUser().getFullname());
+        holder.displayAuctionName.setText(msg.getProductName());
+        if(msg.isBelongsToCurrentUser()){
+            holder.displayMessage.setText("You: "+msg.getmessage());
+        }else{
+            holder.displayMessage.setText(msg.getmessage());
+        }
         Utilities.loadImage(messagesActivity, msg.getUser().getPhotourl(), holder.displayPhoto);
     }
 

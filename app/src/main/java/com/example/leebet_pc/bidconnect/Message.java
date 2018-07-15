@@ -10,6 +10,7 @@ public class Message {
     private String senderId;
     private String senderFullName;
     private String productId;
+    private String productName;
     private long timeStamp;
     private boolean belongsToCurrentUser; // is this message sent by us?
     private User user;
@@ -33,24 +34,21 @@ public class Message {
         this.belongsToCurrentUser=isCurrentUser;
     }
 
-    public Message (String message, String senderId, String senderFullName, String photoUrl){
-        this.message=message;
-        this.senderId=senderId;
-        this.senderFullName=senderFullName;
-        this.photoUrl=photoUrl;
-    }
-
-    public Message (String message, String productId, User user){
+    public Message (String message, String productId, boolean isCurrentUser, User user){
         this.message=message;
         this.productId=productId;
+        this.belongsToCurrentUser=isCurrentUser;
         this.user=user;
     }
 
-    public Message (String senderId, String productId, String message){
+    public Message (String message, String productId, String productName, boolean isCurrentUser, User user){
         this.message=message;
-        this.senderId=senderId;
         this.productId=productId;
+        this.belongsToCurrentUser=isCurrentUser;
+        this.user=user;
+        this.productName = productName;
     }
+
 
     public long getTimeStamp() {
         return timeStamp;
@@ -82,5 +80,13 @@ public class Message {
 
     public String getProductId() {
         return productId;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getProductName() {
+        return productName;
     }
 }

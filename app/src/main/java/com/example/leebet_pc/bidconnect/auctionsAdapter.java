@@ -162,7 +162,8 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
                     Intent myIntent = new Intent(mCont, ItemPageActivity.class);
                     myIntent.putExtra("auctionKey", auction.getAuctionID()); //Optional parameters
                     mCont.startActivity(myIntent);
-                    dbAuctions.child(auction.getAuctionID() + "/views").setValue(auction.getViews() + 1);
+                    //dbAuctions.child(auction.getAuctionID() + "/views").setValue(auction.getViews() + 1);
+                    //CHRISTIAN: You add one view here, then you add another when you go to ItemPageActivity...
                 }
             });
         }

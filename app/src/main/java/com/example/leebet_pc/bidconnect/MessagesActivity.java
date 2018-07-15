@@ -30,6 +30,7 @@ public class MessagesActivity extends AppCompatActivity {
     DatabaseReference dbRoot = database.getReference();
     DatabaseReference dbReceived;
     DatabaseReference dbUser;
+    DatabaseReference dbAuction;
 
     private RecyclerView recyclerView;
     private messagesListAdapter mAdapter;
@@ -49,9 +50,10 @@ public class MessagesActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         dbReceived = dbRoot.child("conversations").child(firebaseUser.getUid());
-        dbUser = dbRoot.child("users");
         dbReceived.keepSynced(true);
 
+        dbUser = dbRoot.child("users");
+        dbAuction = dbRoot.child("auctions");
         //fetchMessages();
 
         deepQuery();
@@ -76,15 +78,36 @@ public class MessagesActivity extends AppCompatActivity {
         });
     }
 
+    public void fetchProductInformation(final String userId, final String productId, final String message){
+
+    }
+
     public void buildUserMessageRow(final String userId, final String productId, final String message){
         dbUser.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User newUser = dataSnapshot.getValue(User.class);
-                Message newMessage = new Message(message, productId, newUser);
-                messageList.add(newMessage);
-                mAdapter.notifyDataSetChanged();
-                Utilities.makeToast(MessagesActivity.this,"Finished querying!");
+                final User newUser = dataSnapshot.getValue(User.class);
+
+                dbAuction.child(productId);
+                dbAuction.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        boolean isYou = false;
+                        if(newUser.getUid()==firebaseUser.getUid()){
+                            isYou=true;
+                        }
+                        String auctionName = dataSnapshot.child("title").getValue(String.class);
+                        Message newMessage = new Message(message, productId, auctionName, isYou, newUser);
+                        messageList.add(newMessage);
+                        mAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                //Utilities.makeToast(MessagesActivity.this,"Finished querying!");
             }
 
             @Override
@@ -115,7 +138,7 @@ public class MessagesActivity extends AppCompatActivity {
                                             for (DataSnapshot message : dataSnapshot.getChildren()) {
                                                 String messageText = message.child("message").getValue(String.class);
                                                 buildUserMessageRow(userId, productId, messageText);
-                                                Log.e("TANGNINANG MESSAGE TO: ",messageText);
+                                                //Log.e("TANGNINANG MESSAGE TO: ",messageText);
                                             }
                                         }
 

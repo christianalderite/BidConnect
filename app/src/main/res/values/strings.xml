@@ -112,4 +112,5 @@
     </string>
     <string name="title_activity_notifications">activity_notifications</string>
     <string name="title_activity_search_category_results">Results</string>
+    <string name="title_activity_messages_with_toolbar">MessagesWithToolbar</string>
 </resources>
