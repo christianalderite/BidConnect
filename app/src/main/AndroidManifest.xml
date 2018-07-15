@@ -36,7 +36,7 @@
                 android:value="com.example.leebet_pc.bidconnect.HomeActivity" />
         </activity>
         <activity
-            android:name=".AuctionActivity"
+            android:name=".AuctionManagementFragments.AuctionActivity"
             android:label="@string/title_activity_auction"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme">

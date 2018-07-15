@@ -1,20 +1,19 @@
-package com.example.leebet_pc.bidconnect;
+package com.example.leebet_pc.bidconnect.AuctionManagementFragments;
 
-import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.example.leebet_pc.bidconnect.Auction;
+import com.example.leebet_pc.bidconnect.R;
+import com.example.leebet_pc.bidconnect.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SellingFragment extends android.support.v4.app.Fragment {
+public class SoldFragment extends android.support.v4.app.Fragment {
     private static final String TAG = "Selling Fragement";
 
     private List<Auction> sellingList = new ArrayList<>();
@@ -61,19 +60,15 @@ public class SellingFragment extends android.support.v4.app.Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bAdapter);
 
-
         dbAuctions.orderByChild("timestamp").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 for (DataSnapshot object: dataSnapshot.getChildren()){
-
-
                     Auction zucc = object.getValue(Auction.class);
                     String a = fbCurrUser.getUid();
                     String b =  zucc.getUsername();
                     if(a.equals(b)){
-                        if(zucc.getStatus() != 1){
+                        if(zucc.getStatus() == 1){
                             sellingList.add(zucc);
                         }
                     }

@@ -1,4 +1,4 @@
-package com.example.leebet_pc.bidconnect;
+package com.example.leebet_pc.bidconnect.AuctionManagementFragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.leebet_pc.bidconnect.Auction;
+import com.example.leebet_pc.bidconnect.R;
+import com.example.leebet_pc.bidconnect.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class WonFragment extends android.support.v4.app.Fragment {
+public class BiddingFragment extends android.support.v4.app.Fragment {
     private static final String TAG = "Bidding Fragement";
 
     private List<Auction> aucsList = new ArrayList<>();
@@ -68,7 +71,7 @@ public class WonFragment extends android.support.v4.app.Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.hasChild(fbCurrUser.getUid())){
-                                if (auc_zucc.getStatus() != 1){
+                                if (auc_zucc.getStatus() == 1){
                                     aucsList.add(auc_zucc);
                                 }
                                 bAdapter.notifyDataSetChanged();
@@ -79,11 +82,15 @@ public class WonFragment extends android.support.v4.app.Fragment {
 
                         }
                     });
+
                     bAdapter.notifyDataSetChanged();
                 }
+
+
                 Collections.reverse(aucsList);
                 bAdapter.notifyDataSetChanged();
 
+                Log.e("HELLO TANGINA MO KA: ",aucsList.size()+" -- ");
 
             }
 

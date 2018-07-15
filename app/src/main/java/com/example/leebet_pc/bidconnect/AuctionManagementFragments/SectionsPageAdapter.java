@@ -1,4 +1,4 @@
-package com.example.leebet_pc.bidconnect;
+package com.example.leebet_pc.bidconnect.AuctionManagementFragments;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

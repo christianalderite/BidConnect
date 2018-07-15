@@ -1,4 +1,4 @@
-package com.example.leebet_pc.bidconnect;
+package com.example.leebet_pc.bidconnect.AuctionManagementFragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -6,10 +6,8 @@ import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +15,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.leebet_pc.bidconnect.ActualBid;
+import com.example.leebet_pc.bidconnect.Auction;
+import com.example.leebet_pc.bidconnect.R;
+import com.example.leebet_pc.bidconnect.Utilities;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -1,10 +1,8 @@
-package com.example.leebet_pc.bidconnect;
+package com.example.leebet_pc.bidconnect.AuctionManagementFragments;
 
 import android.content.Context;
-import android.media.Image;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,13 +11,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.leebet_pc.bidconnect.ActualBid;
+import com.example.leebet_pc.bidconnect.Auction;
+import com.example.leebet_pc.bidconnect.R;
+import com.example.leebet_pc.bidconnect.Utilities;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
