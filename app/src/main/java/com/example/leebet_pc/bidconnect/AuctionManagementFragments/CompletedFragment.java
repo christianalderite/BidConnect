@@ -31,10 +31,12 @@ public class CompletedFragment extends android.support.v4.app.Fragment {
     private static final String TAG = "Bidding Fragement";
 
     private List<Auction> aucsList = new ArrayList<>();
+
+    private List<String> typeList = new ArrayList<>();
     private Button btnTEST;
     private RecyclerView recyclerView;
     private boolean hasBidz;
-    private biddingAuctionAdapter bAdapter;
+    private completedAuctionAdapter bAdapter;
 
     private FirebaseDatabase mainDB = FirebaseDatabase.getInstance();
     private DatabaseReference dbAuctionBids = mainDB.getReference("auctions");
@@ -53,7 +55,7 @@ public class CompletedFragment extends android.support.v4.app.Fragment {
         fbCurrUser = mAuth.getCurrentUser();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.completed_recycler);
-        bAdapter = new biddingAuctionAdapter(1,aucsList, getContext());
+        bAdapter = new completedAuctionAdapter(1,aucsList, typeList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
