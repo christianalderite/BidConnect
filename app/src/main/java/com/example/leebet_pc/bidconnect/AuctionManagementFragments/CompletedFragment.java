@@ -66,40 +66,30 @@ public class CompletedFragment extends android.support.v4.app.Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot object: dataSnapshot.getChildren()){
                     final Auction auc_zucc = object.getValue(Auction.class);
-                    final DatabaseReference dbTemp = mainDB.getReference("auctionBids").child(auc_zucc.getAuctionID());
 
-                    Log.e("auc_zucc: ",auc_zucc.getTitle());
-                    dbTemp.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.hasChild(fbCurrUser.getUid())){
-                                if (auc_zucc.getStatus() != 1){
-                                    aucsList.add(auc_zucc);
-                                }
-                                bAdapter.notifyDataSetChanged();
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                    if (auc_zucc.getStatus() != 1 || auc_zucc.getStatus() !=3){
 
+                        if(auc_zucc.getUsername() == fbCurrUser.getUid()){
+                            typeList.add("sell");
                         }
-                    });
+                        else if(auc_zucc.getStatus() == 3){
+                            typeList.add("buyout");
+                        }
+                        else{
+                            typeList.add("bid");
+                        }
+                        aucsList.add(auc_zucc);
+                    }
                     bAdapter.notifyDataSetChanged();
                 }
-                Collections.reverse(aucsList);
                 bAdapter.notifyDataSetChanged();
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
-        //Collections.reverse(aucBidsList);
-        //bAdapter.notifyDataSetChanged();
         return view;
     }
 
