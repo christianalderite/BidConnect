@@ -72,7 +72,7 @@ public class completedAuctionAdapter extends RecyclerView.Adapter<completedAucti
 
             mCont = parent.getContext();
             itemView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.selling_row, parent, false);
+                    .inflate(R.layout.completed_row, parent, false);
         return new completedAuctionAdapter.MyViewHolder(itemView);
     }
 

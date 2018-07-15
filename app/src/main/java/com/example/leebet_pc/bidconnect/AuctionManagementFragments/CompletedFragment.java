@@ -46,13 +46,13 @@ public class CompletedFragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bidding_fragment,container,false);
+        View view = inflater.inflate(R.layout.completed_fragment,container,false);
         //btnTEST = (Button) view.findViewById(R.id.button_bidding);
 
         mAuth = FirebaseAuth.getInstance();
         fbCurrUser = mAuth.getCurrentUser();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.bidding_recycler);
+        recyclerView = (RecyclerView) view.findViewById(R.id.completed_recycler);
         bAdapter = new biddingAuctionAdapter(1,aucsList, getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
