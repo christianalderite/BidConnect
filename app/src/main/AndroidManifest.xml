@@ -60,6 +60,10 @@
         <activity
             android:name=".MessagesWithToolbar"
             android:label="@string/title_activity_messages_with_toolbar"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AuctionManagementFragments.CompletedActivity"
+            android:label="@string/title_activity_completed"
             android:theme="@style/AppTheme"></activity>
     </application>
 

@@ -121,12 +121,14 @@ public class completedAuctionAdapter extends RecyclerView.Adapter<completedAucti
                     holder.price.setText(Double.toString(newBid.getBidAmount()));
                     holder.bidnumber.setText(Long.toString(dataSnapshot.getChildrenCount()));
 
-                    userDB = mainDB.getReference("users").child(newBid.getBidderID());
+                    userDB = mainDB.getReference("users/"+object.getKey());
 
-
+                    Log.e("AUC_ADAP:",object.getKey());
                     switch (type){
                         case "sell":
-                            // get buyer??
+                            Log.e("AUC_ADAP_SELL:","pumasok ako");
+
+                            /*
                             userDB.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -141,11 +143,11 @@ public class completedAuctionAdapter extends RecyclerView.Adapter<completedAucti
 
                                 }
                             });
-
+                            */
+                            holder.sellername.setText(auc.getActualusername());
                             holder.remark.setText("SOLD");
                             break;
                         case "bid":
-
                             holder.sellername.setText(auc.getActualusername());
                             holder.remark.setText("WON");
                             break;

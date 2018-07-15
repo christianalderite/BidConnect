@@ -12,12 +12,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.leebet_pc.bidconnect.AddAuctionActivity;
+import com.example.leebet_pc.bidconnect.HomeActivity;
+import com.example.leebet_pc.bidconnect.MessagesActivity;
 import com.example.leebet_pc.bidconnect.R;
 
 public class AuctionActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
-    private Button btnsell;
+    private Button btnsell,btncomp;
     private static final String TAG = "AuctionActivity";
 
     private SectionsPageAdapter mSectionsPageAdapter;
@@ -36,7 +38,14 @@ public class AuctionActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(mViewPager);
-
+        btncomp = (Button) findViewById(R.id.btn_completed);
+        btncomp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toComplete = new Intent(AuctionActivity.this, CompletedActivity.class);
+                startActivity(toComplete);
+            }
+        });
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         btnsell.setVisibility(View.INVISIBLE);
@@ -78,7 +87,6 @@ public class AuctionActivity extends AppCompatActivity {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new BiddingFragment(), "Bidding");
         adapter.addFragment(new SellingFragment(), "Selling");
-        adapter.addFragment(new CompletedFragment(), "Completed");
         viewPager.setAdapter(adapter);
 
     }

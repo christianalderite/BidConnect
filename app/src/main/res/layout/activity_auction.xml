@@ -24,7 +24,18 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="Auctions">
-
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:id="@+id/btn_completed"
+                android:textSize="12sp"
+                android:background="@null"
+                android:drawableEnd="@drawable/ic_next__24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFF"
+                android:text="Completed"/>
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout

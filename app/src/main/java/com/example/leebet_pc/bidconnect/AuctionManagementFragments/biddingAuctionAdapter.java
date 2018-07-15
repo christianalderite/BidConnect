@@ -125,7 +125,6 @@ public class biddingAuctionAdapter extends RecyclerView.Adapter<biddingAuctionAd
                     if(myHighestBid.getAuctionID().equalsIgnoreCase(auc.getAuctionID())
                     && myHighestBid.getBidderID().equalsIgnoreCase(fbCurrUser.getUid()))
                     {
-                        Log.e("WEWZ: ", myHighestBid.getBidAmount() + " >huhuhu pota" + " MY SILVIA: " + myHighestBid.getAuctionID() + " POS: " + position);
                         holder.currbid.setText(String.valueOf(myHighestBid.getBidAmount()));
                         unikSalonga = myHighestBid.getAuctionID();
                         break;

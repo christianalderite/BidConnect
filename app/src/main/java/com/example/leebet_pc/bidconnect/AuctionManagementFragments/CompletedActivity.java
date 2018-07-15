@@ -2,14 +2,15 @@ package com.example.leebet_pc.bidconnect.AuctionManagementFragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.leebet_pc.bidconnect.Auction;
@@ -24,11 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class CompletedFragment extends android.support.v4.app.Fragment {
-    private static final String TAG = "Bidding Fragement";
+public class CompletedActivity extends AppCompatActivity {
 
     private List<Auction> aucsList = new ArrayList<>();
 
@@ -45,17 +44,27 @@ public class CompletedFragment extends android.support.v4.app.Fragment {
 
     FirebaseUser fbCurrUser;
     FirebaseAuth mAuth;
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.completed_fragment,container,false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_completed);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mAuth = FirebaseAuth.getInstance();
         fbCurrUser = mAuth.getCurrentUser();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.completed_recycler);
-        bAdapter = new completedAuctionAdapter(1,aucsList, typeList, getContext());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView = (RecyclerView) findViewById(R.id.completed_recycler);
+        bAdapter = new completedAuctionAdapter(1,aucsList, typeList, this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(bAdapter);
@@ -88,7 +97,7 @@ public class CompletedFragment extends android.support.v4.app.Fragment {
             }
         });
 
-        return view;
+
     }
 
 }
