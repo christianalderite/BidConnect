@@ -23,7 +23,7 @@ public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapt
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView displayName, displayMessage, displayAuctionName;
+        public TextView displayName, displayMessage, displayAuctionName, displayTimeStamp;
         public ImageView displayPhoto;
 
         public MyViewHolder(View itemView) {
@@ -33,6 +33,7 @@ public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapt
             displayMessage = itemView.findViewById(R.id.displayMessage);
             displayPhoto = itemView.findViewById(R.id.displayPhoto);
             displayAuctionName = itemView.findViewById(R.id.displayProductName);
+            displayTimeStamp = itemView.findViewById(R.id.displayTime);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -73,6 +74,7 @@ public class messagesListAdapter  extends RecyclerView.Adapter<messagesListAdapt
         Message msg = messageNotificationList.get(position);
         holder.displayName.setText(msg.getUser().getFullname());
         holder.displayAuctionName.setText(msg.getProductName());
+        holder.displayTimeStamp.setText(msg.getTimestamp());
         if(msg.isBelongsToCurrentUser()){
             holder.displayMessage.setText("You: "+msg.getmessage());
         }else{
