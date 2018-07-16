@@ -73,26 +73,44 @@ public class CompletedActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot object: dataSnapshot.getChildren()){
+
                     final Auction auc_zucc = object.getValue(Auction.class);
-                    Log.e("COMP_FRAG:",auc_zucc.getTitle()+" "+auc_zucc.getStatus());
-                    if (auc_zucc.getStatus() != 1 || auc_zucc.getStatus() !=3){
+                    final DatabaseReference dbTemp = mainDB.getReference("auctionBids").child(auc_zucc.getAuctionID());
 
-                        if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
-                            typeList.add("sell");
-
-                            aucsList.add(auc_zucc);
+                    Log.e("auc_zucc: ",auc_zucc.getTitle());
+                    dbTemp.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.hasChild(fbCurrUser.getUid())){
+                                if (auc_zucc.getStatus() == 1 || auc_zucc.getStatus() !=3){
+                                    aucsList.add(auc_zucc);
+                                }
+                                bAdapter.notifyDataSetChanged();
+                            }
+                            else if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
+                                if (auc_zucc.getStatus() != 1 || auc_zucc.getStatus() !=3){
+                                    if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
+                                        typeList.add("sell");
+                                        aucsList.add(auc_zucc);
+                                    }
+                                    else if(auc_zucc.getStatus() == 2){
+                                        typeList.add("buyout");
+                                        aucsList.add(auc_zucc);
+                                    }
+                                    else{
+                                        typeList.add("bid");
+                                        aucsList.add(auc_zucc);
+                                    }
+                                }
+                            }
                         }
-                        else if(auc_zucc.getStatus() == 2){
-                            typeList.add("buyout");
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                            aucsList.add(auc_zucc);
                         }
-                        else{
-                            typeList.add("bid");
+                    });
 
-                            aucsList.add(auc_zucc);
-                        }
-                    }
+
                 }
                 bAdapter.notifyDataSetChanged();
             }

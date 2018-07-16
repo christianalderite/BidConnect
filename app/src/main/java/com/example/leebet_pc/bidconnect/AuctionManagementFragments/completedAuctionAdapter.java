@@ -98,6 +98,7 @@ public class completedAuctionAdapter extends RecyclerView.Adapter<completedAucti
         holder.title.setText(auc.getTitle());
         // ### Time Ended
         holder.time.setText(auc.getTimer());
+        holder.sellername.setText(auc.getActualusername());
 
         // ### Loads Image
         aucDB.addValueEventListener(new ValueEventListener() {
@@ -117,18 +118,16 @@ public class completedAuctionAdapter extends RecyclerView.Adapter<completedAucti
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot object: dataSnapshot.getChildren()){
+                    Log.e("AUC_ADAP:",auc.getTitle() +" ");
                     ActualBid newBid = object.getValue(ActualBid.class);
                     holder.price.setText(Double.toString(newBid.getBidAmount()));
                     holder.bidnumber.setText(Long.toString(dataSnapshot.getChildrenCount()));
 
                     userDB = mainDB.getReference("users/"+object.getKey());
 
-                    Log.e("AUC_ADAP:",object.getKey());
                     switch (type){
                         case "sell":
-                            Log.e("AUC_ADAP_SELL:","pumasok ako");
 
-                            /*
                             userDB.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -140,16 +139,11 @@ public class completedAuctionAdapter extends RecyclerView.Adapter<completedAucti
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
                                 }
                             });
-                            */
-                            holder.sellername.setText(auc.getActualusername());
                             holder.remark.setText("SOLD");
                             break;
                         case "bid":
-
-                            Log.e("AUC_ADAP_SELL:","BID LABIIIIIIIII");
                             holder.sellername.setText(auc.getActualusername());
                             holder.remark.setText("WON");
                             break;
