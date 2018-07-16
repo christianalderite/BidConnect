@@ -79,14 +79,19 @@ public class CompletedActivity extends AppCompatActivity {
 
                         if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
                             typeList.add("sell");
+
+                            aucsList.add(auc_zucc);
                         }
                         else if(auc_zucc.getStatus() == 2){
                             typeList.add("buyout");
+
+                            aucsList.add(auc_zucc);
                         }
                         else{
                             typeList.add("bid");
+
+                            aucsList.add(auc_zucc);
                         }
-                        aucsList.add(auc_zucc);
                     }
                 }
                 bAdapter.notifyDataSetChanged();

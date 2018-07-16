@@ -148,11 +148,14 @@ public class completedAuctionAdapter extends RecyclerView.Adapter<completedAucti
                             holder.remark.setText("SOLD");
                             break;
                         case "bid":
+
+                            Log.e("AUC_ADAP_SELL:","BID LABIIIIIIIII");
                             holder.sellername.setText(auc.getActualusername());
                             holder.remark.setText("WON");
                             break;
                         case "buyout":
-
+                            holder.sellername.setText(auc.getActualusername());
+                            holder.remark.setText("Bought Out");
                             break;
                     }
                 }
