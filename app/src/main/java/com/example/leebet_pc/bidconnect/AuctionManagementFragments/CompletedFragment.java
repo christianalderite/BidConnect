@@ -65,19 +65,21 @@ public class CompletedFragment extends android.support.v4.app.Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot object: dataSnapshot.getChildren()){
                     final Auction auc_zucc = object.getValue(Auction.class);
-                    Log.e("COMP_FRAG:",auc_zucc.getTitle()+" "+auc_zucc.getStatus());
+
                     if (auc_zucc.getStatus() != 1 || auc_zucc.getStatus() !=3){
 
                         if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
                             typeList.add("sell");
+                            aucsList.add(auc_zucc);
                         }
                         else if(auc_zucc.getStatus() == 2){
                             typeList.add("buyout");
+                            aucsList.add(auc_zucc);
                         }
                         else{
                             typeList.add("bid");
+                            aucsList.add(auc_zucc);
                         }
-                        aucsList.add(auc_zucc);
                     }
                 }
                 bAdapter.notifyDataSetChanged();
