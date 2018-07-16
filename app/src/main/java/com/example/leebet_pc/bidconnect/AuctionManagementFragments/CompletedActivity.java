@@ -76,20 +76,24 @@ public class CompletedActivity extends AppCompatActivity {
 
                     final Auction auc_zucc = object.getValue(Auction.class);
                     final DatabaseReference dbTemp = mainDB.getReference("auctionBids").child(auc_zucc.getAuctionID());
-
-                    Log.e("auc_zucc: ",auc_zucc.getTitle());
+                    Log.e("auc_zuc1c: ",auc_zucc.getTitle()+"  "+fbCurrUser.getUid() + "vs"+auc_zucc.getUsername());
                     dbTemp.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                             if(dataSnapshot.hasChild(fbCurrUser.getUid())){
-                                if (auc_zucc.getStatus() == 1 && auc_zucc.getStatus() !=3){
+
+                                Log.e("auc_zucc2: ",auc_zucc.getTitle()+"  "+fbCurrUser.getUid() + "vs"+auc_zucc.getUsername());
+                                if (auc_zucc.getStatus() != 1 && auc_zucc.getStatus() !=3){
 
                                     typeList.add("bid");
                                     aucsList.add(auc_zucc);
                                 }
                                 bAdapter.notifyDataSetChanged();
                             }
-                            else if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
+                            if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
+
+                                Log.e("auc_zucc3: ",auc_zucc.getTitle()+"  "+fbCurrUser.getUid() + "vs"+auc_zucc.getUsername());
                                 if (auc_zucc.getStatus() != 1 && auc_zucc.getStatus() !=3){
                                     if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
                                         typeList.add("sell");

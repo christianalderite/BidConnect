@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     private CarouselView carouselView;
-    int[] sampleImages = {R.drawable.carousel1, R.drawable.broeli, R.drawable.broelih,R.drawable.hart};
+    int[] sampleImages = {R.drawable.carousel1, R.drawable.stock2, R.drawable.stock3,R.drawable.stock4};
 
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
