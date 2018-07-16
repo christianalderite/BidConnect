@@ -83,6 +83,8 @@ public class CompletedActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.hasChild(fbCurrUser.getUid())){
                                 if (auc_zucc.getStatus() == 1 || auc_zucc.getStatus() !=3){
+
+                                    typeList.add("bid");
                                     aucsList.add(auc_zucc);
                                 }
                                 bAdapter.notifyDataSetChanged();
@@ -95,10 +97,6 @@ public class CompletedActivity extends AppCompatActivity {
                                     }
                                     else if(auc_zucc.getStatus() == 2){
                                         typeList.add("buyout");
-                                        aucsList.add(auc_zucc);
-                                    }
-                                    else{
-                                        typeList.add("bid");
                                         aucsList.add(auc_zucc);
                                     }
                                 }

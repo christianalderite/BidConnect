@@ -125,10 +125,7 @@ public class auctionsAdapter extends RecyclerView.Adapter<auctionsAdapter.MyView
                 }
             }.start();
         }
-
-        holder.currbid.setText("N/A");
-
-
+        holder.currbid.setText("No Bids made.");
         DatabaseReference dbSingleItem = FirebaseDatabase.getInstance().getReference("auctionBids/" + auction.getAuctionID());
         dbSingleItem.orderByChild("bidAmount").limitToLast(1).addValueEventListener(new ValueEventListener() {
             @Override

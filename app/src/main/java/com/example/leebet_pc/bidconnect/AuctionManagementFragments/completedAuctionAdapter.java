@@ -132,8 +132,9 @@ public class completedAuctionAdapter extends RecyclerView.Adapter<completedAucti
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     for(DataSnapshot object: dataSnapshot.getChildren()){
-                                        User acc = object.getValue(User.class);
-                                        holder.sellername.setText(acc.getUsername());
+                                       // User acc = object.getValue(User.class);
+                                        String accz = object.getValue().toString();
+                                        holder.sellername.setText(accz); // temp
                                     }
                                 }
 
