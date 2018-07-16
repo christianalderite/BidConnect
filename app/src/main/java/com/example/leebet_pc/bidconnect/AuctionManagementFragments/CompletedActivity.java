@@ -82,7 +82,7 @@ public class CompletedActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.hasChild(fbCurrUser.getUid())){
-                                if (auc_zucc.getStatus() == 1 || auc_zucc.getStatus() !=3){
+                                if (auc_zucc.getStatus() == 1 && auc_zucc.getStatus() !=3){
 
                                     typeList.add("bid");
                                     aucsList.add(auc_zucc);
@@ -90,7 +90,7 @@ public class CompletedActivity extends AppCompatActivity {
                                 bAdapter.notifyDataSetChanged();
                             }
                             else if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
-                                if (auc_zucc.getStatus() != 1 || auc_zucc.getStatus() !=3){
+                                if (auc_zucc.getStatus() != 1 && auc_zucc.getStatus() !=3){
                                     if(auc_zucc.getUsername().equalsIgnoreCase(fbCurrUser.getUid())){
                                         typeList.add("sell");
                                         aucsList.add(auc_zucc);
