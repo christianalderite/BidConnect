@@ -9,9 +9,9 @@ public class Message {
     private String photoUrl;
     private String senderId;
     private String senderFullName;
+    private String timestamp;
     private String productId;
     private String productName;
-    private long timeStamp;
     private boolean belongsToCurrentUser; // is this message sent by us?
     private User user;
 
@@ -19,39 +19,24 @@ public class Message {
 
     }
 
-//    public Message(String message, String senderId, String senderFullName, String photoUrl, boolean isCurrentUser) {
-//        this.message = message;
-//        this.senderId = senderId;
-//        this.senderFullName = senderFullName;
-//        this.timeStamp = new Date().getTime();
-//        this.photoUrl = photoUrl;
-//        this.belongsToCurrentUser = belongsToCurrentUser;
-//    }
-
-    public Message(String message, String photoUrl, boolean isCurrentUser){
+    public Message(String message, String photoUrl, String timestamp, boolean isCurrentUser){
         this.message=message;
         this.photoUrl=photoUrl;
         this.belongsToCurrentUser=isCurrentUser;
+        this.timestamp = timestamp;
     }
 
-    public Message (String message, String productId, boolean isCurrentUser, User user){
-        this.message=message;
-        this.productId=productId;
-        this.belongsToCurrentUser=isCurrentUser;
-        this.user=user;
-    }
-
-    public Message (String message, String productId, String productName, boolean isCurrentUser, User user){
+    public Message (String message, String productId, String productName, String timestamp, boolean isCurrentUser, User user){
         this.message=message;
         this.productId=productId;
         this.belongsToCurrentUser=isCurrentUser;
         this.user=user;
         this.productName = productName;
+        this.timestamp = timestamp;
     }
 
-
-    public long getTimeStamp() {
-        return timeStamp;
+    public String getTimestamp() {
+        return timestamp;
     }
 
     public String getPhotoUrl() {

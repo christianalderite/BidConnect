@@ -7,52 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a19a4420-8a19-4644-922b-115966a443d4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/app/google-services.json" afterPath="$PROJECT_DIR$/app/google-services.json" />
-      <change beforePath="$PROJECT_DIR$/app/google-services.orig" afterPath="$PROJECT_DIR$/app/google-services.orig" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/MessagesWithToolbar.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/MessagesWithToolbar.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Utilities.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Utilities.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/messagesAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/messagesAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/messagesListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/messagesListAdapter.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/bidding_buttons.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bidding_buttons.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/circle.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_cached_24px.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_cached_24px.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_error_outline_24px.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_error_outline_24px.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_send_24px.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_send_24px.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_close_black_24dp.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_close_black_24dp.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_logout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_logout.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_remove_shopping_cart_black_24dp.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_remove_shopping_cart_black_24dp.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_send_icon.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_send_icon.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/my_message.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/my_message.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/progress_animation.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/progress_animation.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/their_message.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/their_message.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_account.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_page.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_messages.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_messages.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_messages_with_toolbar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_messages_with_toolbar.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bidding_fragment.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bidding_fragment.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bidding_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bidding_row.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bids_comments_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bids_comments_row.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bids_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bids_row.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_activity_item_page.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_activity_item_page.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_add_auction.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_add_auction.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_messages_with_toolbar.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_messages_with_toolbar.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_search_category_results.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_search_category_results.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/date_time_picker.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/date_time_picker.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_make_bid.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_make_bid.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/messenger_item.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/messenger_item.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/my_message.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/my_message.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/notifications_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/notifications_row.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/selling_row.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/selling_row.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/their_message.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/their_message.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" afterPath="$PROJECT_DIR$/gradlew.bat" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/ChatActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Message.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Message.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/MessagesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/MessagesActivity.java" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/.idea/shelf/" />
@@ -135,7 +94,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/HomeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1023">
@@ -155,14 +114,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Utilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
+            <state relative-caret-position="581">
               <caret line="166" column="9" lean-forward="false" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
-              <folding>
-                <marker date="1531717632562" expanded="true" signature="6112:6129" ph="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -191,6 +148,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>dbAuc</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
@@ -2577,6 +2539,14 @@
       <option name="presentableId" value="Default" />
       <updated>1531708346523</updated>
     </task>
+    <task id="LOCAL-00001" summary="hello again">
+      <created>1531717669972</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1531717669972</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2619,6 +2589,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hello again" />
+    <option name="LAST_COMMIT_MESSAGE" value="hello again" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -2629,12 +2603,12 @@
         <state relative-caret-position="-1944">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2502#2977#0" expanded="false" />
-            <element signature="e#2976#2977#0" expanded="false" />
-            <element signature="e#4519#5592#0" expanded="false" />
-            <element signature="e#4682#5299#0" expanded="false" />
-            <element signature="e#5298#5299#0" expanded="false" />
-            <element signature="e#5591#5592#0" expanded="false" />
+            <element signature="e#2502#2977#0" expanded="true" />
+            <element signature="e#2976#2977#0" expanded="true" />
+            <element signature="e#4519#5592#0" expanded="true" />
+            <element signature="e#4682#5299#0" expanded="true" />
+            <element signature="e#5298#5299#0" expanded="true" />
+            <element signature="e#5591#5592#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2737,16 +2711,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Utilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="166" column="9" lean-forward="false" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
-          <folding>
-            <marker date="1531717632562" expanded="true" signature="6112:6129" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/MessagesWithToolbar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -2785,6 +2749,14 @@
             <element signature="e#5298#5299#0" expanded="true" />
             <element signature="e#5591#5592#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/leebet_pc/bidconnect/Utilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="166" column="9" lean-forward="false" selection-start-line="166" selection-start-column="9" selection-end-line="166" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -108,12 +108,6 @@ public class HomeActivity extends AppCompatActivity {
 
         Utilities.showLoadingDialog(this);
         Utilities.setDialogMessage("Fetching data...");
-//        progressDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
-//        progressDialog.setMessage("Fetching data..."); // Setting Message
-//        progressDialog.setTitle("BidConnect"); // Setting Title
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
-//        progressDialog.setCancelable(false);
-//        progressDialog.show();
         dbUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

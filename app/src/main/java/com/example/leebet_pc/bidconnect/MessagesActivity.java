@@ -82,7 +82,7 @@ public class MessagesActivity extends AppCompatActivity {
 
     }
 
-    public void buildUserMessageRow(final String userId, final String productId, final String message){
+    public void buildUserMessageRow(final String userId, final String productId, final String message,final String timestamp){
         dbUser.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -97,7 +97,7 @@ public class MessagesActivity extends AppCompatActivity {
                             isYou=true;
                         }
                         String auctionName = dataSnapshot.child("title").getValue(String.class);
-                        Message newMessage = new Message(message, productId, auctionName, isYou, newUser);
+                        Message newMessage = new Message(message, productId,auctionName, timestamp, isYou, newUser);
                         messageList.add(newMessage);
                         mAdapter.notifyDataSetChanged();
                     }
@@ -137,7 +137,8 @@ public class MessagesActivity extends AppCompatActivity {
                                             //GETTING LATEST MESSAGE ABOUT A PRODUCT
                                             for (DataSnapshot message : dataSnapshot.getChildren()) {
                                                 String messageText = message.child("message").getValue(String.class);
-                                                buildUserMessageRow(userId, productId, messageText);
+                                                String timestamp = message.child("timestamp").getValue(String.class);
+                                                buildUserMessageRow(userId, productId, messageText, timestamp);
                                                 //Log.e("TANGNINANG MESSAGE TO: ",messageText);
                                             }
                                         }

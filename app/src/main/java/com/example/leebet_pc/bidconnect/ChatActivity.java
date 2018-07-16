@@ -82,8 +82,6 @@ public class ChatActivity extends AppCompatActivity {
             sellerUid = bundle.getString("userID");
             sellerAddress = bundle.getString("userAddress");
             productName = bundle.getString("productName");
-
-
             productId = bundle.getString("productId");
 
             Utilities.loadImage(this, sellerPhotoUrl, imgSellerImage);
@@ -129,6 +127,7 @@ public class ChatActivity extends AppCompatActivity {
             newMessage.put("senderId", firebaseUser.getUid());
             newMessage.put("productId", productId);
             newMessage.put("message", temp);
+            newMessage.put("timestamp",Utilities.getCurrentTimeStamp());
             newMsg.setValue(newMessage);
 
             dbMessagesOther.child(newMsg.getKey()).setValue(newMessage);
@@ -143,12 +142,16 @@ public class ChatActivity extends AppCompatActivity {
                 if(dataSnapshot.exists()){
                     String message = null;
                     String senderId = null;
+                    String timestamp = null;
 
                     if(dataSnapshot.child("message").getValue()!=null){
                         message = dataSnapshot.child("message").getValue().toString();
                     }
                     if(dataSnapshot.child("senderId").getValue()!=null){
                         senderId = dataSnapshot.child("senderId").getValue().toString();
+                    }
+                    if(dataSnapshot.child("timestamp").getValue()!=null){
+                        timestamp = dataSnapshot.child("timestamp").getValue().toString();
                     }
                     if(message!=null && senderId!=null){
                         Boolean isCurrentUser = false;
@@ -157,8 +160,7 @@ public class ChatActivity extends AppCompatActivity {
                             isCurrentUser =true;
                             photoUrl = sellerPhotoUrl;
                         }
-
-                        Message newMessage = new Message(message, photoUrl, isCurrentUser);
+                        Message newMessage = new Message(message, photoUrl,timestamp, isCurrentUser);
                         //messagesList.add(newMessage);
                         mAdapter.add(newMessage);
                     }
